@@ -38,7 +38,7 @@ public class ControladorPrincipal implements Initializable{
 	@FXML private void cargarVistaProcesos(ActionEvent event) {
 		mainPane.setCenter(null);
 		FxmlLoader object = new FxmlLoader();
-		AnchorPane view = object.getPane("VistaProceso");
+		AnchorPane view = object.getPane("vistas/VistaProceso");
 		Double width = view.getWidth();
 		Double heigth = view.getHeight();
 		Stage stage = (Stage) mainPane.getScene().getWindow();
@@ -51,14 +51,14 @@ public class ControladorPrincipal implements Initializable{
 	@FXML private void cargarVistaActividades(ActionEvent event) {
 		mainPane.setCenter(null);
 		FxmlLoader object = new FxmlLoader();
-		Pane view = object.getPane("VistaActividad");
+		Pane view = object.getPane("vistas/VistaActividad");
 		mainPane.setCenter(view);
 	}
 	
 	@FXML private void cargarVistaTareas(ActionEvent event) {
 		mainPane.setCenter(null);
 		FxmlLoader object = new FxmlLoader();
-		Pane view = object.getPane("VistaTarea");
+		Pane view = object.getPane("vistas/VistaTarea");
 		mainPane.setCenter(view);
 	}
 

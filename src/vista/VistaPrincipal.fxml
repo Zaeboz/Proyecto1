@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" prefHeight="400.0" prefWidth="650.0" style="-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorPrincipal">
+   <left>
+      <AnchorPane prefHeight="386.0" prefWidth="204.0" styleClass="root" stylesheets="@degradado.css" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="10.0" layoutY="93.0" prefHeight="293.0" prefWidth="181.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="93.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="185.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="procesos" mnemonicParsing="false" onAction="#cargarVistaProcesos" prefHeight="25.0" prefWidth="181.0" style="-fx-text-alignment: LEFT;" styleClass="btn" stylesheets="@degradado.css" text="Procesos" textFill="#fcf8f8" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Noteworthy Light" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="actividades" mnemonicParsing="false" onAction="#cargarVistaActividades" prefHeight="25.0" prefWidth="183.0" styleClass="btn" stylesheets="@degradado.css" text="Actividades" textFill="#fcf8f8" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Noteworthy Light" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="tareas" mnemonicParsing="false" onAction="#cargarVistaTareas" prefHeight="25.0" prefWidth="183.0" styleClass="btn" stylesheets="@degradado.css" text="Tareas" textFill="#fcf8f8" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Noteworthy Light" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" styleClass="btn" stylesheets="@degradado.css" text="Cerrar Programa" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font name="Noteworthy Light" size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+            <Label layoutX="24.0" layoutY="14.0" text="Centro de comando" textFill="WHITE" AnchorPane.bottomAnchor="359.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="SignPainter-HouseScript" size="26.0" />
+               </font>
+            </Label>
+            <Separator layoutX="1.0" layoutY="61.0" prefWidth="200.0" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
