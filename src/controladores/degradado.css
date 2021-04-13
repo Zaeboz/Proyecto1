@@ -1,0 +1,22 @@
+* {
+    background-image: linear-gradient(to bottom right, #00AA91, #7DD13B);
+}
+* {
+  text-align: left;
+} 
+.text-field:focused{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color:rgba(255,0,0,0.2); /* here rgba (corrected) */
+}
+*{
+	background: rgba(0,0,0,0.0);
+}
+.btn{
+	-fx-background-color: rgba(0,0,0,0.0);
+}
+.btn:focused{
+	-fx-background-color:  rgba(46,47,47,0.5);
+}
+.root{
+	-fx-background-color: background-image;
+}
