@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" prefHeight="540.0" prefWidth="900.0" style="-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorPrincipal">
+<BorderPane fx:id="mainPane" prefHeight="540.0" prefWidth="972.0" style="-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorPrincipal">
    <left>
       <AnchorPane prefHeight="540.0" prefWidth="204.0" styleClass="root" stylesheets="@paqueteCSS.css" BorderPane.alignment="CENTER">
          <children>
@@ -25,20 +26,32 @@
                   <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="actividades" mnemonicParsing="false" onAction="#cargarVistaActividades" prefHeight="25.0" prefWidth="183.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Actividades" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Button fx:id="actividades" mnemonicParsing="false" onAction="#cargarVistaActividades" prefHeight="25.0" prefWidth="183.0" stylesheets="@paqueteCSS.css" text="Actividades" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Noteworthy Light" size="23.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btnActividad" />
+                     </styleClass>
                   </Button>
-                  <Button fx:id="tareas" mnemonicParsing="false" onAction="#cargarVistaTareas" prefHeight="55.0" prefWidth="183.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Tareas" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="tareas" mnemonicParsing="false" onAction="#cargarVistaTareas" prefHeight="25.0" prefWidth="183.0" stylesheets="@paqueteCSS.css" text="Tareas" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Noteworthy Light" size="23.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btnTarea" />
+                     </styleClass>
                   </Button>
-                  <Button fx:id="procesos1" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#cargarVistaProcesos" prefHeight="25.0" prefWidth="183.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Procesos" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="1">
+                  <Button fx:id="procesos1" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#cargarVistaProcesos" prefHeight="25.0" prefWidth="183.0" stylesheets="@paqueteCSS.css" text="Procesos" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="1">
                      <font>
                         <Font name="Noteworthy Light" size="23.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btnProceso" />
+                     </styleClass>
                   </Button>
                </children>
             </GridPane>
@@ -48,10 +61,14 @@
                </font>
             </Label>
             <Separator layoutX="1.0" layoutY="61.0" prefWidth="200.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="61.0" />
-            <Button layoutX="3.0" layoutY="472.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="197.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Cerrar Programa" textFill="WHITE" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0">
+            <Button layoutX="3.0" layoutY="472.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="197.0" stylesheets="@paqueteCSS.css" text="    Cerrar Programa" textFill="WHITE" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0">
                <font>
-                  <Font name="Noteworthy Light" size="23.0" />
+                  <Font name="Noteworthy Light" size="20.0" />
                </font>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnCerrar" />
+               </styleClass>
             </Button>
          </children>
       </AnchorPane>

@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPaneProcesos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorProceso">
    <children>
-      <Label layoutX="25.0" layoutY="21.0" text="Creación de actividades" />
-      <Label layoutX="25.0" layoutY="53.0" text="Nombre" />
-      <Label layoutX="25.0" layoutY="93.0" text="Drescripción" />
-      <Label layoutX="25.0" layoutY="163.0" text="Proceso" />
-      <RadioButton layoutX="129.0" layoutY="128.0" mnemonicParsing="false" text="Sí" />
-      <TextField layoutX="129.0" layoutY="49.0" prefWidth="197.0" promptText="Nombre de la actividad" />
-      <TextField layoutX="129.0" layoutY="89.0" prefHeight="25.0" prefWidth="197.0" promptText="Breve descripción de la actividad" />
-      <Label layoutX="25.0" layoutY="128.0" text="¿Es obligatoria?" />
-      <RadioButton layoutX="188.0" layoutY="128.0" mnemonicParsing="false" text="No" />
-      <Button layoutX="164.0" layoutY="199.0" mnemonicParsing="false" text="Crear" />
-      <TableView layoutX="25.0" layoutY="272.0" prefHeight="168.0" prefWidth="346.0">
-        <columns>
-          <TableColumn prefWidth="53.0" text="Codigo" />
-          <TableColumn prefWidth="97.0" text="Nombre" />
-            <TableColumn prefWidth="102.0" text="Descripcion" />
-            <TableColumn prefWidth="93.0" text="¿Es obligatoria?" />
-        </columns>
+      <TableView layoutX="20.0" layoutY="60.0" prefHeight="464.0" prefWidth="631.0" stylesheets="@paqueteCSS.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="60.0">
+         <columns>
+            <TableColumn prefWidth="71.0" resizable="false" text="Codigo" />
+            <TableColumn prefWidth="75.0" text="I.D Proceso" />
+            <TableColumn prefWidth="116.0" text="Nombre" />
+            <TableColumn prefWidth="79.0" text="Descripcion" />
+            <TableColumn prefWidth="75.0" text="Tareas" />
+            <TableColumn prefWidth="109.0" text="Editar" />
+            <TableColumn prefWidth="104.0" text="Eliminar" />
+         </columns>
       </TableView>
-      <Label layoutX="25.0" layoutY="242.0" text="Tabla de actividades" />
-      <MenuButton layoutX="129.0" layoutY="159.0" mnemonicParsing="false" text="Seleccione un proceso">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
+      <TextField layoutX="521.0" layoutY="22.0" prefHeight="25.0" prefWidth="131.0" promptText="Buscar por código" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="22.0" />
+      <Button layoutX="486.0" layoutY="19.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="19.0" />
+      <MenuButton layoutX="20.0" layoutY="22.0" mnemonicParsing="false" text="MenuButton">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
       </MenuButton>
    </children>
 </AnchorPane>
