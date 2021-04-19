@@ -2,9 +2,6 @@
     -fx-faint-focus-color: transparent;
     -fx-focus-color:rgba(255,0,0,0.2); /* here rgba (corrected) */
 }
-*{
-	background: rgba(0,0,0,0.0);
-}
 .btn{
 	-fx-background-color: rgba(0,0,0,0.0);
 }
@@ -37,4 +34,53 @@
   -fx-background-size: 40px;
   -fx-background-repeat: no-repeat;
   -fx-background-position: 0%;
+}
+
+.botonVistaProceso { 
+  -fx-background-color: #49b31800;
+  -fx-font-align: left;
+  -fx-background-radius: 10 10 10 10;
+  -fx-background-image: url(../imagenes/icons8-view-more-64.png);
+  -fx-background-size: 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: 0%;
+}
+
+.botonVistaProceso:hover { 
+  -fx-background-color: #00df824b;
+}
+
+.botonVistaProceso:focused {
+  -fx-background-color: #00df824b;
+}
+.botonBuscar{
+  -fx-background-radius: 10 10 10 10;
+  -fx-background-color: #ffffff00;
+  -fx-background-image: url(../imagenes/icons8-search-64.png);
+  -fx-background-size: 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: 0%;
+}
+.botonBuscar:hover {
+  -fx-background-color: #04462a4b;
+}
+.menu-item .label {
+  -fx-text-fill: white;
+}
+
+.menu-item:focused {
+   -fx-background-color: darkgray;
+}
+
+.menu-item:focused .label {
+  -fx-text-fill: blue;
+}
+
+.context-menu {
+  -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+  -fx-background-color: black;
+  -fx-background-insets: 0, 1, 2;
+  -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+/*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
+  -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
 }
