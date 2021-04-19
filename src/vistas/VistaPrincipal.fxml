@@ -48,7 +48,7 @@
                </font>
             </Label>
             <Separator layoutX="1.0" layoutY="61.0" prefWidth="200.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="61.0" />
-            <Button layoutX="6.0" layoutY="331.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="197.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Cerrar Programa" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="7.0">
+            <Button layoutX="3.0" layoutY="472.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="197.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Cerrar Programa" textFill="WHITE" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0">
                <font>
                   <Font name="Noteworthy Light" size="23.0" />
                </font>
