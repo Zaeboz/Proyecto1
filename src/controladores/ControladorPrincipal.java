@@ -39,12 +39,12 @@ public class ControladorPrincipal implements Initializable{
 		mainPane.setCenter(null);
 		FxmlLoader object = new FxmlLoader();
 		AnchorPane view = object.getPane("VistaProceso");
-		Double width = view.getWidth();
-		Double heigth = view.getHeight();
-		Stage stage = (Stage) mainPane.getScene().getWindow();
-		System.out.println(width+" "+heigth);
-        stage.setWidth(width);
-        stage.setHeight(heigth);
+		// Double width = view.getWidth();
+		// Double heigth = view.getHeight();
+		// Stage stage = (Stage) mainPane.getScene().getWindow();
+		// System.out.println(width+" "+heigth);
+        // stage.setWidth(width);
+        // stage.setHeight(heigth);
 		mainPane.setCenter(view);
 	}
 	
