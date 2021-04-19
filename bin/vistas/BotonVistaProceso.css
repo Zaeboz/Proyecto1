@@ -1,0 +1,18 @@
+Button { 
+    -fx-background-color: #49b31800;
+    -fx-font-align: left;
+    -fx-background-radius: 10 10 10 10;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-image: url(../imagenes/icons8-more-50.png);
+    -fx-background-size: 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 0%;
+}
+
+Button:hover { 
+    -fx-background-color: #00df82;
+}
+
+Button:focused {
+	-fx-background-color:  rgb(199, 39, 39);
+}
