@@ -12,14 +12,13 @@ public class FxmlLoader {
 	public AnchorPane getPane(String nombre) {
 
 		try {
-			URL fileUrl = Main.class.getResource("/controladores/"+nombre+".fxml");
+			URL fileUrl = Main.class.getResource("/vistas/"+nombre+".fxml");
 
 			if(fileUrl == null) {
 				throw new java.io.FileNotFoundException("No se pudo encontrar el fxml");
 			}else {
 				new FXMLLoader();
 				view = FXMLLoader.load(fileUrl);
-				System.out.println(view.getWidth());
 			}
 
 		} catch (Exception e) {

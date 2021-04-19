@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" prefHeight="539.0" prefWidth="900.0" style="-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorPrincipal">
+   <left>
+      <AnchorPane prefHeight="386.0" prefWidth="204.0" styleClass="root" stylesheets="@paqueteCSS.css" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="10.0" layoutY="79.0" prefHeight="251.0" prefWidth="199.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="79.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints />
+                <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="actividades" mnemonicParsing="false" onAction="#cargarVistaActividades" prefHeight="25.0" prefWidth="183.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Actividades" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Noteworthy Light" size="23.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="tareas" mnemonicParsing="false" onAction="#cargarVistaTareas" prefHeight="55.0" prefWidth="183.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Tareas" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Noteworthy Light" size="23.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="procesos1" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#cargarVistaProcesos" prefHeight="25.0" prefWidth="183.0" style="-fx-text-alignment: LEFT;" styleClass="btn" stylesheets="@paqueteCSS.css" text="Procesos" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Noteworthy Light" size="23.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+            <Label layoutX="18.0" layoutY="11.0" prefHeight="39.0" prefWidth="174.0" text="Centro de comando" textFill="WHITE" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="11.0">
+               <font>
+                  <Font name="Noteworthy Light" size="23.0" />
+               </font>
+            </Label>
+            <Separator layoutX="1.0" layoutY="61.0" prefWidth="200.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="61.0" />
+            <Button layoutX="6.0" layoutY="331.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="191.0" styleClass="btn" stylesheets="@paqueteCSS.css" text="Cerrar Programa" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="7.0">
+               <font>
+                  <Font name="Noteworthy Light" size="23.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="34.0" fitWidth="43.0" layoutX="20.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/icons8-service-250.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="22.0" fitWidth="24.0" layoutX="23.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/icons8-activity-feed-208.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="39.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/icons8-task-250.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

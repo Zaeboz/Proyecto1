@@ -38,7 +38,7 @@ public class ControladorPrincipal implements Initializable{
 	@FXML private void cargarVistaProcesos(ActionEvent event) {
 		mainPane.setCenter(null);
 		FxmlLoader object = new FxmlLoader();
-		AnchorPane view = object.getPane("vistas/VistaProceso");
+		AnchorPane view = object.getPane("VistaProceso");
 		Double width = view.getWidth();
 		Double heigth = view.getHeight();
 		Stage stage = (Stage) mainPane.getScene().getWindow();
@@ -51,21 +51,20 @@ public class ControladorPrincipal implements Initializable{
 	@FXML private void cargarVistaActividades(ActionEvent event) {
 		mainPane.setCenter(null);
 		FxmlLoader object = new FxmlLoader();
-		Pane view = object.getPane("vistas/VistaActividad");
+		Pane view = object.getPane("VistaActividad");
 		mainPane.setCenter(view);
 	}
 	
 	@FXML private void cargarVistaTareas(ActionEvent event) {
 		mainPane.setCenter(null);
 		FxmlLoader object = new FxmlLoader();
-		Pane view = object.getPane("vistas/VistaTarea");
+		Pane view = object.getPane("VistaTarea");
 		mainPane.setCenter(view);
 	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 	
 	
