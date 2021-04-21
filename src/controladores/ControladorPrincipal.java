@@ -18,7 +18,6 @@ public class ControladorPrincipal implements Initializable{
 	@FXML Button procesos;
 	@FXML Button actividades;
 	@FXML BorderPane mainPane;
-	BorderPane pane = new BorderPane();;
 	Main main;
 	
 	@FXML private void cargarVistaProcesos(ActionEvent event) {
