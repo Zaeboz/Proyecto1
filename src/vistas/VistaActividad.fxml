@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorActividad">
+<AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorActividad">
    <children>
       <TableView fx:id="tablaDeActividades" layoutX="20.0" layoutY="60.0" prefHeight="464.0" prefWidth="631.0" stylesheets="@paqueteCSS.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="60.0">
          <columns>
@@ -28,7 +28,7 @@
             <MenuItem fx:id="crearDespuesUltima" mnemonicParsing="false" onAction="#crearDespuesUltima" text="Crear después de una actividad en específico" />
             <MenuItem fx:id="crearFinal" mnemonicParsing="false" onAction="#crearFinal" text="Crear al final" />
             <MenuItem fx:id="crearDespues" mnemonicParsing="false" onAction="#crearDespues" text="Crear después de la última actividad creada" />
-            <MenuItem fx:id="crearDespues1" mnemonicParsing="false" onAction="#crearDespues" text="Intercambiar Actividades" />
+            <MenuItem fx:id="intercambiarActividades" mnemonicParsing="false" onAction="#crearDespues" text="Intercambiar Actividades" />
          </items>
       </MenuButton>
    </children>

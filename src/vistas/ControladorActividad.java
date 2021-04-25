@@ -24,7 +24,7 @@ public class ControladorActividad implements Initializable{
     @FXML MenuItem crearDespues;
     @FXML MenuItem crearDespuesUltima;
     @FXML MenuItem crearFinal;
-    @FXML MenuItem intercambiar;
+    @FXML MenuItem intercambiarActividades;
 
     @FXML Button botonBuscarActividades;
     @FXML Button botonCrearActividades;
