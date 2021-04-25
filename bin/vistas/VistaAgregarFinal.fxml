@@ -15,7 +15,7 @@
       <Label layoutX="18.0" layoutY="87.0" text="Codigo del proceso:" />
       <Label layoutX="18.0" layoutY="118.0" text="Descripcion:" />
       <Label layoutX="18.0" layoutY="149.0" text="¿Es obligatoria?:" />
-      <TextField fx:id="textFiledCodigoProceso" layoutX="152.0" layoutY="83.0" prefHeight="25.0" prefWidth="167.0" promptText="Código de proceso" />
+      <TextField fx:id="textFiledIDProceso" layoutX="152.0" layoutY="83.0" prefHeight="25.0" prefWidth="167.0" promptText="Código de proceso" />
       <TextField fx:id="textFiledDescripcion" layoutX="152.0" layoutY="114.0" prefHeight="25.0" prefWidth="167.0" promptText="Descripción de la actividad" />
       <RadioButton fx:id="radioButtonSiEs" layoutX="188.0" layoutY="149.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="42.0" text="Sí." />
       <RadioButton fx:id="radioButtonNoEs" layoutX="230.0" layoutY="149.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="48.0" text="No." />
