@@ -6,14 +6,14 @@ package listas;
  *
  * @param <T>
  */
-public class Cola<T> {
+public class Cola<T> implements Cloneable{
 
 	public Nodo<T> nodoPrimero, nodoUltimo;
 	public int tamanio;
 
 
 
-	
+
 	/**
 	 * Agrega un elemento en la Cola
 	 * @param dato elemento a guardar en la Cola
@@ -30,6 +30,13 @@ public class Cola<T> {
 		}
 
 		tamanio++;
+	}
+
+	public T obtenerUltimoElemento()
+	{
+		T dato= nodoUltimo.getValorNodo();
+
+			return dato;
 	}
 
 	/**
@@ -52,7 +59,48 @@ public class Cola<T> {
 		tamanio--;
 		return dato;
 	}
-	
+
+	public void insertarElemento(T dato , int posicion)
+	{
+		Nodo<T> nodoAInsertar= new Nodo<>(dato);
+
+		Nodo<T> nodoAuxiliarActual=new Nodo();
+
+		Nodo<T> nodoSiguiente=new Nodo();
+		if(validarPosicion(posicion)) {
+			if (estaVacia()) {
+
+				nodoPrimero = nodoUltimo = nodoAInsertar;
+			} else if (posicion == 0) {
+				nodoAInsertar.setSiguienteNodo(nodoPrimero);
+				nodoPrimero = nodoAInsertar;
+			} else {
+				for (int i = 0; i < tamanio - 1; i++) {
+					nodoAuxiliarActual = nodoAuxiliarActual.getSiguienteNodo();
+				}
+
+				nodoSiguiente = nodoAuxiliarActual.getSiguienteNodo();
+
+				nodoAuxiliarActual.setSiguienteNodo(nodoAInsertar);
+
+				nodoAInsertar.setSiguienteNodo(nodoSiguiente);
+			}
+			tamanio++;
+		}
+
+
+	}
+
+	public boolean validarPosicion(int posicion)
+	{
+		if(posicion>=0 && posicion<=tamanio)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
 	/**
 	 * Imprime una cola en consola
 	 */
@@ -74,7 +122,10 @@ public class Cola<T> {
 		return nodoPrimero == null;
 	}
 
-
+	public Object clone() throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
 
 	/**
 	 * Borra completamente la Cola

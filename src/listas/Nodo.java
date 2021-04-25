@@ -37,8 +37,12 @@ public class Nodo<T> {
 		this.siguienteNodo = siguiente;
 	}
 
+    public Nodo() {
 
-	//Metodos get y set de la clase Nodo
+    }
+
+
+    //Metodos get y set de la clase Nodo
 
 	public Nodo<T> getSiguienteNodo() {
 		return siguienteNodo;
