@@ -1,4 +1,4 @@
-package controladores;
+package vistas;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import modelo.Actividad;
+import modelo.Proceso;
 
 public class ControladorActividad implements Initializable{
 
@@ -23,6 +24,7 @@ public class ControladorActividad implements Initializable{
     @FXML MenuItem crearDespues;
     @FXML MenuItem crearDespuesUltima;
     @FXML MenuItem crearFinal;
+    @FXML MenuItem intercambiar;
 
     @FXML Button botonBuscarActividades;
     @FXML Button botonCrearActividades;
@@ -45,10 +47,11 @@ public class ControladorActividad implements Initializable{
     @FXML TextField textFiledCodigoProceso;
     @FXML TextField textFiledDescripcion;
     @FXML TextField textFiledNombrePos;
+    @FXML TextField textFiledCodigoActividadAnterior;
 
     @FXML AnchorPane anchorPane = new AnchorPane();
 
-    private Actividad actividadAux;
+    private Proceso proceso;
     private String nombreStage;
 
     @FXML
@@ -84,7 +87,8 @@ public class ControladorActividad implements Initializable{
     @FXML
     public void cear(ActionEvent event){
         Boolean esObligatoria=false;
-        String nombre, codigoProceso, descripcion, nombrePos;
+        String nombre, descripcion, nombrePos;
+        int codigoActividadAnterior, codigoProceso;
         switch (nombreStage){
 
             case "VistaCrearDespuesUltima":
@@ -92,9 +96,8 @@ public class ControladorActividad implements Initializable{
                 if(radioButtonSiEs.isSelected()) esObligatoria = true;
                 nombre = textFiledNombre.getText();
                 descripcion = textFiledDescripcion.getText();
-                codigoProceso = textFiledCodigoProceso.getText();
-                //Aca va el metodo que para poder agreagr una Actividad despues de la ultima
-                //agregada.
+                codigoProceso = Integer.parseInt(textFiledCodigoProceso.getText());
+                proceso.crearActividadDespuesUltima(nombre, descripcion, esObligatoria, codigoProceso);
             break;
 
             case "VistaCrearFinal":
@@ -102,8 +105,8 @@ public class ControladorActividad implements Initializable{
                 if(radioButtonSiEs.isSelected()) esObligatoria = true;
                 nombre = textFiledNombre.getText();
                 descripcion = textFiledDescripcion.getText();
-                codigoProceso = textFiledCodigoProceso.getText();
-                //Aca va el metodo que para poder agreagr una actividad al final
+                codigoProceso = Integer.parseInt(textFiledCodigoProceso.getText());
+                proceso.crearActividadFinal(nombre, descripcion, esObligatoria, codigoProceso);
             break;
 
             case "VistaCrearDespues":
@@ -112,9 +115,9 @@ public class ControladorActividad implements Initializable{
                 nombre = textFiledNombre.getText();
                 nombrePos = textFiledNombrePos.getText();
                 descripcion = textFiledDescripcion.getText();
-                codigoProceso = textFiledCodigoProceso.getText();
-                //Aca va el metodo que para poder agregar una actividad despues
-                //de una actividad en especifico
+                codigoProceso = Integer.parseInt(textFiledCodigoProceso.getText());
+                codigoActividadAnterior = Integer.parseInt(textFiledCodigoActividadAnterior.getText());
+                proceso.crearActividadDespues(nombre, descripcion, esObligatoria, codigoProceso ,codigoActividadAnterior);
             break;
         }
     }
