@@ -8,27 +8,26 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorActividad">
+<AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorActividad">
    <children>
       <TableView fx:id="tablaDeActividades" layoutX="20.0" layoutY="60.0" prefHeight="464.0" prefWidth="631.0" stylesheets="@paqueteCSS.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="60.0">
          <columns>
-            <TableColumn fx:id="codigoColumn" prefWidth="71.0" resizable="false" text="Codigo" />
             <TableColumn fx:id="idProcesoColumn" prefWidth="75.0" text="I.D Proceso" />
-            <TableColumn fx:id="nombreColumn" prefWidth="116.0" text="Nombre" />
-            <TableColumn fx:id="descripcionColumn" prefWidth="79.0" text="Descripcion" />
+            <TableColumn fx:id="nombreColumn" prefWidth="148.0" text="Nombre" />
+            <TableColumn fx:id="descripcionColumn" prefWidth="85.0" text="Descripcion" />
             <TableColumn fx:id="tareasColumn" prefWidth="75.0" text="Tareas" />
-            <TableColumn fx:id="editarColumn" prefWidth="109.0" text="Editar" />
-            <TableColumn fx:id="eliminarColumn" prefWidth="104.0" text="Eliminar" />
+            <TableColumn fx:id="editarColumn" prefWidth="124.0" text="Editar" />
+            <TableColumn fx:id="eliminarColumn" prefWidth="122.0" text="Eliminar" />
          </columns>
       </TableView>
-      <TextField fx:id="textFiledBuscar" layoutX="521.0" layoutY="22.0" prefHeight="25.0" prefWidth="131.0" promptText="Buscar por código" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="22.0" />
+      <TextField fx:id="textFiledBuscar" layoutX="521.0" layoutY="22.0" prefHeight="25.0" prefWidth="131.0" promptText="Buscar por nombre" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="22.0" />
       <Button fx:id="botonBuscarActividades" layoutX="486.0" layoutY="19.0" mnemonicParsing="false" onAction="#buscarActividad" prefHeight="32.0" prefWidth="33.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="19.0" />
       <MenuButton fx:id="botonActividades" layoutX="21.0" layoutY="22.0" mnemonicParsing="false" text="Opciones de interaccion">
          <items>
             <MenuItem fx:id="crearDespuesUltima" mnemonicParsing="false" onAction="#crearDespuesUltima" text="Crear después de una actividad en específico" />
             <MenuItem fx:id="crearFinal" mnemonicParsing="false" onAction="#crearFinal" text="Crear al final" />
             <MenuItem fx:id="crearDespues" mnemonicParsing="false" onAction="#crearDespues" text="Crear después de la última actividad creada" />
-            <MenuItem fx:id="crearDespues1" mnemonicParsing="false" onAction="#crearDespues" text="Intercambiar Actividades" />
+            <MenuItem fx:id="intercambiarActividades" mnemonicParsing="false" onAction="#crearDespues" text="Intercambiar Actividades" />
          </items>
       </MenuButton>
    </children>

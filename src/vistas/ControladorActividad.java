@@ -24,7 +24,7 @@ public class ControladorActividad implements Initializable{
     @FXML MenuItem crearDespues;
     @FXML MenuItem crearDespuesUltima;
     @FXML MenuItem crearFinal;
-    @FXML MenuItem intercambiar;
+    @FXML MenuItem intercambiarActividades;
 
     @FXML Button botonBuscarActividades;
     @FXML Button botonCrearActividades;
@@ -35,7 +35,6 @@ public class ControladorActividad implements Initializable{
 
     @FXML TableView tablaDeActividades;
     @FXML TableColumn nombreColumn;
-    @FXML TableColumn codigoColumn;
     @FXML TableColumn idProcesoColumn;
     @FXML TableColumn descripcionColumn;
     @FXML TableColumn tareasColumn;
@@ -44,10 +43,10 @@ public class ControladorActividad implements Initializable{
 
     @FXML TextField textFiledBuscar;
     @FXML TextField textFiledNombre;
-    @FXML TextField textFiledCodigoProceso;
+    @FXML TextField textFiledIDProceso;
     @FXML TextField textFiledDescripcion;
     @FXML TextField textFiledNombrePos;
-    @FXML TextField textFiledCodigoActividadAnterior;
+    @FXML TextField textFiledNombreActividadAnterior;
 
     @FXML AnchorPane anchorPane = new AnchorPane();
 
@@ -87,8 +86,8 @@ public class ControladorActividad implements Initializable{
     @FXML
     public void cear(ActionEvent event){
         Boolean esObligatoria=false;
-        String nombre, descripcion, nombrePos;
-        int codigoActividadAnterior, codigoProceso;
+        String nombre, descripcion, nombreActividadAnterior;
+        int idProceso;
         switch (nombreStage){
 
             case "VistaCrearDespuesUltima":
@@ -96,8 +95,8 @@ public class ControladorActividad implements Initializable{
                 if(radioButtonSiEs.isSelected()) esObligatoria = true;
                 nombre = textFiledNombre.getText();
                 descripcion = textFiledDescripcion.getText();
-                codigoProceso = Integer.parseInt(textFiledCodigoProceso.getText());
-                proceso.crearActividadDespuesUltima(nombre, descripcion, esObligatoria, codigoProceso);
+                idProceso = Integer.parseInt(textFiledIDProceso.getText());
+                proceso.crearActividadDespuesUltima(nombre, descripcion, esObligatoria, idProceso);
             break;
 
             case "VistaCrearFinal":
@@ -105,19 +104,18 @@ public class ControladorActividad implements Initializable{
                 if(radioButtonSiEs.isSelected()) esObligatoria = true;
                 nombre = textFiledNombre.getText();
                 descripcion = textFiledDescripcion.getText();
-                codigoProceso = Integer.parseInt(textFiledCodigoProceso.getText());
-                proceso.crearActividadFinal(nombre, descripcion, esObligatoria, codigoProceso);
+                idProceso = Integer.parseInt(textFiledIDProceso.getText());
+                proceso.crearActividadFinal(nombre, descripcion, esObligatoria, idProceso);
             break;
 
             case "VistaCrearDespues":
                 if(radioButtonNoEs.isSelected()) esObligatoria = false;
                 if(radioButtonSiEs.isSelected()) esObligatoria = true;
                 nombre = textFiledNombre.getText();
-                nombrePos = textFiledNombrePos.getText();
                 descripcion = textFiledDescripcion.getText();
-                codigoProceso = Integer.parseInt(textFiledCodigoProceso.getText());
-                codigoActividadAnterior = Integer.parseInt(textFiledCodigoActividadAnterior.getText());
-                proceso.crearActividadDespues(nombre, descripcion, esObligatoria, codigoProceso ,codigoActividadAnterior);
+                idProceso = Integer.parseInt(textFiledIDProceso.getText());
+                nombreActividadAnterior = textFiledNombreActividadAnterior.getText();
+                proceso.crearActividadDespues(nombre, descripcion, esObligatoria, idProceso ,nombreActividadAnterior);
             break;
         }
     }
