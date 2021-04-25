@@ -1,4 +1,4 @@
-package controladores;
+package vistas;
 
 import java.net.URL;
 
