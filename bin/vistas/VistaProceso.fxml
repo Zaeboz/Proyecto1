@@ -21,7 +21,7 @@
       </TableView>
       <TextField layoutX="516.0" layoutY="23.0" prefHeight="25.0" prefWidth="156.0" promptText="Buscar por código" AnchorPane.bottomAnchor="492.0" AnchorPane.leftAnchor="516.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="23.0" />
       <Button layoutX="481.0" layoutY="20.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" />
-      <Button layoutX="20.0" layoutY="12.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="156.0" styleClass="botonVistaProceso" stylesheets="@paqueteCSS.css" text="    Crear Tarea">
+      <Button layoutX="20.0" layoutY="12.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="156.0" styleClass="botonVistaProceso" stylesheets="@paqueteCSS.css" text="    Crear Proceso">
          <font>
             <Font name="Noteworthy Light" size="18.0" />
          </font>

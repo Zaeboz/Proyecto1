@@ -44,6 +44,7 @@ public class ControladorActividad implements Initializable{
     @FXML TextField textFiledNombre;
     @FXML TextField textFiledCodigoProceso;
     @FXML TextField textFiledDescripcion;
+    @FXML TextField textFiledNombrePos;
 
     @FXML AnchorPane anchorPane = new AnchorPane();
 
@@ -82,8 +83,8 @@ public class ControladorActividad implements Initializable{
 
     @FXML
     public void cear(ActionEvent event){
-        Boolean esObligatoria;
-        String nombre, codigoProceso, descripcion;
+        Boolean esObligatoria=false;
+        String nombre, codigoProceso, descripcion, nombrePos;
         switch (nombreStage){
 
             case "VistaCrearDespuesUltima":
@@ -92,13 +93,28 @@ public class ControladorActividad implements Initializable{
                 nombre = textFiledNombre.getText();
                 descripcion = textFiledDescripcion.getText();
                 codigoProceso = textFiledCodigoProceso.getText();
-                actividadAux.crearActividad(nombre, descripcion, codigoProceso, esObligatoria);
+                //Aca va el metodo que para poder agreagr una Actividad despues de la ultima
+                //agregada.
             break;
 
             case "VistaCrearFinal":
+                if(radioButtonNoEs.isSelected()) esObligatoria = false;
+                if(radioButtonSiEs.isSelected()) esObligatoria = true;
+                nombre = textFiledNombre.getText();
+                descripcion = textFiledDescripcion.getText();
+                codigoProceso = textFiledCodigoProceso.getText();
+                //Aca va el metodo que para poder agreagr una actividad al final
             break;
 
             case "VistaCrearDespues":
+                if(radioButtonNoEs.isSelected()) esObligatoria = false;
+                if(radioButtonSiEs.isSelected()) esObligatoria = true;
+                nombre = textFiledNombre.getText();
+                nombrePos = textFiledNombrePos.getText();
+                descripcion = textFiledDescripcion.getText();
+                codigoProceso = textFiledCodigoProceso.getText();
+                //Aca va el metodo que para poder agregar una actividad despues
+                //de una actividad en especifico
             break;
         }
     }
