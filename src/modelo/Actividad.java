@@ -9,8 +9,7 @@ public class Actividad implements Cloneable {
 
     private String nombre;
     private String descripcion;
-<<<<<<< HEAD
-    private boolean esObligatoria;
+    private boolean esObligatorio;
     private Cola<Tarea> colaDeTareas = new Cola<Tarea>();
 
     public void crearTareaAlFInal(String descripcion, boolean esObligatoria, double tiempoDuracion) throws CloneNotSupportedException, TareasNoObligatoriasException {
@@ -52,26 +51,22 @@ public class Actividad implements Cloneable {
     }
 
 
-=======
-    private boolean esObligatorio;
-    private Cola<Tarea> colaDeTareas = new Cola<Tarea>();
-    private int codigoProceso;
-    private int codigo;
+
+
     
-    public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigoProceso){
+    public Actividad(String nombre, String descripcion, boolean esObligatorio){
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.esObligatorio = esObligatorio;
-        this.codigoProceso = codigoProceso;
-        codigo++;
+
+
     }
 
-    public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigo,  int codigoProceso){
+    public Actividad(String nombre, String descripcion, boolean esObligatorio){
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.esObligatorio = esObligatorio;
-        this.codigoProceso = codigoProceso;
-        this.codigo = codigo;
+
     }
 
 
@@ -82,12 +77,6 @@ public class Actividad implements Cloneable {
         return this.nombre;
     }
 
-    public int getCodigo() {
-        return this.codigo;
-    }
 
-    public void setCodigo(int codigo){
-        this.codigo = codigo;
-    }
->>>>>>> origin/main
+
 }
