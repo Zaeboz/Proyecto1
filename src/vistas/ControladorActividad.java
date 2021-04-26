@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -15,7 +17,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import modelo.Actividad;
 import modelo.Proceso;
 
 public class ControladorActividad implements Initializable{
@@ -49,37 +50,41 @@ public class ControladorActividad implements Initializable{
     @FXML TextField textFiledNombreActividadAnterior;
 
     @FXML AnchorPane anchorPane = new AnchorPane();
+    @FXML AnchorPane anchorPaneCrear = new AnchorPane();
 
+    private ControladorProceso controladorProceso;
     private Proceso proceso;
     private String nombreStage;
 
     @FXML
     public void cargarCrearDespuesUltima(ActionEvent event){
-        anchorPane = null;
-		FxmlLoader object = new FxmlLoader();
-        nombreStage = "VistaCrearDespuesUltima";
-		anchorPane = object.getPane(nombreStage);
-        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        FxmlLoader object = new FxmlLoader();
+        nombreStage = "VistaAgregarDespuesUltima";
+        Parent root1 = (Parent) object.getPane(nombreStage);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));  
         stage.show();
     }
 
     @FXML
     public void cargarCrearFinal(ActionEvent event){
-        anchorPane = null;
-		FxmlLoader object = new FxmlLoader();
-		nombreStage = "VistaCrearFinal";
-		anchorPane = object.getPane(nombreStage);
-        Stage stage = (Stage) anchorPane.getScene().getWindow();
+
+        FxmlLoader object = new FxmlLoader();
+        nombreStage = "VistaAgregarFinal";
+        Parent root1 = (Parent) object.getPane(nombreStage);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));  
         stage.show();
     }
 
     @FXML
     public void cargarCrearDespues(ActionEvent event){
-        anchorPane = null;
-		FxmlLoader object = new FxmlLoader();
-		nombreStage = "VistaCrearDespues";
-		anchorPane = object.getPane(nombreStage);
-        Stage stage = (Stage) anchorPane.getScene().getWindow();
+       
+        FxmlLoader object = new FxmlLoader();
+        nombreStage = "VistaAgregarDespues";
+        Parent root1 = (Parent) object.getPane(nombreStage);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));  
         stage.show();
     }
 
@@ -90,16 +95,17 @@ public class ControladorActividad implements Initializable{
         int idProceso;
         switch (nombreStage){
 
-            case "VistaCrearDespuesUltima":
+            case "VistaAgregarDespuesUltima":
                 if(radioButtonNoEs.isSelected()) esObligatoria = false;
                 if(radioButtonSiEs.isSelected()) esObligatoria = true;
                 nombre = textFiledNombre.getText();
                 descripcion = textFiledDescripcion.getText();
                 idProceso = Integer.parseInt(textFiledIDProceso.getText());
                 proceso.crearActividadDespuesUltima(nombre, descripcion, esObligatoria, idProceso);
+                
             break;
 
-            case "VistaCrearFinal":
+            case "VistaAgregarFinal":
                 if(radioButtonNoEs.isSelected()) esObligatoria = false;
                 if(radioButtonSiEs.isSelected()) esObligatoria = true;
                 nombre = textFiledNombre.getText();
@@ -108,7 +114,7 @@ public class ControladorActividad implements Initializable{
                 proceso.crearActividadFinal(nombre, descripcion, esObligatoria, idProceso);
             break;
 
-            case "VistaCrearDespues":
+            case "VistaAgregarDespues":
                 if(radioButtonNoEs.isSelected()) esObligatoria = false;
                 if(radioButtonSiEs.isSelected()) esObligatoria = true;
                 nombre = textFiledNombre.getText();

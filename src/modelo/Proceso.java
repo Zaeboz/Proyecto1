@@ -104,7 +104,7 @@ public class Proceso {
             }
             tiempoMaximo = tiempoMaximo + tareaAuxiliar.getTiempoDuracion();
         }
-        actividadACalcular.settiempoMaximo(tiempoMaximo);
+        actividadACalcular.setTiempoMaximo(tiempoMaximo);
         actividadACalcular.setTiempoMinimo(tiempoMinimo);
 
     }
