@@ -159,10 +159,8 @@ public class Proceso {
         return actividadAuxiliar;
     }
 
-    public void encontrarDetalle()
-    {
 
-    }
+
 
 
 }
