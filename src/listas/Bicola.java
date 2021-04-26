@@ -6,6 +6,9 @@ package listas;
 
 public class Bicola<T> extends Cola<T>{
 
+	Nodo<T> nodoUltimo;
+	Nodo<T> nodoPrimero;
+
 	public Bicola()
 	{
 

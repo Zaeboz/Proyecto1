@@ -7,14 +7,66 @@ import listas.Cola;
 
 public class Actividad implements Cloneable {
 
-    private String nombre;
     private String descripcion;
     private boolean esObligatoria;
     private Cola<Tarea> colaDeTareas = new Cola<Tarea>();
     private int codigoProceso;
+
     private double tiempoMaximo;
     private double tiempoMinimo;
 
+    private String nombre;
+
+    public void setTiempoMaximo(double tiempoMaximo) {
+        this.tiempoMaximo = tiempoMaximo;
+    }
+
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public boolean isEsObligatoria() {
+        return esObligatoria;
+    }
+
+    public void setEsObligatoria(boolean esObligatoria) {
+        this.esObligatoria = esObligatoria;
+    }
+
+    public Cola<Tarea> getColaDeTareas() {
+        return colaDeTareas;
+    }
+
+    public void setColaDeTareas(Cola<Tarea> colaDeTareas) {
+        this.colaDeTareas = colaDeTareas;
+    }
+
+    public int getCodigoProceso() {
+        return codigoProceso;
+    }
+
+    public void setCodigoProceso(int codigoProceso) {
+        this.codigoProceso = codigoProceso;
+    }
+
+
+    /**
+     * Metodo que crea una tarea al final de la cola de tareas
+     * @param descripcion
+     * @param esObligatoria
+     * @param tiempoDuracion
+     * @throws CloneNotSupportedException
+     * @throws TareasNoObligatoriasException
+     */
     public void crearTareaAlFInal(String descripcion, boolean esObligatoria, double tiempoDuracion) throws CloneNotSupportedException, TareasNoObligatoriasException {
         Cola<Tarea> colaDeTareasAuxiliar = new Cola<>();
 
@@ -29,7 +81,13 @@ public class Actividad implements Cloneable {
         }
     }
 
-
+    /**
+     * Metodo que crea una tarea en una posicion
+     * @param descripcion
+     * @param esObligatoria
+     * @param tiempoDuracion
+     * @param poscionDondeInserta
+     */
     public void crearTareaEnPosicion(String descripcion, boolean esObligatoria, double tiempoDuracion, int poscionDondeInserta) {
         Tarea tareaAInsertar = new Tarea(descripcion, esObligatoria, tiempoDuracion);
         colaDeTareas.insertarElemento(tareaAInsertar, poscionDondeInserta);
@@ -39,20 +97,20 @@ public class Actividad implements Cloneable {
         /**
          *
          *
-        switch (formaDeBuscar) {
-            case 0:
-                    buscarTareaInicio();
-                break;
-            case 1:
-                    buscarTareaActividadActual();
-                break;
-            case 3:
-                     buscarTarea();
-                break;
-        }
+         switch (formaDeBuscar) {
+         case 0:
+         buscarTareaInicio();
+         break;
+         case 1:
+         buscarTareaActividadActual();
+         break;
+         case 3:
+         buscarTarea();
+         break;
+         }
          **/
     }
-    
+
     public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigoProceso){
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -72,10 +130,6 @@ public class Actividad implements Cloneable {
         return tiempoMaximo;
     }
 
-    public void setTiempoMaixmo(double tiempoMaximo) {
-        this.tiempoMaximo = tiempoMaximo;
-    }
-
     public double getTiempoMinimo() {
         return tiempoMinimo;
     }
@@ -84,3 +138,4 @@ public class Actividad implements Cloneable {
         this.tiempoMinimo = tiempoMinimo;
     }
 }
+
