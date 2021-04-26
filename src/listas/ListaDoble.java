@@ -22,7 +22,7 @@ public class ListaDoble<T> implements Iterable<T> {
 
 	public ListaDoble() {
 		nodoPrimero = null;
-		nodoPrimero = null;
+		nodoUltimo = null;
 		tamanio = 0;
 	}
 

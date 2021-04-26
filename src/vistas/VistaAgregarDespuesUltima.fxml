@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorActividad">
+<AnchorPane fx:id="anchorPaneCrear" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorActividad">
    <children>
       <Button fx:id="botonCrearActividades" layoutX="85.0" layoutY="213.0" mnemonicParsing="false" onAction="#cear" prefWidth="67.0" text="Crear" />
       <Label layoutX="18.0" layoutY="56.0" text="Nombre:" />

@@ -8,18 +8,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPaneProcesos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorProceso">
+<AnchorPane fx:id="anchorPaneProcesos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorProceso">
    <children>
-      <TableView layoutX="20.0" layoutY="60.0" prefHeight="464.0" prefWidth="631.0" stylesheets="@paqueteCSS.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="60.0">
+      <TableView layoutX="20.0" layoutY="60.0" prefHeight="464.0" prefWidth="462.0" stylesheets="@paqueteCSS.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="60.0">
          <columns>
-            <TableColumn prefWidth="71.0" resizable="false" text="Codigo" />
             <TableColumn prefWidth="83.0" text="I.D Actividad" />
             <TableColumn prefWidth="117.0" text="Nombre" />
-            <TableColumn prefWidth="104.0" text="Descripcion" />
-            <TableColumn text="¿Obligatoria?" />
-            <TableColumn prefWidth="75.0" text="Tiempo" />
-            <TableColumn prefWidth="99.0" text="Editar" />
-            <TableColumn prefWidth="99.0" text="Eliminar" />
+            <TableColumn prefWidth="244.0" text="Descripcion" />
+            <TableColumn prefWidth="92.0" text="¿Obligatoria?" />
+            <TableColumn prefWidth="79.0" text="Tiempo" />
          </columns>
       </TableView>
       <TextField layoutX="521.0" layoutY="22.0" prefHeight="25.0" prefWidth="131.0" promptText="Buscar por código" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="22.0" />
@@ -30,5 +27,7 @@
             <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
       </MenuButton>
+      <Button layoutX="342.0" layoutY="22.0" mnemonicParsing="false" text="Eliminar" AnchorPane.topAnchor="22.0" />
+      <Button layoutX="252.0" layoutY="22.0" mnemonicParsing="false" text="Editar" AnchorPane.topAnchor="22.0" />
    </children>
 </AnchorPane>

@@ -12,6 +12,8 @@ public class Actividad implements Cloneable {
     private boolean esObligatoria;
     private Cola<Tarea> colaDeTareas = new Cola<Tarea>();
     private int codigoProceso;
+    private double tiempoMaximo;
+    private double tiempoMinimo;
 
     public void crearTareaAlFInal(String descripcion, boolean esObligatoria, double tiempoDuracion) throws CloneNotSupportedException, TareasNoObligatoriasException {
         Cola<Tarea> colaDeTareasAuxiliar = new Cola<>();
@@ -64,5 +66,21 @@ public class Actividad implements Cloneable {
 
     public String getNombre(){
         return this.nombre;
+    }
+
+    public double getTiempoMaximo() {
+        return tiempoMaximo;
+    }
+
+    public void setTiempoMaixmo(double tiempoMaximo) {
+        this.tiempoMaximo = tiempoMaximo;
+    }
+
+    public double getTiempoMinimo() {
+        return tiempoMinimo;
+    }
+
+    public void setTiempoMinimo(double tiempoMinimo) {
+        this.tiempoMinimo = tiempoMinimo;
     }
 }
