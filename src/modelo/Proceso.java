@@ -130,14 +130,17 @@ public class Proceso {
             actividadActualAuxiliar = listaActividadesAux.obtenerValorNodo(i);
 
             calcularTiemposActividad(actividadActualAuxiliar);
+            if(actividadActualAuxiliar.isEsObligatoria()) {
 
-            cantidadTiempoMaximoProceso=cantidadTiempoMaximoProceso+actividadActualAuxiliar.getTiempoMaximo();
 
-            cantidadTiempoMinimoProceso=cantidadTiempoMinimoProceso+ actividadActualAuxiliar.getTiempoMinimo();
+                cantidadTiempoMinimoProceso = cantidadTiempoMinimoProceso + actividadActualAuxiliar.getTiempoMinimo();
+
+            }
+            cantidadTiempoMaximoProceso = cantidadTiempoMaximoProceso + actividadActualAuxiliar.getTiempoMaximo();
         }
     }
 
-    public void buscarActividad(String nombreActividad)
+    public Actividad buscarActividad(String nombreActividad)
     {
         Actividad actividadAuxiliar=new Actividad();
 
@@ -146,9 +149,19 @@ public class Proceso {
 
             actividadAuxiliar=this.listaActividades.obtenerValorNodo(i);
 
-
+            if(actividadAuxiliar.getNombre().equals(nombreActividad))
+            {
+                i=this.listaActividades.getTamanio();
+            }
 
         }
+
+        return actividadAuxiliar;
+    }
+
+    public void encontrarDetalle()
+    {
+
     }
 
 
