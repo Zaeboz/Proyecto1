@@ -7,6 +7,12 @@ public class Proceso {
 
     private String nombreProceso;
     private int idProcesos;
+    private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
+
+    public Proceso(String nombreProceso, int idProcesos) {
+        this.nombreProceso = nombreProceso;
+        this.idProcesos = idProcesos;
+    }
 
     public String getNombreProceso() {
         return nombreProceso;
@@ -32,7 +38,7 @@ public class Proceso {
         this.listaActividades = listaActividades;
     }
 
-    private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
+
 
     public void crearActividadFinal(String nombre, String descripcion, Boolean esObligatoria, int iDProceso) {
         Actividad actividad = new Actividad(nombre, descripcion, esObligatoria, iDProceso);
@@ -63,7 +69,6 @@ public class Proceso {
     }
 
     /**
-     *
      * @param actividad
      * @return
      */
@@ -111,9 +116,10 @@ public class Proceso {
 
     /**
      * Metodo que calcula el tiempo maximo y minimo de duracion de un proceso
+     *
      * @throws CloneNotSupportedException
      */
-    public void calcularTiempoDuracionProceso( ) throws CloneNotSupportedException {
+    public void calcularTiempoDuracionProceso() throws CloneNotSupportedException {
         ListaDoble<Actividad> listaActividadesAux = this.getListaActividades();
         Cola<Tarea> colaDeTareasAuxiliar = new Cola<Tarea>();
 
@@ -130,7 +136,7 @@ public class Proceso {
             actividadActualAuxiliar = listaActividadesAux.obtenerValorNodo(i);
 
             calcularTiemposActividad(actividadActualAuxiliar);
-            if(actividadActualAuxiliar.isEsObligatoria()) {
+            if (actividadActualAuxiliar.isEsObligatoria()) {
 
 
                 cantidadTiempoMinimoProceso = cantidadTiempoMinimoProceso + actividadActualAuxiliar.getTiempoMinimo();
@@ -140,18 +146,16 @@ public class Proceso {
         }
     }
 
-    public Actividad buscarActividad(String nombreActividad)
-    {
-        Actividad actividadAuxiliar=new Actividad();
+    public Actividad buscarActividad(String nombreActividad) {
+        Actividad actividadAuxiliar = new Actividad();
 
         for (int i = 0; i < this.listaActividades.getTamanio(); i++) {
 
 
-            actividadAuxiliar=this.listaActividades.obtenerValorNodo(i);
+            actividadAuxiliar = this.listaActividades.obtenerValorNodo(i);
 
-            if(actividadAuxiliar.getNombre().equals(nombreActividad))
-            {
-                i=this.listaActividades.getTamanio();
+            if (actividadAuxiliar.getNombre().equals(nombreActividad)) {
+                i = this.listaActividades.getTamanio();
             }
 
         }
@@ -160,7 +164,22 @@ public class Proceso {
     }
 
 
+    public void intercambiarActividades(String nombreActi1, String nombreActi2) {
+        Actividad actividad1 = new Actividad();
+        Actividad actividad2 = new Actividad();
+        Cola<Tarea> colaDeTareasAux1 = new Cola<Tarea>();
+        Cola<Tarea> colaDeTareasAux2 = new Cola<Tarea>();
+        actividad1 = buscarActividad(nombreActi1);
+        actividad2 = buscarActividad(nombreActi2);
 
+        colaDeTareasAux1 = actividad1.getColaDeTareas();
+        colaDeTareasAux2 = actividad2.getColaDeTareas();
+
+        actividad1.setColaDeTareas(colaDeTareasAux2);
+        actividad2.setColaDeTareas(colaDeTareasAux1);
+
+
+    }
 
 
 }
