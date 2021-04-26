@@ -61,6 +61,7 @@ public class Actividad implements Cloneable {
 
     /**
      * Metodo que crea una tarea al final de la cola de tareas
+     *
      * @param descripcion
      * @param esObligatoria
      * @param tiempoDuracion
@@ -83,6 +84,7 @@ public class Actividad implements Cloneable {
 
     /**
      * Metodo que crea una tarea en una posicion
+     *
      * @param descripcion
      * @param esObligatoria
      * @param tiempoDuracion
@@ -111,7 +113,7 @@ public class Actividad implements Cloneable {
          **/
     }
 
-    public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigoProceso){
+    public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigoProceso) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.esObligatoria = esObligatorio;
@@ -122,7 +124,7 @@ public class Actividad implements Cloneable {
     public Actividad() {
     }
 
-    public String getNombre(){
+    public String getNombre() {
         return this.nombre;
     }
 
