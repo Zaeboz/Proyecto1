@@ -4,7 +4,7 @@ public class Tarea {
 
     private String descripcion;
     private boolean esObligatoria;
-
+    private double tiempoDuracion;
     public String getDescripcion() {
         return descripcion;
     }
@@ -29,12 +29,16 @@ public class Tarea {
         this.tiempoDuracion = tiempoDuracion;
     }
 
-    private double tiempoDuracion;
+
     public Tarea(String descripcion, boolean esObligatoria, double tiempoDuracion) {
         this.descripcion = descripcion;
         this.esObligatoria = esObligatoria;
         this.tiempoDuracion = tiempoDuracion;
     }
 
+    public Tarea()
+    {
+
+    }
 
 }

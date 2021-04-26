@@ -8,8 +8,8 @@ package listas;
  */
 public class Cola<T> implements Cloneable{
 
-	public Nodo<T> nodoPrimero, nodoUltimo;
-	public int tamanio;
+	private Nodo<T> nodoPrimero, nodoUltimo;
+	private int tamanio;
 
 
 

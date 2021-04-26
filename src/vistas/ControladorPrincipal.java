@@ -2,7 +2,7 @@ package vistas;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.Main;
+import application.Principal;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +18,7 @@ public class ControladorPrincipal implements Initializable{
 	@FXML Button procesos;
 	@FXML Button actividades;
 	@FXML BorderPane mainPane;
-	Main main;
+	Principal principal;
 	
 	@FXML private void cargarVistaProcesos(ActionEvent event) {
 		mainPane.setCenter(null);
