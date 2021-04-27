@@ -23,8 +23,10 @@ public class FxmlLoader {
 
 		} catch (Exception e) {
 			e.getMessage();
+			System.out.println("Error");
 			System.out.println(e);
 		}
+		System.out.println(view ==null);
 		return view;
 	}
 

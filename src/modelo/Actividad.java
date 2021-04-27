@@ -7,15 +7,14 @@ import listas.Cola;
 
 public class Actividad implements Cloneable {
 
+    private String nombre;
+    private Integer codigoProceso;
     private String descripcion;
-    private boolean esObligatoria;
+    private Boolean esObligatoria;
     private Cola<Tarea> colaDeTareas = new Cola<Tarea>();
-    private int codigoProceso;
 
     private double tiempoMaximo;
     private double tiempoMinimo;
-
-    private String nombre;
 
     public void setTiempoMaximo(double tiempoMaximo) {
         this.tiempoMaximo = tiempoMaximo;
