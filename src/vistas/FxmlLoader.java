@@ -26,7 +26,6 @@ public class FxmlLoader {
 			System.out.println("Error");
 			System.out.println(e);
 		}
-		System.out.println(view ==null);
 		return view;
 	}
 

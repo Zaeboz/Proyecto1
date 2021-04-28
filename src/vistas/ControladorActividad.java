@@ -2,20 +2,16 @@ package vistas;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
+import application.Principal;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -25,7 +21,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Actividad;
 import modelo.Proceso;
@@ -48,11 +43,11 @@ public class ControladorActividad {
     @FXML RadioButton radioButtonSiEs;
     @FXML RadioButton radioButtonNoEs;
 
-    @FXML TableView<Actividad> tablaDeActividades;
-    @FXML TableColumn<Actividad, String> nombreColumn;
-    @FXML TableColumn<Actividad, Integer> idProcesoColumn;
-    @FXML TableColumn<Actividad, String> descripcionColumn;
-    @FXML TableColumn<Actividad, Boolean> esObligatoriaColumn;
+    @FXML TableView<Actividad> tablaDeActividades = new TableView();;;
+    @FXML TableColumn<Actividad, String> nombreColumn = new TableColumn<>("nombre");
+    @FXML TableColumn<Actividad, Integer> idProcesoColumn = new TableColumn<>("codigoProceso");
+    @FXML TableColumn<Actividad, String> descripcionColumn = new TableColumn<>("descripcion");
+    @FXML TableColumn<Actividad, Boolean> esObligatoriaColumn = new TableColumn<>("esObligatoria");
     ObservableList<Actividad> listaActividades = FXCollections.observableArrayList();
 
     @FXML TextField textFiledBuscar;
@@ -66,18 +61,22 @@ public class ControladorActividad {
     @FXML AnchorPane anchorPaneCrear = new AnchorPane();
 
     private ControladorProceso controladorProceso;
-    private Proceso proceso;
+    private Principal principal;
+    private Proceso proceso = new Proceso();
     private String nombreStage;
     private int posicionEnTabla;
+    private Stage stage;
 
     @FXML
     public void cargarCrearDespuesUltima(ActionEvent event){
 
         FxmlLoader object = new FxmlLoader();
-        nombreStage = "VistaAgregarDespuesUltima";
-        Parent root1 = (Parent) object.getPane(nombreStage);
-        Stage stage = new Stage();
+        Principal.setNombreStage("VistaAgregarDespuesUltima");
+
+        Parent root1 = (Parent) object.getPane(Principal.getNombreStage());
+        stage = new Stage();
         stage.setScene(new Scene(root1));  
+        
         stage.show();
     }
 
@@ -85,10 +84,11 @@ public class ControladorActividad {
     public void cargarCrearFinal(ActionEvent event){
 
         FxmlLoader object = new FxmlLoader();
-        nombreStage = "VistaAgregarFinal";
-        Parent root1 = (Parent) object.getPane(nombreStage);
-        Stage stage = new Stage();
+        Principal.setNombreStage("VistaAgregarFinal");
+        Parent root1 = (Parent) object.getPane(Principal.getNombreStage());
+        stage = new Stage();
         stage.setScene(new Scene(root1));  
+        
         stage.show();
     }
 
@@ -98,8 +98,9 @@ public class ControladorActividad {
         FxmlLoader object = new FxmlLoader();
         nombreStage = "VistaAgregarDespues";
         Parent root1 = (Parent) object.getPane(nombreStage);
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1));  
+        stage = new Stage();
+        stage.setScene(new Scene(root1)); 
+        stage.setTitle(nombreStage); 
         stage.show();
     }
 
@@ -117,7 +118,7 @@ public class ControladorActividad {
         String nombreActividadAnterior = "";
         Actividad actividadAux = new Actividad();
         int idProceso = 0;
-        switch (nombreStage){
+        switch (Principal.getNombreStage()){
 
             case "VistaAgregarDespuesUltima":
                 if(radioButtonNoEs.isSelected()) esObligatoria = false;
@@ -151,11 +152,17 @@ public class ControladorActividad {
                 nombreActividadAnterior = textFiledNombreActividadAnterior.getText();
                 proceso.crearActividadDespues(nombre, descripcion, esObligatoria, idProceso ,nombreActividadAnterior);
             break;
+
+            default: System.out.println("Nombre stage esta vacio");
+            break;
         }
-        actividadAux.setNombre(nombre);
-        actividadAux.setDescripcion(descripcion);
-        actividadAux.setCodigoProceso(idProceso);
-        listaActividades.add(actividadAux);
+        if(nombreStage != null){
+            actividadAux.setNombre(nombre);
+            actividadAux.setDescripcion(descripcion);
+            actividadAux.setCodigoProceso(idProceso);
+            listaActividades.add(actividadAux);
+        }
+        
     }
 
 
@@ -167,7 +174,7 @@ public class ControladorActividad {
     public void inicializarComponentes() {
 
         try {
-            inicilizarTablaActivid();
+            this.inicilizarTablaActividad();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -176,7 +183,7 @@ public class ControladorActividad {
 
     }
 
-    public void inicilizarTablaActivid()throws FileNotFoundException, IOException{
+    public void inicilizarTablaActividad()throws FileNotFoundException, IOException{
         nombreColumn.setCellValueFactory(new PropertyValueFactory<Actividad, String>("nombre"));
         idProcesoColumn.setCellValueFactory(new PropertyValueFactory<Actividad, Integer>("codigoProceso"));
         descripcionColumn.setCellValueFactory(new PropertyValueFactory<Actividad, String>("descripcion"));
@@ -214,4 +221,12 @@ public class ControladorActividad {
 			ponerActividadSeleccionada();
 		}
 	};
+
+    public void setNombreStage(String nombreStage){
+        this.nombreStage = nombreStage;
+    }
+
+    public String getNombreStage(){
+        return nombreStage;
+    }
 }

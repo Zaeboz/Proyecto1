@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 public class Principal extends Application {
 	
 	Stage primaryStage;
+	static String nombreStage;
 	@Override
 	public void start(Stage stage) throws Exception {
 		
@@ -33,4 +34,12 @@ public class Principal extends Application {
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
+
+    public static void setNombreStage(String string) {
+		nombreStage = string;
+    }
+
+    public static String getNombreStage() {
+        return nombreStage;
+    }
 }

@@ -14,6 +14,9 @@ public class Proceso {
         this.idProcesos = idProcesos;
     }
 
+    public Proceso() {
+    }
+
     public String getNombreProceso() {
         return nombreProceso;
     }
