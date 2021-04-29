@@ -19,6 +19,7 @@ public class FxmlLoader {
 			}else {
 				new FXMLLoader();
 				view = FXMLLoader.load(fileUrl);
+				
 			}
 
 		} catch (Exception e) {

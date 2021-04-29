@@ -1,4 +1,5 @@
 package vistas;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -7,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -19,15 +19,11 @@ public class ControladorPrincipal implements Initializable{
 	@FXML Button actividades;
 	@FXML BorderPane mainPane;
 
-	Principal principal;
+	Principal principal = Principal.getInstance();
 	ControladorActividad controladorActividad = new ControladorActividad();
 	
-	@FXML private void cargarVistaProcesos(ActionEvent event) {
-		
-		mainPane.setCenter(null);
-		FxmlLoader object = new FxmlLoader();
-		AnchorPane view = object.getPane("VistaProceso");
-		mainPane.setCenter(view);
+	@FXML private void cargarVistaProcesos(ActionEvent event) throws IOException {
+		principal.cargarVistaProcesos(mainPane);
 	}
 	
 	@FXML private void cargarVistaActividades(ActionEvent event) {

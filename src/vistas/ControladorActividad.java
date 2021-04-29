@@ -43,7 +43,7 @@ public class ControladorActividad {
     @FXML RadioButton radioButtonSiEs;
     @FXML RadioButton radioButtonNoEs;
 
-    @FXML TableView<Actividad> tablaDeActividades = new TableView();;;
+    @FXML TableView<Actividad> tablaDeActividades = new TableView<>();
     @FXML TableColumn<Actividad, String> nombreColumn = new TableColumn<>("nombre");
     @FXML TableColumn<Actividad, Integer> idProcesoColumn = new TableColumn<>("codigoProceso");
     @FXML TableColumn<Actividad, String> descripcionColumn = new TableColumn<>("descripcion");
@@ -62,7 +62,7 @@ public class ControladorActividad {
 
     private ControladorProceso controladorProceso;
     private Principal principal;
-    private Proceso proceso = new Proceso();
+    private Proceso proceso;
     private String nombreStage;
     private int posicionEnTabla;
     private Stage stage;

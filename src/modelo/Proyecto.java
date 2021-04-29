@@ -2,7 +2,7 @@ package modelo;
 
 import listas.ListaDoble;
 
-public class Libreta {
+public class Proyecto {
 
     ListaDoble<Proceso> miListaDoble = new ListaDoble();
 

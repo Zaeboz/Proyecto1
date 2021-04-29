@@ -1,37 +1,89 @@
 package modelo;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import listas.Cola;
 import listas.ListaDoble;
 
 public class Proceso {
 
-    private String nombreProceso;
-    private int idProcesos;
-    private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
-
-    public Proceso(String nombreProceso, int idProcesos) {
-        this.nombreProceso = nombreProceso;
-        this.idProcesos = idProcesos;
-    }
-
-    public Proceso() {
-    }
+    private SimpleStringProperty nombreProceso ;
+    private SimpleIntegerProperty idProceso;
+    private SimpleDoubleProperty tiempoMaximo;
+    private SimpleDoubleProperty tiempoMinimo;
 
     public String getNombreProceso() {
+        return nombreProceso.get();
+    }
+
+    public SimpleStringProperty nombreProcesoProperty() {
         return nombreProceso;
     }
 
-    public void setNombreProceso(String nombreProceso) {
-        this.nombreProceso = nombreProceso;
+    public void setNombreProceso(String nombreProceso)
+    {
+        this.nombreProceso.set(nombreProceso);
     }
 
-    public int getIdProcesos() {
-        return idProcesos;
+    public int getIdProceso() {
+        return idProceso.get();
     }
 
-    public void setIdProcesos(int idProcesos) {
-        this.idProcesos = idProcesos;
+    public SimpleIntegerProperty idProcesoProperty() {
+        return idProceso;
     }
+
+    public void setIdProceso(int idProceso) {
+        this.idProceso.set(idProceso);
+    }
+
+    public double getTiempoMaximo() {
+        return tiempoMaximo.get();
+    }
+
+    public SimpleDoubleProperty tiempoMaximoProperty() {
+        return tiempoMaximo;
+    }
+
+    public void setTiempoMaximo(double tiempoMaximo) {
+        this.tiempoMaximo.set(tiempoMaximo);
+    }
+
+    public double getTiempoMinimo() {
+        return tiempoMinimo.get();
+    }
+
+    public SimpleDoubleProperty tiempoMinimoProperty() {
+        return tiempoMinimo;
+    }
+
+    public void setTiempoMinimo(double tiempoMinimo) {
+        this.tiempoMinimo.set(tiempoMinimo);
+    }
+
+
+
+    private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
+
+    public Proceso(String nombreProceso,int idProceso) {
+        this.nombreProceso = new SimpleStringProperty (nombreProceso);
+        this.idProceso = new SimpleIntegerProperty (idProceso);
+    }
+    
+    public Proceso(String nombreProceso,int idProceso,Double tiempoMaximo,Double tiempoMinimo) {
+        this.nombreProceso = new SimpleStringProperty (nombreProceso);
+        this.idProceso = new SimpleIntegerProperty (idProceso);
+        this.tiempoMaximo= new SimpleDoubleProperty(tiempoMaximo);
+        this.tiempoMinimo=new SimpleDoubleProperty(tiempoMinimo);
+    }
+
+    public Proceso()
+    {
+
+    }
+
+
 
     public ListaDoble<Actividad> getListaActividades() {
         return listaActividades;
@@ -40,7 +92,6 @@ public class Proceso {
     public void setListaActividades(ListaDoble<Actividad> listaActividades) {
         this.listaActividades = listaActividades;
     }
-
 
 
     public void crearActividadFinal(String nombre, String descripcion, Boolean esObligatoria, int iDProceso) {
@@ -149,6 +200,12 @@ public class Proceso {
         }
     }
 
+    /**
+     * Metodo para buscar actividades dado un nombre
+     *
+     * @param nombreActividad nombre de la actividad a buscar
+     * @return la actividad a buscar
+     */
     public Actividad buscarActividad(String nombreActividad) {
         Actividad actividadAuxiliar = new Actividad();
 
@@ -166,7 +223,12 @@ public class Proceso {
         return actividadAuxiliar;
     }
 
-
+    /**
+     * Metodo para buscar actividades dado sus nombres
+     *
+     * @param nombreActi1 nombre de la actividad a buscar
+     * @param nombreActi2 nombre de la actividad a buscar
+     */
     public void intercambiarActividades(String nombreActi1, String nombreActi2) {
         Actividad actividad1 = new Actividad();
         Actividad actividad2 = new Actividad();
