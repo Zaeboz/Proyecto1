@@ -12,6 +12,8 @@ public class Proceso {
     private SimpleIntegerProperty idProceso;
     private SimpleDoubleProperty tiempoMaximo;
     private SimpleDoubleProperty tiempoMinimo;
+    private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
+    private int contador = 1;
 
     public String getNombreProceso() {
         return nombreProceso.get();
@@ -62,11 +64,7 @@ public class Proceso {
         this.tiempoMinimo.set(tiempoMinimo);
     }
 
-
-
-    private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
-
-    public Proceso(String nombreProceso,int idProceso) {
+    public Proceso(String nombreProceso, int idProceso){
         this.nombreProceso = new SimpleStringProperty (nombreProceso);
         this.idProceso = new SimpleIntegerProperty (idProceso);
     }
@@ -94,30 +92,26 @@ public class Proceso {
     }
 
 
-    public void crearActividadFinal(String nombre, String descripcion, Boolean esObligatoria, int iDProceso) {
-        Actividad actividad = new Actividad(nombre, descripcion, esObligatoria, iDProceso);
-        if (validarActivid(actividad)) listaActividades.agregarfinal(actividad);
-        else System.out.println("Actividad repetida");
+    public void crearActividadFinal(Actividad actividad) {
+        listaActividades.agregarfinal(actividad);
     }
 
-    public void crearActividadDespues(String nombre, String descripcion, Boolean esObligatoria, int iDProceso, String nombreActividadAnterior) {
+    public void crearActividadDespues(Actividad actividad, String nombreActividadAnterior) {
         Actividad actividadAnterior = new Actividad();
 
         for (int i = 0; i < listaActividades.getTamanio(); i++) {
             actividadAnterior = listaActividades.obtener(i);
             if (nombreActividadAnterior.equals(actividadAnterior.getNombre())) {
-                Actividad actividad = new Actividad(nombre, descripcion, esObligatoria, iDProceso);
                 if (validarActivid(actividad)) listaActividades.agregar(actividad, i + 1);
                 else System.out.println("Actividad repetida");
             }
         }
     }
 
-    public void crearActividadDespuesUltima(String nombre, String descripcion, Boolean esObligatoria, int iDProceso) {
+    public void crearActividadDespuesUltima(Actividad actividad) {
         Actividad actividadUltimaAgregada = listaActividades.getUltimoAgregado();
 
         int posicion = listaActividades.obtenerPosicionNodo(actividadUltimaAgregada);
-        Actividad actividad = new Actividad(nombre, descripcion, esObligatoria, iDProceso);
         if (validarActivid(actividad)) listaActividades.agregar(actividad, posicion + 1);
         else System.out.println("Actividad repetida");
     }
@@ -242,8 +236,6 @@ public class Proceso {
 
         actividad1.setColaDeTareas(colaDeTareasAux2);
         actividad2.setColaDeTareas(colaDeTareasAux1);
-
-
     }
 
 

@@ -26,8 +26,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import application.Main;
+
 public class ControladorProceso implements Initializable{
-    Proyecto libreta = new Proyecto();
     @FXML AnchorPane anchorPaneProcesos;
 
     @FXML Button botonLanzarCrearProceso;
@@ -46,6 +47,7 @@ public class ControladorProceso implements Initializable{
     @FXML private TextField textFieldNombreProceso=new TextField();
 
 	ControladorPrincipal controladorPrincipal;
+    Main main = new Main();
     private int posicionProcesoEnTabla = 0;
     int numeroProceso=0;
 
@@ -53,24 +55,20 @@ public class ControladorProceso implements Initializable{
     @FXML public void editarProceso(){
 
     }
+    @FXML public void buscarProceso()
 
-    @FXML public void eliminarProceso(){
+    {
 
     }
-
-    @FXML public void buscarProceso(){
-
+    @FXML public void eliminarProceso(){
+        Proceso procesoSelecionado=getTablaProcesoSeleccionado();
+        listaProcesos.remove(procesoSelecionado);
+        main.getProyecto().eliminarProceso(procesoSelecionado);
     }
 
     @FXML private void lanzarVistaCrearProceso(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("vistaCrearProceso.fxml"));
-
-		System.out.println("entre");
-		System.out.println(loader==null);
-        // Cargo la ventana
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaCrearProceso.fxml"));
         Parent root = loader.load();
-	
-        // Creo el Scene
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -119,15 +117,12 @@ public class ControladorProceso implements Initializable{
         }
         return null;
 	}
-	public void recibirProceso(Proceso nuevoProceso) {
-		listaProcesos.add(nuevoProceso);
-	}
 
 	public void agregarDato(String nombreProceso){
-		System.out.println("Creo proceso");
+
         Proceso nuevoProceso = new Proceso(nombreProceso,numeroProceso=numeroProceso+1,30.0,40.0);
 		listaProcesos.add(nuevoProceso);
-
+        main.getProyecto().crearProceso(nombreProceso);
 	}
 
 	@Override

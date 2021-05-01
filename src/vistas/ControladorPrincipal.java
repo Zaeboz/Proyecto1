@@ -3,14 +3,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.Principal;
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-
 
 public class ControladorPrincipal implements Initializable{
 	
@@ -19,7 +18,7 @@ public class ControladorPrincipal implements Initializable{
 	@FXML Button actividades;
 	@FXML BorderPane mainPane;
 
-	Principal principal = Principal.getInstance();
+	Main principal = Main.getInstance();
 	ControladorActividad controladorActividad = new ControladorActividad();
 	
 	@FXML private void cargarVistaProcesos(ActionEvent event) throws IOException {
@@ -31,7 +30,6 @@ public class ControladorPrincipal implements Initializable{
 		FxmlLoader object = new FxmlLoader();
 		Pane view = object.getPane("VistaActividad");
 		mainPane.setCenter(view);
-		controladorActividad.inicializarComponentes();
 	}
 	
 	@FXML private void cargarVistaTareas(ActionEvent event) {
@@ -45,8 +43,6 @@ public class ControladorPrincipal implements Initializable{
 	public void initialize(URL url, ResourceBundle rb) {
 				
 	}
-	
-	
 
 	public ControladorPrincipal() {
 		super();
