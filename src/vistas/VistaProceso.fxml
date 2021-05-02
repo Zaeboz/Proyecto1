@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPaneProcesos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorProceso">
+<AnchorPane fx:id="anchorPaneProcesos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorProceso">
    <children>
-      <TableView fx:id="tablaProcesos" layoutX="20.0" layoutY="60.0" prefHeight="464.0" prefWidth="420.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="60.0">
+      <TableView fx:id="tablaProcesos" layoutX="20.0" layoutY="72.0" prefHeight="452.0" prefWidth="651.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="72.0">
         <columns>
           <TableColumn fx:id="columnaCodigo" prefWidth="122.0" text="Id" />
           <TableColumn fx:id="columnaNombre" prefWidth="311.0" text="Nombre" />
@@ -20,15 +20,14 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="textFieldBuscar" layoutX="515.0" layoutY="23.0" prefHeight="25.0" prefWidth="156.0" promptText="Buscar por cÃ³digo" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="23.0" />
-      <Button fx:id="botonBuscarProceso" layoutX="480.0" layoutY="20.0" mnemonicParsing="false" onAction="#buscarProceso" prefHeight="32.0" prefWidth="33.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" AnchorPane.rightAnchor="177.0" AnchorPane.topAnchor="20.0" />
-      <Button fx:id="botonLanzarCrearProceso" layoutX="20.0" layoutY="12.0" mnemonicParsing="false" onAction="#lanzarVistaCrearProceso" prefHeight="41.0" prefWidth="156.0" styleClass="botonVistaProceso" stylesheets="@paqueteCSS.css" text="    Crear Proceso" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="12.0">
+      <Button fx:id="botonConsultarActividades" layoutX="285.0" layoutY="20.0" mnemonicParsing="false" onAction="#consultarActividades" prefHeight="32.0" prefWidth="163.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" text="      Consultar  actividades" AnchorPane.leftAnchor="285.0" AnchorPane.topAnchor="20.0" />
+      <Button fx:id="botonLanzarCrearProceso" layoutX="20.0" layoutY="12.0" mnemonicParsing="false" onAction="#lanzarVistaCrearProceso" prefHeight="41.0" prefWidth="150.0" styleClass="botonVistaProceso" stylesheets="@paqueteCSS.css" text="    Crear Proceso" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="12.0">
          <font>
             <Font name="Noteworthy Light" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="botonEliminarProceso" layoutX="415.0" layoutY="24.0" mnemonicParsing="false" onAction="#eliminarProceso" text="Eliminar" AnchorPane.topAnchor="24.0" />
+      <Button fx:id="botonEliminarProceso" layoutX="514.0" layoutY="25.0" mnemonicParsing="false" onAction="#eliminarProceso" text="Eliminar" AnchorPane.topAnchor="25.0" />
       <Button fx:id="botonEditarProceso" layoutX="184.0" layoutY="23.0" mnemonicParsing="false" onAction="#editarProceso" text="Editar" AnchorPane.topAnchor="23.0" />
-      <Button layoutX="257.0" layoutY="24.0" mnemonicParsing="false" text="Consultar Actividades" AnchorPane.topAnchor="23.0" />
+      <Label layoutX="20.0" layoutY="54.0" text="Tabla de procesos" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="570.0" AnchorPane.topAnchor="54.0" />
    </children>
 </AnchorPane>

@@ -1,10 +1,10 @@
 package listas;
 
+import java.io.Serializable;
 
+public class Bicola<T> extends Cola<T> implements Serializable{
 
-
-
-public class Bicola<T> extends Cola<T>{
+	private static final long serialVersionUID = 1L;
 
 	Nodo<T> nodoUltimo;
 	Nodo<T> nodoPrimero;
@@ -70,5 +70,20 @@ public class Bicola<T> extends Cola<T>{
 		return aux;
 	}
 
+	public Nodo<T> getNodoUltimo() {
+		return nodoUltimo;
+	}
+
+	public void setNodoUltimo(Nodo<T> nodoUltimo) {
+		this.nodoUltimo = nodoUltimo;
+	}
+
+	public Nodo<T> getNodoPrimero() {
+		return nodoPrimero;
+	}
+
+	public void setNodoPrimero(Nodo<T> nodoPrimero) {
+		this.nodoPrimero = nodoPrimero;
+	}
 
 }

@@ -1,12 +1,16 @@
 package vistas;
 
+import java.io.Serializable;
 import java.net.URL;
 
 import application.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
-public class FxmlLoader {
+public class FxmlLoader implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private AnchorPane view;
 
 	public AnchorPane getPane(String nombre) {

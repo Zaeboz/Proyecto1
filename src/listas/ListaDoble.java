@@ -2,6 +2,7 @@ package listas;
 
 
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 
@@ -12,20 +13,19 @@ import java.util.Iterator;
  *
  * **/
 
-public class ListaDoble<T> implements Iterable<T> {
+public class ListaDoble<T> implements Iterable<T>, Serializable {
 
-	private NodoDoble<T> nodoPrimero;
-	private NodoDoble<T> nodoUltimo;
-	private T ultimoAgregado;
-	private int tamanio;
+	private static final long serialVersionUID = 1L;
+
+	private NodoDoble<T> nodoPrimero = null;
+	private NodoDoble<T> nodoUltimo = null;
+	private T ultimoAgregado = null;
+	private int tamanio = 0;
 
 
 	public ListaDoble() {
-		nodoPrimero = null;
-		nodoUltimo = null;
-		tamanio = 0;
+		
 	}
-
 
 	//Metodos basicos
 
@@ -460,14 +460,17 @@ public class ListaDoble<T> implements Iterable<T> {
 	public int getTamanio() {
 		return tamanio;
 	}
-
-
+	
 	public void setTamanio(int tamanio) {
 		this.tamanio = tamanio;
 	}
 
 	public T getUltimoAgregado(){
 		return this.ultimoAgregado;
+	}
+
+	public void setUltimoAgregado(T ultimoAgregado) {
+		this.ultimoAgregado = ultimoAgregado;
 	}
 
 }

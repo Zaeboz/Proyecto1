@@ -1,7 +1,6 @@
 package listas;
 
-
-
+import java.io.Serializable;
 
 /**
  * Clase nodo aplicando Generics
@@ -11,10 +10,12 @@ package listas;
  * **/
 
 
-public class Nodo<T> {
+public class Nodo<T> implements Serializable{
 
-	private Nodo<T> siguienteNodo;
-	private T valorNodo;
+	private static final long serialVersionUID = 1L;
+
+	private Nodo<T> siguienteNodo = null;
+	private T valorNodo = null;
 
 
 	/**
@@ -24,7 +25,6 @@ public class Nodo<T> {
 	public Nodo(T valorNodo) {
 		this.valorNodo = valorNodo;
 	}
-
 
 	/**
 	 * Constructor de la clase Nodo

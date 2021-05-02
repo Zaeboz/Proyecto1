@@ -1,44 +1,52 @@
 package modelo;
 
 
+import java.io.Serializable;
+
 import exeptions.TareasNoObligatoriasException;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import listas.Cola;
 
 
-public class Actividad implements Cloneable {
+public class Actividad implements Cloneable, Serializable{
 
-    private String nombre;
-    private Integer codigoProceso;
-    private String descripcion;
-    private Boolean esObligatoria;
+    private static final long serialVersionUID = 1L;
+
+    private SimpleStringProperty nombre = new SimpleStringProperty();
+    private SimpleIntegerProperty codigoProceso = new SimpleIntegerProperty();
+    private SimpleStringProperty descripcion = new SimpleStringProperty();
+    private SimpleBooleanProperty esObligatoria = new SimpleBooleanProperty();
     private Cola<Tarea> colaDeTareas = new Cola<Tarea>();
 
-    private double tiempoMaximo;
-    private double tiempoMinimo;
+    private SimpleDoubleProperty tiempoMaximo = new SimpleDoubleProperty(0);
+    private SimpleDoubleProperty tiempoMinimo = new SimpleDoubleProperty(0);
 
     public void setTiempoMaximo(double tiempoMaximo) {
-        this.tiempoMaximo = tiempoMaximo;
+        this.tiempoMaximo.set(tiempoMaximo);
     }
 
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombre.set(nombre);
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return descripcion.get();
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.descripcion.set(descripcion);
     }
 
-    public boolean isEsObligatoria() {
-        return esObligatoria;
+    public boolean getEsObligatoria() {
+        return esObligatoria.get();
     }
 
     public void setEsObligatoria(boolean esObligatoria) {
-        this.esObligatoria = esObligatoria;
+        this.esObligatoria.set(esObligatoria);
     }
 
     public Cola<Tarea> getColaDeTareas() {
@@ -50,13 +58,8 @@ public class Actividad implements Cloneable {
     }
 
     public int getCodigoProceso() {
-        return codigoProceso;
+        return codigoProceso.get();
     }
-
-    public void setCodigoProceso(int codigoProceso) {
-        this.codigoProceso = codigoProceso;
-    }
-
 
     /**
      * Metodo que crea una tarea al final de la cola de tareas
@@ -94,49 +97,40 @@ public class Actividad implements Cloneable {
         colaDeTareas.insertarElemento(tareaAInsertar, poscionDondeInserta);
     }
 
-    public void buscarTarea(int formaDeBuscar) {
-        /**
-         *
-         *
-         switch (formaDeBuscar) {
-         case 0:
-         buscarTareaInicio();
-         break;
-         case 1:
-         buscarTareaActividadActual();
-         break;
-         case 3:
-         buscarTarea();
-         break;
-         }
-         **/
-    }
-
     public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigoProceso) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.esObligatoria = esObligatorio;
-        this.codigoProceso = codigoProceso;
+        this.nombre.set(nombre);
+        this.descripcion.set(descripcion);
+        this.esObligatoria.set(esObligatorio);
+        this.codigoProceso.set(codigoProceso);
     }
-
-
+    
     public Actividad() {
     }
 
     public String getNombre() {
-        return this.nombre;
+        return this.nombre.get();
     }
 
     public double getTiempoMaximo() {
-        return tiempoMaximo;
+        return tiempoMaximo.get();
     }
 
     public double getTiempoMinimo() {
-        return tiempoMinimo;
+        return tiempoMinimo.get();
     }
 
     public void setTiempoMinimo(double tiempoMinimo) {
-        this.tiempoMinimo = tiempoMinimo;
+        this.tiempoMinimo.set(tiempoMinimo);
+    }
+
+    public void setCodigoProceso(int codigoProceso) {
+		this.codigoProceso.set(codigoProceso);
+	}
+
+    @Override
+    public String toString(){
+        return ("Nombre: "+nombre+", Codigo del proceso: "+codigoProceso+
+        ", Descripcion: "+descripcion+", ¿Es obligatoria?:  "+esObligatoria);
     }
 }
 

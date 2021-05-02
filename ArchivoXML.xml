@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_111" class="java.beans.XMLDecoder">
+ <object class="modelo.Proyecto" id="Proyecto0">
+  <void property="idProceso">
+   <int>2</int>
+  </void>
+ </object>
+<void class="modelo.Proyecto" id="Field0" method="getField">
+ <string>listaProcesos</string>
+ <void id="ListaSimple0" method="get">
+  <object idref="Proyecto0"/>
+  <void property="nodoUltimo">
+   <object class="listas.Nodo">
+    <void property="valorNodo">
+     <object class="modelo.Proceso" id="Proceso0">
+      <void property="idProceso">
+       <int>1</int>
+      </void>
+      <void property="listaActividades">
+       <void property="ultimoAgregado">
+        <object class="modelo.Actividad">
+         <void property="codigoProceso">
+          <int>1</int>
+         </void>
+         <void property="descripcion">
+          <string>se prepara el cafe</string>
+         </void>
+         <void property="esObligatoria">
+          <boolean>true</boolean>
+         </void>
+         <void property="nombre">
+          <string>Preparar cafe</string>
+         </void>
+        </object>
+       </void>
+      </void>
+      <void property="nombreProceso">
+       <string>Hacer desayuno</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </void>
+</void>
+<void idref="ListaSimple0"/>
+</java>

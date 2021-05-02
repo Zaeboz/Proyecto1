@@ -1,5 +1,6 @@
 package vistas;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,8 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import persistencia.Persistencia;
 
-public class ControladorPrincipal implements Initializable{
+public class ControladorPrincipal implements Initializable, Serializable{
+
+	private static final long serialVersionUID = 1L;
 	
 	@FXML Button tareas;
 	@FXML Button procesos;
@@ -23,20 +27,17 @@ public class ControladorPrincipal implements Initializable{
 	
 	@FXML private void cargarVistaProcesos(ActionEvent event) throws IOException {
 		principal.cargarVistaProcesos(mainPane);
+		Main.proyecto = Persistencia.cargarRecursoProyectoXML();
 	}
 	
-	@FXML private void cargarVistaActividades(ActionEvent event) {
-		mainPane.setCenter(null);
-		FxmlLoader object = new FxmlLoader();
-		Pane view = object.getPane("VistaActividad");
-		mainPane.setCenter(view);
+	@FXML private void cargarVistaActividades(ActionEvent event) throws IOException {
+		principal.cargarVistaActividades(mainPane);
+		Main.proyecto = Persistencia.cargarRecursoProyectoXML();
 	}
 	
-	@FXML private void cargarVistaTareas(ActionEvent event) {
-		mainPane.setCenter(null);
-		FxmlLoader object = new FxmlLoader();
-		Pane view = object.getPane("VistaTarea");
-		mainPane.setCenter(view);
+	@FXML private void cargarVistaTareas(ActionEvent event) throws IOException {
+		principal.cargarVistaTareas(mainPane);
+		Main.proyecto = Persistencia.cargarRecursoProyectoXML();
 	}
 
 	@Override

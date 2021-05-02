@@ -1,13 +1,14 @@
 package listas;
 
-
-
+import java.io.Serializable;
 
 /**
  *
  * @param <T>
  */
-public class Pila<T> {
+public class Pila<T> implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private Nodo<T> cima;
 	private int tamano;
@@ -18,6 +19,10 @@ public class Pila<T> {
 	 */
 	public boolean estaVacia() {
 		return cima==null;
+	}
+
+	public Pila(){
+		
 	}
 
 	/**
@@ -137,6 +142,14 @@ public class Pila<T> {
 		pilaFinal.cima = nodoCima;
 
 		return pilaFinal;
+	}
+
+	public void setCima(Nodo<T> cima) {
+		this.cima = cima;
+	}
+
+	public void setTamano(int tamano) {
+		this.tamano = tamano;
 	}
 
 }

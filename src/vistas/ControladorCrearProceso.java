@@ -17,7 +17,7 @@ public class ControladorCrearProceso {
         System.out.println("Creo proceso");
         String nombreProceso = textFieldNombreProceso.getText();
         controladorProceso.agregarDato(nombreProceso);
-    }   
+    }
 
     public void conectarControlador(ControladorProceso aux){
         controladorProceso = aux;

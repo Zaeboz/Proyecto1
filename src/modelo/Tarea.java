@@ -1,6 +1,10 @@
 package modelo;
 
-public class Tarea {
+import java.io.Serializable;
+
+public class Tarea implements Serializable{
+
+    private static final long serialVersionUID = 1L;
 
     private String descripcion;
     private boolean esObligatoria;

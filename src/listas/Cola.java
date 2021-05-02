@@ -1,18 +1,22 @@
 package listas;
 
-
+import java.io.Serializable;
 
 /**
  *
  * @param <T>
  */
-public class Cola<T> implements Cloneable{
+public class Cola<T> implements Cloneable, Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private Nodo<T> nodoPrimero, nodoUltimo;
 	private int tamanio;
 
 
-
+	public Cola(){
+		
+	}
 
 	/**
 	 * Agrega un elemento en la Cola
@@ -64,9 +68,9 @@ public class Cola<T> implements Cloneable{
 	{
 		Nodo<T> nodoAInsertar= new Nodo<>(dato);
 
-		Nodo<T> nodoAuxiliarActual=new Nodo();
+		Nodo<T> nodoAuxiliarActual=new Nodo<>();
 
-		Nodo<T> nodoSiguiente=new Nodo();
+		Nodo<T> nodoSiguiente=new Nodo<>();
 		if(validarPosicion(posicion)) {
 			if (estaVacia()) {
 
@@ -156,7 +160,29 @@ public class Cola<T> implements Cloneable{
 		return tamanio;
 	}
 
+	public Nodo<T> getNodoPrimero() {
+		return nodoPrimero;
+	}
 
+	public void setNodoPrimero(Nodo<T> nodoPrimero) {
+		this.nodoPrimero = nodoPrimero;
+	}
 
+	public Nodo<T> getNodoUltimo() {
+		return nodoUltimo;
+	}
+
+	public void setNodoUltimo(Nodo<T> nodoUltimo) {
+		this.nodoUltimo = nodoUltimo;
+	}
+
+	public int getTamanio() {
+		return tamanio;
+	}
+
+	public void setTamanio(int tamanio) {
+		this.tamanio = tamanio;
+	}
+	
 
 }

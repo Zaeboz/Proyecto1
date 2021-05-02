@@ -1,19 +1,22 @@
 package modelo;
 
+import java.io.Serializable;
+
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import listas.Cola;
 import listas.ListaDoble;
 
-public class Proceso {
+public class Proceso implements Serializable{
 
-    private SimpleStringProperty nombreProceso ;
-    private SimpleIntegerProperty idProceso;
-    private SimpleDoubleProperty tiempoMaximo;
-    private SimpleDoubleProperty tiempoMinimo;
+    private static final long serialVersionUID = 1L;
+
+    private SimpleStringProperty nombreProceso = new SimpleStringProperty("0");
+    private SimpleIntegerProperty idProceso = new SimpleIntegerProperty(0);
+    private SimpleDoubleProperty tiempoMaximo = new SimpleDoubleProperty(0);
+    private SimpleDoubleProperty tiempoMinimo = new SimpleDoubleProperty(0);
     private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
-    private int contador = 1;
 
     public String getNombreProceso() {
         return nombreProceso.get();
@@ -76,13 +79,9 @@ public class Proceso {
         this.tiempoMinimo=new SimpleDoubleProperty(tiempoMinimo);
     }
 
-    public Proceso()
-    {
+    public Proceso(){
 
     }
-
-
-
     public ListaDoble<Actividad> getListaActividades() {
         return listaActividades;
     }
@@ -101,7 +100,7 @@ public class Proceso {
 
         for (int i = 0; i < listaActividades.getTamanio(); i++) {
             actividadAnterior = listaActividades.obtener(i);
-            if (nombreActividadAnterior.equals(actividadAnterior.getNombre())) {
+            if (nombreActividadAnterior.equals(actividadAnterior.getNombre())!=true) {
                 if (validarActivid(actividad)) listaActividades.agregar(actividad, i + 1);
                 else System.out.println("Actividad repetida");
             }
@@ -137,7 +136,7 @@ public class Proceso {
      * @throws CloneNotSupportedException exepcion que controla la clonacion de la cola de actividades
      */
     public void calcularTiemposActividad(Actividad actividadACalcular) throws CloneNotSupportedException {
-        Cola<Tarea> colaDeTareasAuxiliar = new Cola<Tarea>();
+        Cola<Tarea> colaDeTareasAuxiliar = new Cola<>();
         Tarea tareaAuxiliar = new Tarea();
         double tiempoMaximo = 0;
         double tiempoMinimo = 0;
@@ -169,7 +168,7 @@ public class Proceso {
      */
     public void calcularTiempoDuracionProceso() throws CloneNotSupportedException {
         ListaDoble<Actividad> listaActividadesAux = this.getListaActividades();
-        Cola<Tarea> colaDeTareasAuxiliar = new Cola<Tarea>();
+        Cola<Tarea> colaDeTareasAuxiliar = new Cola<>();
 
         Actividad actividadActualAuxiliar = new Actividad();
 
@@ -184,7 +183,7 @@ public class Proceso {
             actividadActualAuxiliar = listaActividadesAux.obtenerValorNodo(i);
 
             calcularTiemposActividad(actividadActualAuxiliar);
-            if (actividadActualAuxiliar.isEsObligatoria()) {
+            if (actividadActualAuxiliar.getEsObligatoria()) {
 
 
                 cantidadTiempoMinimoProceso = cantidadTiempoMinimoProceso + actividadActualAuxiliar.getTiempoMinimo();
@@ -238,5 +237,22 @@ public class Proceso {
         actividad2.setColaDeTareas(colaDeTareasAux1);
     }
 
+	public void setNombreProceso(SimpleStringProperty nombreProceso) {
+		this.nombreProceso = nombreProceso;
+	}
+
+	public void setIdProceso(SimpleIntegerProperty idProceso) {
+		this.idProceso = idProceso;
+	}
+
+	public void setTiempoMaximo(SimpleDoubleProperty tiempoMaximo) {
+		this.tiempoMaximo = tiempoMaximo;
+	}
+
+	public void setTiempoMinimo(SimpleDoubleProperty tiempoMinimo) {
+		this.tiempoMinimo = tiempoMinimo;
+	}
+
+    
 
 }

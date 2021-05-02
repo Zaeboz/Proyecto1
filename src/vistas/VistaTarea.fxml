@@ -22,8 +22,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField layoutX="521.0" layoutY="22.0" prefHeight="25.0" prefWidth="131.0" promptText="Buscar por código" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="22.0" />
-      <Button layoutX="486.0" layoutY="19.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="19.0" />
+      <TextField layoutX="585.0" layoutY="23.0" prefHeight="25.0" prefWidth="131.0" promptText="Buscar por código" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="23.0" />
+      <Button layoutX="716.0" layoutY="20.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="20.0" />
       <MenuButton layoutX="20.0" layoutY="23.0" mnemonicParsing="false" text="MenuButton" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="23.0">
          <items>
             <MenuItem mnemonicParsing="false" text="Action 1" />

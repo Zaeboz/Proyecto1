@@ -1,6 +1,7 @@
 package listas;
 
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 
@@ -12,17 +13,17 @@ import java.util.Iterator;
  *
  * **/
 
-public class ListaSimple<T> implements Iterable<T> {
+public class ListaSimple<T> implements Iterable<T>, Serializable {
 
-	private Nodo<T> nodoPrimero;
-	private Nodo<T> nodoUltimo;
-	private int tamanio;
+	private static final long serialVersionUID = 1L;
+
+	private Nodo<T> nodoPrimero = null;
+	private Nodo<T> nodoUltimo = null;
+	private int tamanio = 0;
 
 
 	public ListaSimple() {
-		nodoPrimero = null;
-		nodoUltimo = null;
-		tamanio = 0;
+		
 	}
 
 
@@ -274,12 +275,12 @@ public class ListaSimple<T> implements Iterable<T> {
 	//Metodos get y set de la clase ListaSimple
 
 
-	public Nodo getNodoPrimero() {
+	public Nodo<T> getNodoPrimero() {
 		return nodoPrimero;
 	}
 
 
-	public void setNodoPrimero(Nodo nodoPrimero) {
+	public void setNodoPrimero(Nodo<T> nodoPrimero) {
 		this.nodoPrimero = nodoPrimero;
 	}
 
@@ -294,8 +295,12 @@ public class ListaSimple<T> implements Iterable<T> {
 	}
 
 
+	public Nodo<T> getNodoUltimo() {
+		return nodoUltimo;
+	}
 
 
-
-
+	public void setNodoUltimo(Nodo<T> nodoUltimo) {
+		this.nodoUltimo = nodoUltimo;
+	}
 }

@@ -2,6 +2,7 @@ package vistas;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,10 +28,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import listas.ListaDoble;
+import listas.ListaSimple;
 import modelo.Actividad;
 import modelo.Proceso;
+import persistencia.Persistencia;
 
-public class ControladorActividad implements Initializable {
+public class ControladorActividad implements Initializable, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @FXML MenuButton botonActividades;
     @FXML MenuItem crearDespues;
@@ -64,13 +70,12 @@ public class ControladorActividad implements Initializable {
 
     @FXML AnchorPane anchorPane = new AnchorPane();
     @FXML AnchorPane anchorPaneCrear = new AnchorPane();
-
-    private ControladorProceso controladorProceso;
-    private Main principal = new Main();
     private String nombreStage;
     private int posicionEnTabla;
-    private Stage stage;
+    private int numeroActividad = 1;
 
+
+    //Lanzar mini ventanas
     /**
      * Metodo para lanzar la venta de creacion para crear un actividad
      * despues de la ultima creada.
@@ -130,6 +135,33 @@ public class ControladorActividad implements Initializable {
 		stage.show();
     }
 
+    @FXML
+    public void lanzarVistaIntercmbiar(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInterCambiarActividad.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+		ControladorIntercambiarActividad aux = (ControladorIntercambiarActividad) loader.getController();
+		aux.conectarControlador(this);
+		stage.show();
+    }
+
+    @FXML
+    public void lanzarEditarActividad(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaEditarActividad.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+		ControladorEditarActividad aux = (ControladorEditarActividad) loader.getController();
+		aux.conectarControlador(this);
+		stage.show();
+    }
+
+    //Metodos
     /**
      * Metodo para crear una actividad. Pueden haber varios casos de creacion.
      * @param actividadAux
@@ -141,21 +173,18 @@ public class ControladorActividad implements Initializable {
 
             case "VistaAgregarDespuesUltima":
                 listaActividades.add(actividadAux);
-                principal.getProyecto().crearActividadDespuesUltima(actividadAux);
-
-                //Falta poner el metodo para anviar la actividad a la vista de procesos
+                Main.proyecto.crearActividadDespuesUltima(actividadAux);
             break;
 
             case "VistaAgregarFinal":
                 listaActividades.add(actividadAux);
-                principal.getProyecto().crearActividadFinal(actividadAux);
-                //Falta poner el metodo para anviar la actividad a la vista de procesos
+                Main.proyecto.crearActividadFinal(actividadAux);
+                
             break;
 
             case "VistaAgregarDespues":
                 listaActividades.add(actividadAux);
-                principal.getProyecto().crearActividadDespues(actividadAux, actividadAnterior);
-                //Falta poner el metodo para anviar la actividad a la vista de procesos
+                Main.proyecto.crearActividadDespues(actividadAux, actividadAnterior);
             break;
 
             default: System.out.println("Nombre stage esta vacio");
@@ -163,9 +192,41 @@ public class ControladorActividad implements Initializable {
         }
     }
 
+    @FXML
+    public void mostrarTareas(ActionEvent event){
+        
+    }
+
+    public void intercambiarActividades(String nombreActividad1, String nombreActividad2) {
+        Actividad actividad1 = Main.proyecto.buscarActividad(nombreActividad1);
+        Actividad actividad2 = Main.proyecto.buscarActividad(nombreActividad2);
+        Main.proyecto.intercambiarActividades(actividad1, actividad2);
+    }
 
     @FXML
     public void buscarActividad(ActionEvent event) {
+        String nombre = textFiledBuscar.getText();
+        Actividad actividadAux = Main.proyecto.buscarActividad(nombre);
+        //Falta lanzar la venta emergente para mostrar la actividad encontrada
+    }
+
+    @FXML
+    public void eliminar(ActionEvent event){
+        Actividad actividadSeleccionada = getTablaActividadSeleccionada();
+        listaActividades.remove(actividadSeleccionada);
+        Main.proyecto.eliminarActividad(actividadSeleccionada.getNombre());
+    }
+
+    @FXML
+    public void actualizar(ActionEvent event){
+        Actividad actividadSeleccionada = getTablaActividadSeleccionada();
+        String nombre = actividadSeleccionada.getNombre();
+        String descripcion = actividadSeleccionada.getDescripcion();
+        int idProceso = actividadSeleccionada.getCodigoProceso();
+        Boolean esObligatoria = actividadSeleccionada.getEsObligatoria();
+
+        actividadSeleccionada = Main.proyecto.actualizarActividad(nombre, descripcion, idProceso, esObligatoria);
+        listaActividades.remove(actividadSeleccionada);
     }
 
     @Override
@@ -176,7 +237,20 @@ public class ControladorActividad implements Initializable {
             e.printStackTrace();
         }
         final ObservableList<Actividad> tablaActividadSel = tablaDeActividades.getSelectionModel().getSelectedItems();
+        cargarTablaActividades();
 		tablaActividadSel.addListener(selectorTablaActividades);
+    }
+
+    private void cargarTablaActividades() {
+        int tamanio = Persistencia.cargarRecursoProyectoXML().getListaProcesos().getTamanio();
+        ListaSimple<Proceso> listaProcesos = Persistencia.cargarRecursoProyectoXML().getListaProcesos();
+        for (int i = 0; i < tamanio; i++) {
+            for (int j = 0; j < listaProcesos.obtenerValorNodo(i).getListaActividades().getTamanio(); j++){
+                Actividad nuevaActividad = listaProcesos.obtenerValorNodo(i).getListaActividades().obtener(j);
+                listaActividades.add(nuevaActividad);
+                if(j == tamanio-1) numeroActividad = i;
+            }
+        }
     }
 
     public void inicilizarTablaActividad()throws FileNotFoundException, IOException{
@@ -204,9 +278,7 @@ public class ControladorActividad implements Initializable {
 
 		posicionEnTabla = listaActividades.indexOf(actividad);
 		if (actividad != null) {
-
-			
-
+            //Algo falta
 		}
 	}
 
@@ -226,4 +298,6 @@ public class ControladorActividad implements Initializable {
     public String getNombreStage(){
         return nombreStage;
     }
+    
+    
 }
