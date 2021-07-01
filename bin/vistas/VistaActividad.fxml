@@ -29,12 +29,12 @@
             <MenuItem fx:id="crearDespues" mnemonicParsing="false" onAction="#cargarCrearDespues" text="Crear después de una actividad en específico" />
             <MenuItem fx:id="crearFinal" mnemonicParsing="false" onAction="#cargarCrearFinal" text="Crear al final" />
             <MenuItem fx:id="crearDespuesUltima" mnemonicParsing="false" onAction="#cargarCrearDespuesUltima" text="Crear después de la última actividad creada" />
-            <MenuItem fx:id="intercambiarActividades" mnemonicParsing="false" text="Intercambiar Actividades" />
+            <MenuItem fx:id="intercambiarActividades" mnemonicParsing="false" onAction="#lanzarVistaIntercmbiar" text="Intercambiar  dos Actividades" />
+            <MenuItem fx:id="intercambiarTareas" mnemonicParsing="false" onAction="#lanzarVistaIntercmbiarTareas" text="Intercambiar las tareas de dos Actividades" />
          </items>
       </MenuButton>
       <Button fx:id="botonEliminarActividad" layoutX="452.0" layoutY="22.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" AnchorPane.topAnchor="22.0" />
-      <Button fx:id="botonEditarActividad" layoutX="238.0" layoutY="22.0" mnemonicParsing="false" text="Editar" AnchorPane.topAnchor="22.0" />
-      <Button fx:id="botonConsultarTareas" layoutX="310.0" layoutY="23.0" mnemonicParsing="false" text="Consultar tareas" AnchorPane.topAnchor="23.0" />
+      <Button fx:id="botonEditarActividad" layoutX="238.0" layoutY="22.0" mnemonicParsing="false" onAction="#lanzarEditarActividad" text="Editar" AnchorPane.topAnchor="22.0" />
       <Label layoutX="21.0" layoutY="53.0" text="Tabala de actividades" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="587.0" AnchorPane.topAnchor="53.0" />
    </children>
 </AnchorPane>

@@ -10,8 +10,8 @@ public class Pila<T> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private Nodo<T> cima;
-	private int tamano;
+	private Nodo<T> cima = null;
+	private int tamano = 0;
 
 	/**
 	 * Verifica si la Pila est� vac�a

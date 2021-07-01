@@ -44,7 +44,7 @@
                         <String fx:value="btnTarea" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="procesos1" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#cargarVistaProcesos" prefHeight="25.0" prefWidth="183.0" stylesheets="@paqueteCSS.css" text="Procesos" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="1">
+                  <Button fx:id="procesos" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#cargarVistaProcesos" prefHeight="25.0" prefWidth="183.0" stylesheets="@paqueteCSS.css" text="Procesos" textFill="#fcf8f8" textOverrun="CLIP" GridPane.rowIndex="1">
                      <font>
                         <Font name="Noteworthy Light" size="23.0" />
                      </font>

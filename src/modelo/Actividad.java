@@ -61,42 +61,6 @@ public class Actividad implements Cloneable, Serializable{
         return codigoProceso.get();
     }
 
-    /**
-     * Metodo que crea una tarea al final de la cola de tareas
-     *
-     * @param descripcion
-     * @param esObligatoria
-     * @param tiempoDuracion
-     * @throws CloneNotSupportedException
-     * @throws TareasNoObligatoriasException
-     */
-    public void crearTareaAlFInal(String descripcion, boolean esObligatoria, double tiempoDuracion) throws CloneNotSupportedException, TareasNoObligatoriasException {
-        Cola<Tarea> colaDeTareasAuxiliar = new Cola<>();
-
-
-        Tarea miTareaAuxiliar = colaDeTareas.obtenerUltimoElemento();
-        Tarea tareaAñadir;
-        if (!esObligatoria && !miTareaAuxiliar.isEsObligatoria()) {
-            throw new TareasNoObligatoriasException("La siguiente tarea también es opcional");
-        } else {
-            tareaAñadir = new Tarea(descripcion, esObligatoria, tiempoDuracion);
-            colaDeTareas.encolar(tareaAñadir);
-        }
-    }
-
-    /**
-     * Metodo que crea una tarea en una posicion
-     *
-     * @param descripcion
-     * @param esObligatoria
-     * @param tiempoDuracion
-     * @param poscionDondeInserta
-     */
-    public void crearTareaEnPosicion(String descripcion, boolean esObligatoria, double tiempoDuracion, int poscionDondeInserta) {
-        Tarea tareaAInsertar = new Tarea(descripcion, esObligatoria, tiempoDuracion);
-        colaDeTareas.insertarElemento(tareaAInsertar, poscionDondeInserta);
-    }
-
     public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigoProceso) {
         this.nombre.set(nombre);
         this.descripcion.set(descripcion);
@@ -105,6 +69,52 @@ public class Actividad implements Cloneable, Serializable{
     }
     
     public Actividad() {
+    }
+
+    /**
+     * Metodo que crea una tarea al final de la cola de tareas
+     *
+     * @param tarea
+     * @throws TareasNoObligatoriasException
+     */
+    public void crearTareaAlFinal(Tarea tarea) throws TareasNoObligatoriasException {
+        Tarea miTareaAuxiliar = colaDeTareas.obtenerUltimoElemento();
+        if(miTareaAuxiliar == null)
+        {
+            colaDeTareas.encolar(tarea);
+        }else if (tarea.isObligatoria() && miTareaAuxiliar.isObligatoria()) {
+            throw new TareasNoObligatoriasException("La siguiente tarea debe ser opcional");
+        } else {
+            colaDeTareas.encolar(tarea);
+        }
+    }
+
+    public void modificarIDColaTarea(){
+        Cola<Tarea> colaAux = new Cola<>();
+        Tarea tareaAux = new Tarea();
+        int size = colaDeTareas.getTamanio();
+        for(int i = size; i > 0; i--){
+            tareaAux = colaDeTareas.desencolar();
+            tareaAux.setNombreActividad(nombre.getValue());
+            colaAux.encolar(tareaAux);
+        }
+        colaDeTareas = colaAux;
+    }
+
+    /**
+     * Metodo que crea una tarea en una posicion
+     * @param tarea
+     * @param posicion
+     * @return
+     */
+    public Cola<Tarea> crearTareaEnPosicion(Tarea tarea, int posicion) {
+        Cola<Tarea> nuevaCola = new Cola<>();
+        int size = getColaDeTareas().getTamanio();
+        for(int i = 0; i <= size; i++){
+            if(posicion-1==i) nuevaCola.encolar(tarea);
+            else nuevaCola.encolar(getColaDeTareas().desencolar());
+        }
+        return nuevaCola;
     }
 
     public String getNombre() {
@@ -124,13 +134,12 @@ public class Actividad implements Cloneable, Serializable{
     }
 
     public void setCodigoProceso(int codigoProceso) {
-		this.codigoProceso.set(codigoProceso);
-	}
+        this.codigoProceso.set(codigoProceso);
+    }
 
     @Override
     public String toString(){
-        return ("Nombre: "+nombre+", Codigo del proceso: "+codigoProceso+
-        ", Descripcion: "+descripcion+", ¿Es obligatoria?:  "+esObligatoria);
+        return ("Nombre: "+nombre.getValue()+", Codigo del proceso: "+codigoProceso.getValue()+
+                ", Descripcion: "+descripcion.getValue()+", ¿Es obligatoria?:  "+esObligatoria.getValue());
     }
 }
-

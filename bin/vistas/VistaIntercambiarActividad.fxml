@@ -5,15 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="213.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="213.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorIntercambiarActividad">
    <children>
-      <TextField layoutX="156.0" layoutY="46.0" />
-      <TextField layoutX="156.0" layoutY="103.0" />
+      <TextField fx:id="textFieldNombreActivida1" layoutX="156.0" layoutY="46.0" />
+      <TextField fx:id="textFieldNombreActivida2" layoutX="156.0" layoutY="103.0" />
       <Label layoutX="14.0" layoutY="41.0" text="Nombre de la primera&#10;actividad a intercambiar" />
       <Label layoutX="14.0" layoutY="99.0" text="Nombre de la segunda&#10;actividad a intercambiar" />
-      <Button layoutX="63.0" layoutY="154.0" mnemonicParsing="false" text="Intercambiar" />
-      <Button layoutX="204.0" layoutY="154.0" mnemonicParsing="false" prefWidth="87.0" text="Cancelar" />
-      <Label layoutX="109.0" layoutY="14.0" text="Intercambiar Actividades" />
+      <Button fx:id="bitonIntercambiar" layoutX="133.0" layoutY="160.0" mnemonicParsing="false" onAction="#intercambiarActividades" text="Intercambiar" />
+      <Label layoutX="141.0" layoutY="14.0" text="Intercambiar " />
    </children>
 </AnchorPane>

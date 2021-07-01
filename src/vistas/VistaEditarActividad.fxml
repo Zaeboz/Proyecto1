@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="247.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorEditarActividad">
+   <children>
+      <Label layoutX="33.0" layoutY="70.0" prefHeight="17.0" prefWidth="72.0" text="Nombre" />
+      <TextField fx:id="textNombreActividad" layoutX="157.0" layoutY="66.0" />
+      <Label layoutX="81.0" layoutY="24.0" prefHeight="17.0" prefWidth="176.0" text="Venta para editar una actividad" />
+      <Button fx:id="btnguardar" layoutX="138.0" layoutY="198.0" mnemonicParsing="false" onAction="#guardarDatos" text="Guardar" />
+      <Label layoutX="33.0" layoutY="145.0" text="¿Es obligatoria?" />
+      <RadioButton fx:id="radioButtonSiEs" layoutX="185.0" layoutY="145.0" mnemonicParsing="false" text="Si" />
+      <RadioButton fx:id="radioButtonNoEs" layoutX="238.0" layoutY="145.0" mnemonicParsing="false" text="No" />
+      <Label layoutX="33.0" layoutY="106.0" text="Descripcion" />
+      <TextField fx:id="textFieldDescripcion" layoutX="157.0" layoutY="102.0" />
+   </children>
+</AnchorPane>

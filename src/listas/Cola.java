@@ -10,8 +10,9 @@ public class Cola<T> implements Cloneable, Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private Nodo<T> nodoPrimero, nodoUltimo;
-	private int tamanio;
+	private Nodo<T> nodoPrimero = null;
+	private Nodo<T> nodoUltimo = null;
+	private int tamanio = 0;
 
 
 	public Cola(){
@@ -38,9 +39,13 @@ public class Cola<T> implements Cloneable, Serializable{
 
 	public T obtenerUltimoElemento()
 	{
+		if(nodoUltimo == null)
+		{
+			return null;
+		}
 		T dato= nodoUltimo.getValorNodo();
 
-			return dato;
+		return dato;
 	}
 
 	/**
@@ -66,11 +71,11 @@ public class Cola<T> implements Cloneable, Serializable{
 
 	public void insertarElemento(T dato , int posicion)
 	{
-		Nodo<T> nodoAInsertar= new Nodo<>(dato);
+		Nodo<T> nodoAInsertar = new Nodo<>(dato);
 
-		Nodo<T> nodoAuxiliarActual=new Nodo<>();
+		Nodo<T> nodoAuxiliarActual = new Nodo<>();
 
-		Nodo<T> nodoSiguiente=new Nodo<>();
+		Nodo<T> nodoSiguiente = new Nodo<>();
 		if(validarPosicion(posicion)) {
 			if (estaVacia()) {
 
@@ -82,17 +87,12 @@ public class Cola<T> implements Cloneable, Serializable{
 				for (int i = 0; i < tamanio - 1; i++) {
 					nodoAuxiliarActual = nodoAuxiliarActual.getSiguienteNodo();
 				}
-
 				nodoSiguiente = nodoAuxiliarActual.getSiguienteNodo();
-
 				nodoAuxiliarActual.setSiguienteNodo(nodoAInsertar);
-
 				nodoAInsertar.setSiguienteNodo(nodoSiguiente);
 			}
 			tamanio++;
 		}
-
-
 	}
 
 	public boolean validarPosicion(int posicion)

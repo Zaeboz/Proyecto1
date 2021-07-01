@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorInsertarFinal">
+   <children>
+      <Label layoutX="149.0" layoutY="33.0" text="Nombre">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="116.0" text="Descripcion">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="112.0" layoutY="222.0" text="Tiempo Maximo">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="112.0" layoutY="174.0" text="Tiempo Minimo">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="112.0" layoutY="267.0" text="¿Es obligatoria?">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNombre" layoutX="287.0" layoutY="37.0" promptText="Ingrese el nombre" />
+      <TextField fx:id="txtDescripcion" layoutX="287.0" layoutY="120.0" promptText="Ingrese Descripcion" />
+      <TextField fx:id="txtTiempoMaximo" layoutX="287.0" layoutY="226.0" promptText="Ingrese tiempo max" />
+      <TextField fx:id="txtTiempoMinimo" layoutX="287.0" layoutY="178.0" promptText="Ingrese tiempo min" />
+      <Button fx:id="botonCrear" layoutX="486.0" layoutY="342.0" mnemonicParsing="false" onAction="#crear" text="Guardar">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <RadioButton fx:id="radioButtonObligatoria" layoutX="292.0" layoutY="275.0" mnemonicParsing="false" text="Si" />
+      <Label layoutX="72.0" layoutY="77.0" text="Nombre Actividad:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNombreActividad" layoutX="287.0" layoutY="80.0" promptText="Ingrese el nombre" />
+   </children>
+</AnchorPane>

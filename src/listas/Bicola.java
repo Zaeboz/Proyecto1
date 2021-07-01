@@ -6,8 +6,8 @@ public class Bicola<T> extends Cola<T> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	Nodo<T> nodoUltimo;
-	Nodo<T> nodoPrimero;
+	Nodo<T> nodoUltimo = null;
+	Nodo<T> nodoPrimero = null;
 
 	public Bicola()
 	{

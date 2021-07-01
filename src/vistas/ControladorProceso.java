@@ -50,12 +50,12 @@ public class ControladorProceso implements Initializable, Serializable{
     @FXML TableColumn<Proceso, String> columnaNombre = new TableColumn<>("Nombre");
     @FXML TableColumn<Proceso, Double> columnaTiempoMinimo = new TableColumn<>("TMinimo");
     @FXML TableColumn<Proceso, Double> columnaTiempoMaximo = new TableColumn<>("TMaximo");
-	ObservableList<Proceso> listaProcesos = FXCollections.observableArrayList();
+    ObservableList<Proceso> listaProcesos = FXCollections.observableArrayList();
 
     @FXML private TextField textFieldBuscar;
     @FXML private TextField textFieldNombreProceso = new TextField();
 
-	ControladorPrincipal controladorPrincipal;
+    ControladorPrincipal controladorPrincipal;
     private int posicionProcesoEnTabla = 0;
     int numeroProceso = 1;
     public Stage stage;
@@ -63,7 +63,6 @@ public class ControladorProceso implements Initializable, Serializable{
     @FXML public void editarProceso(ActionEvent event){
 
         try {
-
             // Cargo la vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaEditarProceso.fxml"));
 
@@ -71,8 +70,6 @@ public class ControladorProceso implements Initializable, Serializable{
             Parent root = loader.load();
             ControladorEditarProceso aux=(ControladorEditarProceso)loader.getController();
             aux.conectarControlador(this);
-
-
 
             // Creo el Scene
             Scene scene = new Scene(root);
@@ -97,11 +94,11 @@ public class ControladorProceso implements Initializable, Serializable{
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-		ControladorActividadesProceso aux = (ControladorActividadesProceso) loader.getController();
-		aux.conectarControlador(this);
+        ControladorActividadesProceso aux = (ControladorActividadesProceso) loader.getController();
+        aux.conectarControlador(this);
         Proceso procesoAMostrar = getTablaProcesoSeleccionado();
         aux.inicilizarTablaActividad(procesoAMostrar);
-		stage.show();
+        stage.show();
     }
 
     @FXML public void eliminarProceso(){
@@ -117,9 +114,9 @@ public class ControladorProceso implements Initializable, Serializable{
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-		ControladorCrearProceso aux = (ControladorCrearProceso) loader.getController();
-		aux.conectarControlador(this);
-		stage.show();
+        ControladorCrearProceso aux = (ControladorCrearProceso) loader.getController();
+        aux.conectarControlador(this);
+        stage.show();
     }
 
     /**
@@ -127,10 +124,10 @@ public class ControladorProceso implements Initializable, Serializable{
      */
     private final ListChangeListener<Proceso> selectorTablaProceso = new ListChangeListener<Proceso>() {
 
-                public void onChanged(ListChangeListener.Change<? extends Proceso> c) {
-                    ponerProcesoSeleccionada();
-                }
-            };
+        public void onChanged(ListChangeListener.Change<? extends Proceso> c) {
+            ponerProcesoSeleccionada();
+        }
+    };
 
 
     /**
@@ -146,36 +143,36 @@ public class ControladorProceso implements Initializable, Serializable{
             textFieldNombreProceso.setText(proceso.getNombreProceso());
         }
     }
-	
-     /**
+
+    /**
      * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
-	 *          
-	 */
+     *
+     */
     public Proceso getTablaProcesoSeleccionado() {
         if (tablaProcesos != null) {
-			List<Proceso> tabla = tablaProcesos.getSelectionModel().getSelectedItems();
+            List<Proceso> tabla = tablaProcesos.getSelectionModel().getSelectedItems();
             if (tabla.size() == 1) {
                 final Proceso competicionSeleccionada = tabla.get(0);
                 return competicionSeleccionada;
             }
         }
         return null;
-	}
+    }
 
-	public void crearProceso(String nombreProceso){
+    public void crearProceso(String nombreProceso){
         stage.close();
         Proceso nuevoProceso = new Proceso(nombreProceso,numeroProceso);
-		listaProcesos.add(nuevoProceso);
+        listaProcesos.add(nuevoProceso);
         Main.proyecto.crearProceso(nuevoProceso);
         numeroProceso++;
-	}
+    }
 
     private void inicializarTabla()throws FileNotFoundException, IOException{
         columnaCodigo.setCellValueFactory(new PropertyValueFactory<Proceso, Integer>("idProceso"));
-		columnaNombre.setCellValueFactory(new PropertyValueFactory<Proceso, String>("nombreProceso"));
-		columnaTiempoMinimo.setCellValueFactory(new PropertyValueFactory<Proceso, Double>("tiempoMinimo"));
-		columnaTiempoMaximo.setCellValueFactory(new PropertyValueFactory<Proceso, Double>("tiempoMaximo"));
-		tablaProcesos.setItems(listaProcesos);
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<Proceso, String>("nombreProceso"));
+        columnaTiempoMinimo.setCellValueFactory(new PropertyValueFactory<Proceso, Double>("tiempoMinimo"));
+        columnaTiempoMaximo.setCellValueFactory(new PropertyValueFactory<Proceso, Double>("tiempoMaximo"));
+        tablaProcesos.setItems(listaProcesos);
     }
 
     private void cargarTablaProcesos() {
@@ -187,25 +184,22 @@ public class ControladorProceso implements Initializable, Serializable{
         }
     }
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		try {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
             this.inicializarTabla();
         } catch (IOException e) {
             e.printStackTrace();
         }
         final ObservableList<Proceso> tablaProcesoSel = tablaProcesos.getSelectionModel().getSelectedItems();
         cargarTablaProcesos();
-		tablaProcesoSel.addListener(selectorTablaProceso);
-	}
+        tablaProcesoSel.addListener(selectorTablaProceso);
+    }
 
     public void agregarDato(String nombreProceso){
 
         Proceso nuevoProceso = new Proceso(nombreProceso,numeroProceso);
-        ListaDoble<Actividad> listaActiviAux=new ListaDoble<>();
-        listaActiviAux.agregarfinal(new Actividad("comer","no joda",true,324));
 
-        nuevoProceso.setListaActividades(listaActiviAux);
         listaProcesos.add(nuevoProceso);
         Main.proyecto.crearProceso(nuevoProceso);
         numeroProceso++;

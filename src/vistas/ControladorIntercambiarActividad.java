@@ -18,6 +18,7 @@ public class ControladorIntercambiarActividad implements Serializable{
 
     @FXML TextField textFieldNombreActivida1;
     @FXML TextField textFieldNombreActivida2;
+    @FXML TextField textFieldNombreVentana;
 
     @FXML public void intercambiarActividades(ActionEvent event){
         String nombreActividad1 = textFieldNombreActivida1.getText();

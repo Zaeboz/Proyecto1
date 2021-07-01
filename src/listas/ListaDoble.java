@@ -19,7 +19,6 @@ public class ListaDoble<T> implements Iterable<T>, Serializable {
 
 	private NodoDoble<T> nodoPrimero = null;
 	private NodoDoble<T> nodoUltimo = null;
-	private T ultimoAgregado = null;
 	private int tamanio = 0;
 
 
@@ -38,12 +37,10 @@ public class ListaDoble<T> implements Iterable<T>, Serializable {
 		if(estaVacia())
 		{
 			nodoPrimero = nodoUltimo = nuevoNodo;
-			ultimoAgregado = valorNodo;
 		}
 		else
 		{
 			nuevoNodo.setSiguienteNodo(nodoPrimero);
-			ultimoAgregado = valorNodo;
 			nodoPrimero = nuevoNodo;
 		}
 		tamanio++;
@@ -57,13 +54,11 @@ public class ListaDoble<T> implements Iterable<T>, Serializable {
 		if(estaVacia())
 		{
 			nodoPrimero = nodoUltimo = nuevoNodo;
-			ultimoAgregado = valorNodo;
 		}
 		else
 		{
 			nodoUltimo.setSiguienteNodo(nuevoNodo);
 			nuevoNodo.setAnteriorNodo(nodoUltimo);
-			ultimoAgregado = valorNodo;
 			nodoUltimo = nuevoNodo;
 		}
 		tamanio++;
@@ -91,7 +86,6 @@ public class ListaDoble<T> implements Iterable<T>, Serializable {
 				actual.setAnteriorNodo(nuevo);
 
 				tamanio++;
-				ultimoAgregado = dato;
 			}
 		}
 	}
@@ -464,13 +458,4 @@ public class ListaDoble<T> implements Iterable<T>, Serializable {
 	public void setTamanio(int tamanio) {
 		this.tamanio = tamanio;
 	}
-
-	public T getUltimoAgregado(){
-		return this.ultimoAgregado;
-	}
-
-	public void setUltimoAgregado(T ultimoAgregado) {
-		this.ultimoAgregado = ultimoAgregado;
-	}
-
 }

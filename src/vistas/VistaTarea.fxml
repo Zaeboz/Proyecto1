@@ -5,32 +5,31 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPaneProcesos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorProceso">
+<AnchorPane fx:id="anchorPaneProcesos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorTarea">
    <children>
-      <TableView layoutX="20.0" layoutY="60.0" prefHeight="464.0" prefWidth="462.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="60.0">
+      <TableView fx:id="tablaTareas" layoutX="20.0" layoutY="60.0" prefHeight="464.0" prefWidth="462.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="60.0">
          <columns>
-            <TableColumn prefWidth="83.0" text="I.D Actividad" />
-            <TableColumn prefWidth="117.0" text="Nombre" />
-            <TableColumn prefWidth="244.0" text="Descripcion" />
-            <TableColumn prefWidth="92.0" text="¿Obligatoria?" />
-            <TableColumn prefWidth="79.0" text="Tiempo" />
+            <TableColumn fx:id="nombreActividadColumna" prefWidth="83.0" text="Actividad" />
+            <TableColumn fx:id="nombreTareaColumna" prefWidth="117.0" text="Nombre" />
+            <TableColumn fx:id="descripcionTareaColumna" prefWidth="244.0" text="Descripcion" />
+            <TableColumn fx:id="obligatoriaColumna" prefWidth="92.0" text="¿Opcional?" />
+            <TableColumn fx:id="tiempoMaxColumna" prefWidth="93.0" text="Tiempo Maximo" />
+            <TableColumn fx:id="tiempoMinColumna" prefWidth="93.0" text="Tiempo Minimo" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField layoutX="585.0" layoutY="23.0" prefHeight="25.0" prefWidth="131.0" promptText="Buscar por código" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="23.0" />
-      <Button layoutX="716.0" layoutY="20.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="20.0" />
-      <MenuButton layoutX="20.0" layoutY="23.0" mnemonicParsing="false" text="MenuButton" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="23.0">
+      <Button fx:id="botonBuscarTareas" layoutX="716.0" layoutY="20.0" mnemonicParsing="false" onAction="#buscarTareas" prefHeight="32.0" prefWidth="33.0" styleClass="botonBuscar" stylesheets="@paqueteCSS.css" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="20.0" />
+      <MenuButton layoutX="20.0" layoutY="23.0" mnemonicParsing="false" text="Seleccione" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="23.0">
          <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
+            <MenuItem fx:id="InsertarFinal" mnemonicParsing="false" onAction="#cargarInsertarFinal" text="Insertarla al final" />
+            <MenuItem fx:id="InsertarEnPos" mnemonicParsing="false" onAction="#cargarInsertarPosicion" text="insertarla en una posicion" />
          </items>
       </MenuButton>
-      <Button layoutX="342.0" layoutY="22.0" mnemonicParsing="false" text="Eliminar" AnchorPane.topAnchor="22.0" />
-      <Button layoutX="252.0" layoutY="22.0" mnemonicParsing="false" text="Editar" AnchorPane.topAnchor="22.0" />
+      <Button fx:id="botonEliminarTarea" layoutX="342.0" layoutY="22.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" AnchorPane.topAnchor="22.0" />
+      <Button fx:id="botonEditarTarea" layoutX="252.0" layoutY="22.0" mnemonicParsing="false" onAction="#editar" text="Editar" AnchorPane.topAnchor="22.0" />
    </children>
 </AnchorPane>

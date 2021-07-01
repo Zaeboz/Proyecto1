@@ -1,5 +1,5 @@
 package application;
-	
+
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -14,17 +14,17 @@ import javafx.scene.layout.AnchorPane;
 
 
 public class Main extends Application {
-	
+
 	private static Main instance;
+	private static Stage primaryStage;
 	public static Proyecto proyecto = Persistencia.cargarRecursoProyectoXML();
-	
-	Stage primaryStage;
+
 	BorderPane borderPane;
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
-		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaPrincipal.fxml"));		
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaPrincipal.fxml"));
 		Parent root = loader.load();
 		loader.getController();
 		Scene scene = new Scene(root);
@@ -32,7 +32,13 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
+
+	public static void save()
+	{
+		Persistencia.guardarRecursoProyectoXML(Main.proyecto);
+		System.out.println("guardado");
+	}
+
 	public Proyecto getProyecto() {
 		return proyecto;
 	}
@@ -48,7 +54,7 @@ public class Main extends Application {
 	//Lanzar las vistas
 	public void cargarVistaProcesos(BorderPane mainPane) throws IOException {
 		mainPane.setCenter(null);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaProceso.fxml"));	
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaProceso.fxml"));
 		Parent root = loader.load();
 		AnchorPane view = (AnchorPane) root;
 		mainPane.setCenter(view);
@@ -56,7 +62,7 @@ public class Main extends Application {
 
 	public void cargarVistaActividades(BorderPane mainPane) throws IOException{
 		mainPane.setCenter(null);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaActividad.fxml"));	
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaActividad.fxml"));
 		Parent root = loader.load();
 		AnchorPane view = (AnchorPane) root;
 		mainPane.setCenter(view);
@@ -64,13 +70,16 @@ public class Main extends Application {
 
 	public void cargarVistaTareas(BorderPane mainPane) throws IOException{
 		mainPane.setCenter(null);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaTarea.fxml"));	
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaTarea.fxml"));
 		Parent root = loader.load();
 		AnchorPane view = (AnchorPane) root;
 		mainPane.setCenter(view);
 	}
 
-	//
+	public void cerrarVentana(){
+		primaryStage.close();
+	}
+
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -83,11 +92,11 @@ public class Main extends Application {
 	}
 
 	public static Main getInstance() {
-        if (instance == null) {
-            instance = new Main();
-        }
-        return instance;
-    }
+		if (instance == null) {
+			instance = new Main();
+		}
+		return instance;
+	}
 
 	public BorderPane getBorderPane() {
 		return borderPane;

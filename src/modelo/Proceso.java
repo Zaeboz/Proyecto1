@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import listas.Cola;
 import listas.ListaDoble;
+import listas.Pila;
 
 public class Proceso implements Serializable{
 
@@ -17,6 +18,177 @@ public class Proceso implements Serializable{
     private SimpleDoubleProperty tiempoMaximo = new SimpleDoubleProperty(0);
     private SimpleDoubleProperty tiempoMinimo = new SimpleDoubleProperty(0);
     private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
+    private Pila<Actividad> pilaActividadAux = new Pila<>();
+    private Actividad actividadUltimoAgregado = new Actividad();
+
+    //Constructores
+    public Proceso(String nombreProceso, int idProceso){
+        this.nombreProceso = new SimpleStringProperty (nombreProceso);
+        this.idProceso = new SimpleIntegerProperty (idProceso);
+    }
+    
+    public Proceso(String nombreProceso,int idProceso,Double tiempoMaximo,Double tiempoMinimo) {
+        this.nombreProceso = new SimpleStringProperty (nombreProceso);
+        this.idProceso = new SimpleIntegerProperty (idProceso);
+        this.tiempoMaximo= new SimpleDoubleProperty(tiempoMaximo);
+        this.tiempoMinimo=new SimpleDoubleProperty(tiempoMinimo);
+    }
+
+    public Proceso(){
+
+    }
+    
+    public void crearActividadFinal(Actividad actividad) {
+        listaActividades.agregarfinal(actividad);
+        actividadUltimoAgregado = actividad;
+        pilaActividadAux.push(actividad);
+    }
+
+    public void crearActividadDespues(Actividad actividadAInsertar, String nombreActividadAnterior) {
+        Actividad actividadAnterior = new Actividad();
+
+        for (int i = 0; i < listaActividades.getTamanio(); i++) {
+            actividadAnterior = listaActividades.obtener(i);
+            if (nombreActividadAnterior.equals(actividadAnterior.getNombre())) {
+                System.out.println(""+nombreActividadAnterior.equals(actividadAnterior.getNombre()));
+                if (validarActividad(actividadAInsertar)&&i+1<listaActividades.getTamanio()) {
+                    listaActividades.agregar(actividadAInsertar, i + 1);
+                    actividadUltimoAgregado = actividadAInsertar;
+                }
+                else if(i+1==listaActividades.getTamanio()){
+                    listaActividades.agregarfinal(actividadAInsertar);
+                    actividadUltimoAgregado = actividadAInsertar;
+                }
+            }
+        }
+        pilaActividadAux.push(actividadAInsertar);
+    }
+
+    public void crearActividadDespuesUltima(Actividad actividad) {
+
+        crearActividadDespues(actividad, actividadUltimoAgregado.getNombre());
+
+    }
+
+    /**
+     * @param actividad
+     * @return
+     */
+    public Boolean validarActividad(Actividad actividad) {
+
+        if(actividad != null){
+            for (int i = 1; i < listaActividades.getTamanio(); i++) {
+                if (listaActividades.obtener(i).getNombre().equals(actividad.getNombre())) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+
+    /**
+     * Metodo para buscar actividades dado un nombre
+     *
+     * @param nombreActividad nombre de la actividad a buscar
+     * @return la actividad a buscar
+     */
+    public Actividad buscarActividad(String nombreActividad) {
+        Actividad actividadAuxiliar = new Actividad();
+
+        for (int i = 0; i < this.listaActividades.getTamanio(); i++) {
+
+            actividadAuxiliar = this.listaActividades.obtenerValorNodo(i);
+
+            if (actividadAuxiliar.getNombre().equals(nombreActividad)) {
+                i = this.listaActividades.getTamanio();
+            }
+
+        }
+
+        return actividadAuxiliar;
+    }
+
+
+    public void eliminarActividad(Actividad actividadEliminar){
+
+        pilaActividadAux.imprimir();
+        pilaActividadAux.pop();
+        listaActividades.eliminar(actividadEliminar);
+        pilaActividadAux.imprimir();
+        if(pilaActividadAux.getTamano()==0){
+            actividadUltimoAgregado = null;
+        }
+        else actividadUltimoAgregado = pilaActividadAux.obtenerCima();
+
+    }
+
+    /**
+     * Metodo para intercambiar las tareas de 2 actividades
+     * @param nombreActi1 nombre de la actividad a buscar
+     * @param nombreActi2 nombre de la actividad a buscar
+     */
+    public void intercambiarActividadesTareas(String nombreActi1, String nombreActi2) {
+        Actividad actividad1 = buscarActividad(nombreActi1);
+        Actividad actividad2 = buscarActividad(nombreActi2);
+        Cola<Tarea> colaDeTareasAux1 = actividad1.getColaDeTareas();
+        Cola<Tarea> colaDeTareasAux2 = actividad2.getColaDeTareas();
+
+        int pos1 = listaActividades.obtenerPosicionNodo(actividad1);
+        int pos2 = listaActividades.obtenerPosicionNodo(actividad2);
+
+        actividad1.setColaDeTareas(colaDeTareasAux2);
+        actividad2.setColaDeTareas(colaDeTareasAux1);
+
+        actividad1.modificarIDColaTarea();
+        actividad2.modificarIDColaTarea();
+
+        listaActividades.modificarNodo(pos1, actividad1);
+        listaActividades.modificarNodo(pos2, actividad2);
+    }
+
+    /**
+     * Metodo para intercambiar dos actividades en la tabla de actividades
+     * @param nombreActi1
+     * @param nombreActi2
+     */
+    public void intercambiarActividades(String nombreActi1, String nombreActi2) {
+        Actividad actividad1 = new Actividad();
+        Actividad actividad2 = new Actividad();
+        actividad1 = buscarActividad(nombreActi1);
+        actividad2 = buscarActividad(nombreActi2);
+
+        int pos1 = listaActividades.obtenerPosicionNodo(actividad1);
+        int pos2 = listaActividades.obtenerPosicionNodo(actividad2);
+
+        listaActividades.modificarNodo(pos2, actividad1);
+        listaActividades.modificarNodo(pos1, actividad2);
+    }
+
+    //Getters and setters
+    public ListaDoble<Actividad> getListaActividades() {
+        return listaActividades;
+    }
+
+    public void setListaActividades(ListaDoble<Actividad> listaActividades) {
+        this.listaActividades = listaActividades;
+    }
+
+	public void setNombreProceso(SimpleStringProperty nombreProceso) {
+		this.nombreProceso = nombreProceso;
+	}
+
+	public void setIdProceso(SimpleIntegerProperty idProceso) {
+		this.idProceso = idProceso;
+	}
+
+	public void setTiempoMaximo(SimpleDoubleProperty tiempoMaximo) {
+		this.tiempoMaximo = tiempoMaximo;
+	}
+
+	public void setTiempoMinimo(SimpleDoubleProperty tiempoMinimo) {
+		this.tiempoMinimo = tiempoMinimo;
+	}
 
     public String getNombreProceso() {
         return nombreProceso.get();
@@ -67,192 +239,20 @@ public class Proceso implements Serializable{
         this.tiempoMinimo.set(tiempoMinimo);
     }
 
-    public Proceso(String nombreProceso, int idProceso){
-        this.nombreProceso = new SimpleStringProperty (nombreProceso);
-        this.idProceso = new SimpleIntegerProperty (idProceso);
-    }
-    
-    public Proceso(String nombreProceso,int idProceso,Double tiempoMaximo,Double tiempoMinimo) {
-        this.nombreProceso = new SimpleStringProperty (nombreProceso);
-        this.idProceso = new SimpleIntegerProperty (idProceso);
-        this.tiempoMaximo= new SimpleDoubleProperty(tiempoMaximo);
-        this.tiempoMinimo=new SimpleDoubleProperty(tiempoMinimo);
+    public Pila<Actividad> getPilaActividadAux() {
+        return pilaActividadAux;
     }
 
-    public Proceso(){
-
-    }
-    public ListaDoble<Actividad> getListaActividades() {
-        return listaActividades;
+    public void setPilaActividadAux(Pila<Actividad> pilaActividadAux) {
+        this.pilaActividadAux = pilaActividadAux;
     }
 
-    public void setListaActividades(ListaDoble<Actividad> listaActividades) {
-        this.listaActividades = listaActividades;
+    public Actividad getActividadUltimoAgregado() {
+        return actividadUltimoAgregado;
     }
 
-
-    public void crearActividadFinal(Actividad actividad) {
-        listaActividades.agregarfinal(actividad);
+    public void setActividadUltimoAgregado(Actividad actividadUltimoAgregado) {
+        this.actividadUltimoAgregado = actividadUltimoAgregado;
     }
-
-    public void crearActividadDespues(Actividad actividad, String nombreActividadAnterior) {
-        Actividad actividadAnterior = new Actividad();
-
-        for (int i = 0; i < listaActividades.getTamanio(); i++) {
-            actividadAnterior = listaActividades.obtener(i);
-            if (nombreActividadAnterior.equals(actividadAnterior.getNombre())!=true) {
-                if (validarActivid(actividad)) listaActividades.agregar(actividad, i + 1);
-                else System.out.println("Actividad repetida");
-            }
-        }
-    }
-
-    public void crearActividadDespuesUltima(Actividad actividad) {
-        Actividad actividadUltimaAgregada = listaActividades.getUltimoAgregado();
-
-        int posicion = listaActividades.obtenerPosicionNodo(actividadUltimaAgregada);
-        if (validarActivid(actividad)) listaActividades.agregar(actividad, posicion + 1);
-        else System.out.println("Actividad repetida");
-    }
-
-    /**
-     * @param actividad
-     * @return
-     */
-    public Boolean validarActivid(Actividad actividad) {
-
-        for (int i = 1; i < listaActividades.getTamanio() + 1; i++) {
-            if (listaActividades.obtener(i).getNombre().equals(actividad.getNombre())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Metood que calcula el tiempo maximo y minimo de una actividad
-     *
-     * @param actividadACalcular
-     * @throws CloneNotSupportedException exepcion que controla la clonacion de la cola de actividades
-     */
-    public void calcularTiemposActividad(Actividad actividadACalcular) throws CloneNotSupportedException {
-        Cola<Tarea> colaDeTareasAuxiliar = new Cola<>();
-        Tarea tareaAuxiliar = new Tarea();
-        double tiempoMaximo = 0;
-        double tiempoMinimo = 0;
-
-
-        colaDeTareasAuxiliar = actividadACalcular.getColaDeTareas();
-
-        colaDeTareasAuxiliar = (Cola<Tarea>) colaDeTareasAuxiliar.clone();
-
-        for (int j = 0; j < colaDeTareasAuxiliar.getTamano(); j++) {
-
-            tareaAuxiliar = colaDeTareasAuxiliar.desencolar();
-
-            if (tareaAuxiliar.isEsObligatoria()) {
-                tiempoMinimo = tiempoMinimo + tareaAuxiliar.getTiempoDuracion();
-
-            }
-            tiempoMaximo = tiempoMaximo + tareaAuxiliar.getTiempoDuracion();
-        }
-        actividadACalcular.setTiempoMaximo(tiempoMaximo);
-        actividadACalcular.setTiempoMinimo(tiempoMinimo);
-
-    }
-
-    /**
-     * Metodo que calcula el tiempo maximo y minimo de duracion de un proceso
-     *
-     * @throws CloneNotSupportedException
-     */
-    public void calcularTiempoDuracionProceso() throws CloneNotSupportedException {
-        ListaDoble<Actividad> listaActividadesAux = this.getListaActividades();
-        Cola<Tarea> colaDeTareasAuxiliar = new Cola<>();
-
-        Actividad actividadActualAuxiliar = new Actividad();
-
-        Tarea tareaActualAuxiliar = new Tarea();
-
-        double cantidadTiempoMaximoProceso = 0;
-        double cantidadTiempoMinimoProceso = 0;
-
-
-        for (int i = 0; i < listaActividadesAux.getTamanio(); i++) {
-
-            actividadActualAuxiliar = listaActividadesAux.obtenerValorNodo(i);
-
-            calcularTiemposActividad(actividadActualAuxiliar);
-            if (actividadActualAuxiliar.getEsObligatoria()) {
-
-
-                cantidadTiempoMinimoProceso = cantidadTiempoMinimoProceso + actividadActualAuxiliar.getTiempoMinimo();
-
-            }
-            cantidadTiempoMaximoProceso = cantidadTiempoMaximoProceso + actividadActualAuxiliar.getTiempoMaximo();
-        }
-    }
-
-    /**
-     * Metodo para buscar actividades dado un nombre
-     *
-     * @param nombreActividad nombre de la actividad a buscar
-     * @return la actividad a buscar
-     */
-    public Actividad buscarActividad(String nombreActividad) {
-        Actividad actividadAuxiliar = new Actividad();
-
-        for (int i = 0; i < this.listaActividades.getTamanio(); i++) {
-
-
-            actividadAuxiliar = this.listaActividades.obtenerValorNodo(i);
-
-            if (actividadAuxiliar.getNombre().equals(nombreActividad)) {
-                i = this.listaActividades.getTamanio();
-            }
-
-        }
-
-        return actividadAuxiliar;
-    }
-
-    /**
-     * Metodo para buscar actividades dado sus nombres
-     *
-     * @param nombreActi1 nombre de la actividad a buscar
-     * @param nombreActi2 nombre de la actividad a buscar
-     */
-    public void intercambiarActividades(String nombreActi1, String nombreActi2) {
-        Actividad actividad1 = new Actividad();
-        Actividad actividad2 = new Actividad();
-        Cola<Tarea> colaDeTareasAux1 = new Cola<Tarea>();
-        Cola<Tarea> colaDeTareasAux2 = new Cola<Tarea>();
-        actividad1 = buscarActividad(nombreActi1);
-        actividad2 = buscarActividad(nombreActi2);
-
-        colaDeTareasAux1 = actividad1.getColaDeTareas();
-        colaDeTareasAux2 = actividad2.getColaDeTareas();
-
-        actividad1.setColaDeTareas(colaDeTareasAux2);
-        actividad2.setColaDeTareas(colaDeTareasAux1);
-    }
-
-	public void setNombreProceso(SimpleStringProperty nombreProceso) {
-		this.nombreProceso = nombreProceso;
-	}
-
-	public void setIdProceso(SimpleIntegerProperty idProceso) {
-		this.idProceso = idProceso;
-	}
-
-	public void setTiempoMaximo(SimpleDoubleProperty tiempoMaximo) {
-		this.tiempoMaximo = tiempoMaximo;
-	}
-
-	public void setTiempoMinimo(SimpleDoubleProperty tiempoMinimo) {
-		this.tiempoMinimo = tiempoMinimo;
-	}
-
-    
 
 }

@@ -3,6 +3,7 @@ package listas;
 
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 
 
@@ -118,6 +119,20 @@ public class ListaSimple<T> implements Iterable<T>, Serializable {
 		System.out.println();
 	}
 
+	public void eliminarUltimo() {
+		if (estaVacia()) {
+		throw new NoSuchElementException();
+		}
+		Nodo<T> temp2 = nodoPrimero;
+		Nodo<T> temp = nodoPrimero.getSiguienteNodo();
+		while(temp.getSiguienteNodo() != null) {
+			temp2 = temp; 
+			temp = temp.getSiguienteNodo();
+		}
+		//now temp 2 should be pointing to the SECOND LAST node
+		temp2.setSiguienteNodo(nodoPrimero); //now the second last node points at the first
+		nodoUltimo = temp2;
+	}
 	//Eliminar dado el valor de un nodo
 	public T eliminar(T dato){
 		Nodo<T> nodo = nodoPrimero;
