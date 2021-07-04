@@ -58,20 +58,20 @@ public class ControladorTarea implements Initializable {
     public ControladorTarea() {
     }
 
-    private void llenarTabla()
-    {
-        colaTareas.removeAll();
+    private void llenarTabla() {
         colaTareas.clear();
         ListaSimple<Proceso> procesos = Main.proyecto.getListaProcesos();
         ListaDoble<Actividad> actividades;
         Cola<Tarea> tareas;
+        int sizeCola;
 
         try {
             for (int i = 0; i < procesos.getTamanio(); i++) {
                 actividades = procesos.obtenerValorNodo(i).getListaActividades();
                 for (int j = 0; j < actividades.getTamanio(); j++) {
                     tareas = actividades.obtenerValorNodo(j).getColaDeTareas();
-                    for (int k = 0; k < tareas.getTamano(); k++) {
+                    sizeCola = tareas.getTamano();
+                    for (int k = 0; k < sizeCola; k++) {
                         Tarea t = tareas.desencolar();
                         if (t != null) {
                             colaTareas.add(t);
@@ -119,6 +119,19 @@ public class ControladorTarea implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         ControladorVistaInsertarPosicion aux = (ControladorVistaInsertarPosicion) loader.getController();
+        aux.conectarControlador(this);
+        stage.show();
+    }
+
+    @FXML public void cargarVistaEditarTarea(ActionEvent event) throws IOException {
+        nombreStage = "VistaEditarTarea";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreStage+".fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        ControladorEditarTarea aux = (ControladorEditarTarea) loader.getController();
         aux.conectarControlador(this);
         stage.show();
     }
@@ -239,14 +252,11 @@ public class ControladorTarea implements Initializable {
 
     }
 
-    @FXML
-    public void editar(ActionEvent event) throws CloneNotSupportedException {
-        /**
-         * incompleto
-         */
+    public void editarTarea(Tarea tareaNueva) throws CloneNotSupportedException {
+
         Tarea tareaSeleccionada = getTablaTareaSeleccionada();
-        colaTareas.remove(tareaSeleccionada);
-        Main.proyecto.eliminarTarea(tareaSeleccionada);
+        Main.proyecto.editarTarea(tareaNueva, tareaSeleccionada.getNombre());
+        llenarTabla();
     }
 
     @FXML

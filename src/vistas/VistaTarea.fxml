@@ -29,6 +29,6 @@
          </items>
       </MenuButton>
       <Button fx:id="botonEliminarTarea" layoutX="342.0" layoutY="22.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" AnchorPane.topAnchor="22.0" />
-      <Button fx:id="botonEditarTarea" layoutX="252.0" layoutY="22.0" mnemonicParsing="false" onAction="#editar" text="Editar" AnchorPane.topAnchor="22.0" />
+      <Button fx:id="botonEditarTarea" layoutX="252.0" layoutY="22.0" mnemonicParsing="false" onAction="#cargarVistaEditarTarea" text="Editar" AnchorPane.topAnchor="22.0" />
    </children>
 </AnchorPane>

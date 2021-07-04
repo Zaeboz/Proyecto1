@@ -306,6 +306,17 @@ public class Proyecto implements Serializable {
         return activdadAux.buscarTarea(nombreTarea);
     }
 
+    public void editarTarea(Tarea tareaNueva, String nombreTareaAnterior) throws CloneNotSupportedException {
+
+        for(int i = 0; i < listaProcesos.getTamanio(); i++){
+            int sizeLista = listaProcesos.obtenerValorNodo(i).getListaActividades().getTamanio();
+            for(int a = 0; a < sizeLista; a++){
+                listaProcesos.obtenerValorNodo(i).getListaActividades().obtener(a).editarTarea(tareaNueva, nombreTareaAnterior);
+            }
+        }
+        Persistencia.guardarRecursoProyectoXML(Main.proyecto);
+    }
+
     //Getters and setters
     public ListaSimple<Proceso> getListaProcesos() {
         return listaProcesos;
@@ -322,4 +333,5 @@ public class Proyecto implements Serializable {
     public void setListaProcesos(ListaSimple<Proceso> listaProcesos) {
         this.listaProcesos = listaProcesos;
     }
+
 }

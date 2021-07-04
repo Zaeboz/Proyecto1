@@ -1,14 +1,14 @@
 package modelo;
 
 
-import java.io.Serializable;
-
 import exeptions.TareasNoObligatoriasException;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import listas.Cola;
+
+import java.io.Serializable;
 
 
 public class Actividad implements Cloneable, Serializable{
@@ -147,6 +147,28 @@ public class Actividad implements Cloneable, Serializable{
             }
         }
         return null;
+    }
+
+    public void editarTarea(Tarea tareaNueva, String nombreTareaAnterior) throws CloneNotSupportedException {
+        int sizeCola = colaDeTareas.getTamanio();
+
+        Cola<Tarea> colaTareasFinal = new Cola<>();
+        Cola<Tarea> colaTareasCopia = (Cola<Tarea>) colaDeTareas.clone();
+        Tarea tarea = buscarTarea(nombreTareaAnterior);
+
+        for(int i  = 0; i < sizeCola; i++){
+            Tarea tarea1 = colaTareasCopia.desencolar();
+            if(tarea==tarea1){
+                tarea1.setNombre(tareaNueva.getNombre());
+                tarea1.setTiempoDuracion(tareaNueva.getTiempoDuracion());
+                tarea1.setDescripcion(tareaNueva.getDescripcion());
+                tarea1.setEsOpcional(tareaNueva.isEsOpcional());
+                colaTareasFinal.encolar(tarea1);
+            }else{
+                colaTareasFinal.encolar(tarea1);
+            }
+        }
+        colaDeTareas = colaTareasFinal;
     }
 
     public double calcularDuracionActividad() throws CloneNotSupportedException {
