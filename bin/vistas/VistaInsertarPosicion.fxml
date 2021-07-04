@@ -50,5 +50,6 @@
          </font>
       </Label>
       <TextField fx:id="txtPosicion" layoutX="287.0" layoutY="229.0" promptText="Ingrese la posicion" />
+      <Label layoutX="190.0" layoutY="11.0" text="Insertar una tarea una poscion especifica" />
    </children>
 </AnchorPane>

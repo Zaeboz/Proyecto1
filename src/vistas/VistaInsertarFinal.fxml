@@ -44,5 +44,6 @@
          </font>
       </Label>
       <TextField fx:id="txtNombreActividad" layoutX="287.0" layoutY="80.0" promptText="Ingrese el nombre" />
+      <Label layoutX="237.0" layoutY="8.0" text="Insertar una tarea al final" />
    </children>
 </AnchorPane>

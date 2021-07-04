@@ -24,7 +24,7 @@ public class ControladorEditarActividad {
     }
 
     @FXML
-    public void guardarDatos(){
+    public void guardarDatos() throws CloneNotSupportedException {
         Boolean esObligatoria;
         String nombreProceso=textNombreActividad.getText();
         String descripcion = textFieldDescripcion.getText();

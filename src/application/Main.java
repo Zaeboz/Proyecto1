@@ -21,6 +21,13 @@ public class Main extends Application {
 
 	BorderPane borderPane;
 
+	public Main() {
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 	@Override
 	public void start(Stage stage) throws Exception {
 
@@ -36,22 +43,10 @@ public class Main extends Application {
 	public static void save()
 	{
 		Persistencia.guardarRecursoProyectoXML(Main.proyecto);
-		System.out.println("guardado");
-	}
-
-	public Proyecto getProyecto() {
-		return proyecto;
-	}
-
-	public void setProyecto(Proyecto proyecto){
-		Main.proyecto = proyecto;
-	}
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 
 	//Lanzar las vistas
+
 	public void cargarVistaProcesos(BorderPane mainPane) throws IOException {
 		mainPane.setCenter(null);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaProceso.fxml"));
@@ -59,7 +54,6 @@ public class Main extends Application {
 		AnchorPane view = (AnchorPane) root;
 		mainPane.setCenter(view);
 	}
-
 	public void cargarVistaActividades(BorderPane mainPane) throws IOException{
 		mainPane.setCenter(null);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaActividad.fxml"));
@@ -76,8 +70,11 @@ public class Main extends Application {
 		mainPane.setCenter(view);
 	}
 
-	public void cerrarVentana(){
-		primaryStage.close();
+	public static Main getInstance() {
+		if (instance == null) {
+			instance = new Main();
+		}
+		return instance;
 	}
 
 	public Stage getPrimaryStage() {
@@ -88,21 +85,19 @@ public class Main extends Application {
 		this.primaryStage = primaryStage;
 	}
 
-	public Main() {
-	}
-
-	public static Main getInstance() {
-		if (instance == null) {
-			instance = new Main();
-		}
-		return instance;
-	}
-
 	public BorderPane getBorderPane() {
 		return borderPane;
 	}
 
 	public void setBorderPane(BorderPane borderPane) {
 		this.borderPane = borderPane;
+	}
+
+	public Proyecto getProyecto() {
+		return proyecto;
+	}
+
+	public void setProyecto(Proyecto proyecto){
+		Main.proyecto = proyecto;
 	}
 }

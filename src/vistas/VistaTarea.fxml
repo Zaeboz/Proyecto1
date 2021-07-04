@@ -14,7 +14,7 @@
             <TableColumn fx:id="nombreActividadColumna" prefWidth="83.0" text="Actividad" />
             <TableColumn fx:id="nombreTareaColumna" prefWidth="117.0" text="Nombre" />
             <TableColumn fx:id="descripcionTareaColumna" prefWidth="244.0" text="Descripcion" />
-            <TableColumn fx:id="obligatoriaColumna" prefWidth="92.0" text="¿Opcional?" />
+            <TableColumn fx:id="esOpcionalColumna" prefWidth="92.0" text="¿Opcional?" />
             <TableColumn fx:id="tiempoDuracion" prefWidth="93.0" text="Tiempo Duracion" />
          </columns>
          <columnResizePolicy>

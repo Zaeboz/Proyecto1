@@ -5,32 +5,54 @@
    <int>3</int>
   </void>
  </object>
-<void class="listas.Nodo" id="Nodo0">
+<void class="listas.NodoDoble" id="NodoDoble0">
  <void property="valorNodo">
-  <object class="modelo.Proceso" id="Proceso0">
-   <void id="Actividad0" property="actividadUltimoAgregado">
-    <void property="codigoProceso">
-     <int>1</int>
-    </void>
-    <void property="colaDeTareas">
-     <void property="nodoPrimero">
-      <object class="listas.Nodo">
-       <void property="siguienteNodo">
+  <object class="modelo.Actividad" id="Actividad0">
+   <void property="codigoProceso">
+    <int>1</int>
+   </void>
+   <void property="descripcion">
+    <string>3</string>
+   </void>
+   <void property="esObligatoria">
+    <boolean>true</boolean>
+   </void>
+   <void property="nombre">
+    <string>Actividad 3</string>
+   </void>
+  </object>
+ </void>
+ <void property="anteriorNodo">
+  <object class="listas.NodoDoble" id="NodoDoble1">
+   <void property="siguienteNodo">
+    <object idref="NodoDoble0"/>
+   </void>
+   <void property="valorNodo">
+    <void class="modelo.Proceso" id="Proceso0">
+     <void id="Actividad1" property="actividadUltimoAgregado">
+      <void property="codigoProceso">
+       <int>1</int>
+      </void>
+      <void property="colaDeTareas">
+       <void property="nodoPrimero">
         <object class="listas.Nodo">
          <void property="siguienteNodo">
           <object class="listas.Nodo">
            <void property="siguienteNodo">
-            <object class="listas.Nodo" id="Nodo1">
+            <object class="listas.Nodo" id="Nodo0">
              <void property="valorNodo">
               <object class="modelo.Tarea">
                <void property="descripcion">
                 <string>3</string>
                </void>
+               <void property="esOpcional">
+                <boolean>true</boolean>
+               </void>
                <void property="nombre">
                 <string>3</string>
                </void>
                <void property="nombreActividad">
-                <string>1</string>
+                <string>Actividad 1</string>
                </void>
                <void property="tiempoDuracion">
                 <double>3.0</double>
@@ -48,7 +70,7 @@
               <string>2</string>
              </void>
              <void property="nombreActividad">
-              <string>1</string>
+              <string>Actividad 1</string>
              </void>
              <void property="tiempoDuracion">
               <double>2.0</double>
@@ -60,143 +82,76 @@
          <void property="valorNodo">
           <object class="modelo.Tarea">
            <void property="descripcion">
-            <string>4</string>
-           </void>
-           <void property="nombre">
-            <string>4</string>
-           </void>
-           <void property="nombreActividad">
             <string>1</string>
            </void>
+           <void property="nombre">
+            <string>1</string>
+           </void>
+           <void property="nombreActividad">
+            <string>Actividad 1</string>
+           </void>
            <void property="tiempoDuracion">
-            <double>4.0</double>
+            <double>1.0</double>
            </void>
           </object>
          </void>
         </object>
        </void>
-       <void property="valorNodo">
-        <object class="modelo.Tarea">
-         <void property="descripcion">
-          <string>1</string>
-         </void>
-         <void property="nombre">
-          <string>1</string>
-         </void>
-         <void property="nombreActividad">
-          <string>1</string>
-         </void>
-         <void property="tiempoDuracion">
-          <double>1.0</double>
-         </void>
-        </object>
+       <void property="nodoUltimo">
+        <object idref="Nodo0"/>
        </void>
-      </object>
-     </void>
-     <void property="nodoUltimo">
-      <object idref="Nodo1"/>
-     </void>
-     <void property="tamanio">
-      <int>4</int>
-     </void>
-    </void>
-    <void property="descripcion">
-     <string>1</string>
-    </void>
-    <void property="esObligatoria">
-     <boolean>true</boolean>
-    </void>
-    <void property="nombre">
-     <string>1</string>
-    </void>
-   </void>
-   <void property="idProceso">
-    <int>1</int>
-   </void>
-   <void property="listaActividades">
-    <void property="nodoPrimero">
-     <object class="listas.NodoDoble" id="NodoDoble0">
-      <void property="valorNodo">
-       <object idref="Actividad0"/>
-      </void>
-     </object>
-    </void>
-    <void property="nodoUltimo">
-     <object idref="NodoDoble0"/>
-    </void>
-    <void property="tamanio">
-     <int>1</int>
-    </void>
-   </void>
-   <void property="nombreProceso">
-    <string>1</string>
-   </void>
-   <void property="pilaActividadAux">
-    <void property="cima">
-     <object class="listas.Nodo">
-      <void property="valorNodo">
-       <object idref="Actividad0"/>
-      </void>
-     </object>
-    </void>
-    <void property="tamano">
-     <int>1</int>
-    </void>
-   </void>
-  </object>
- </void>
- <void property="siguienteNodo">
-  <object class="listas.Nodo" id="Nodo2">
-   <void property="valorNodo">
-    <object class="modelo.Proceso" id="Proceso1">
-     <void id="Actividad1" property="actividadUltimoAgregado">
-      <void property="codigoProceso">
-       <int>2</int>
+       <void property="tamanio">
+        <int>3</int>
+       </void>
       </void>
       <void property="descripcion">
-       <string>2</string>
+       <string>1</string>
       </void>
       <void property="esObligatoria">
        <boolean>true</boolean>
       </void>
       <void property="nombre">
-       <string>2</string>
+       <string>Actividad 1</string>
       </void>
      </void>
      <void property="idProceso">
-      <int>2</int>
+      <int>1</int>
      </void>
      <void property="listaActividades">
       <void property="nodoPrimero">
-       <object class="listas.NodoDoble" id="NodoDoble1">
-        <void property="valorNodo">
-         <object idref="Actividad1"/>
-        </void>
-       </object>
-      </void>
-      <void property="nodoUltimo">
        <object idref="NodoDoble1"/>
       </void>
+      <void property="nodoUltimo">
+       <object idref="NodoDoble0"/>
+      </void>
       <void property="tamanio">
-       <int>1</int>
+       <int>2</int>
       </void>
      </void>
      <void property="nombreProceso">
-      <string>2</string>
+      <string>1</string>
      </void>
      <void property="pilaActividadAux">
       <void property="cima">
        <object class="listas.Nodo">
+        <void property="siguienteNodo">
+         <object class="listas.Nodo">
+          <void property="valorNodo">
+           <object idref="Actividad0"/>
+          </void>
+         </object>
+        </void>
         <void property="valorNodo">
          <object idref="Actividad1"/>
         </void>
        </object>
       </void>
       <void property="tamano">
-       <int>1</int>
+       <int>2</int>
       </void>
      </void>
-    </object>
+    </void>
+    <object idref="Actividad1"/>
    </void>
   </object>
  </void>
@@ -206,13 +161,34 @@
  <void id="ListaSimple0" method="get">
   <object idref="Proyecto0"/>
   <void property="nodoUltimo">
-   <object idref="Nodo2"/>
+   <object class="listas.Nodo" id="Nodo1">
+    <void property="valorNodo">
+     <object class="modelo.Proceso">
+      <void property="actividadUltimoAgregado">
+       <null/>
+      </void>
+      <void property="idProceso">
+       <int>2</int>
+      </void>
+      <void property="nombreProceso">
+       <string>2</string>
+      </void>
+     </object>
+    </void>
+   </object>
   </void>
   <void property="tamanio">
    <int>2</int>
   </void>
   <void property="nodoPrimero">
-   <object idref="Nodo0"/>
+   <object class="listas.Nodo">
+    <void property="siguienteNodo">
+     <object idref="Nodo1"/>
+    </void>
+    <void property="valorNodo">
+     <object idref="Proceso0"/>
+    </void>
+   </object>
   </void>
  </void>
 </void>

@@ -22,7 +22,6 @@ public class ControladorCrearActividadFinal implements Serializable{
     @FXML TextField textFiledNombre;
     @FXML TextField textFiledIDProceso;
     @FXML TextField textFiledDescripcion;
-    @FXML TextField textFiledNombreActividadAnterior;
 
     private ControladorActividad controladorActividad;
 

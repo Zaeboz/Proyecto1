@@ -5,13 +5,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="208.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorEditarProceso">
+<AnchorPane prefHeight="208.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorEditarProceso">
    <children>
       <Label layoutX="23.0" layoutY="61.0" prefHeight="17.0" prefWidth="111.0" text="Nombre" />
       <TextField fx:id="textNombreProceso" layoutX="157.0" layoutY="66.0" />
       <Label layoutX="44.0" layoutY="113.0" prefHeight="17.0" prefWidth="25.0" text="Id" />
       <TextField fx:id="textIdProceso" layoutX="157.0" layoutY="109.0" />
       <Label fx:id="nombreProcesoAEditar" layoutX="68.0" layoutY="23.0" prefHeight="17.0" prefWidth="202.0" />
-      <Button fx:id="btnguardar" layoutX="128.0" layoutY="159.0" mnemonicParsing="false" onAction="#guardarDatos" text="Guardar" />
+      <Button fx:id="btnguardar" layoutX="138.0" layoutY="157.0" mnemonicParsing="false" onAction="#guardarDatos" text="Guardar" />
+      <Label layoutX="114.0" layoutY="15.0" text="Ventana de edecion" />
    </children>
 </AnchorPane>

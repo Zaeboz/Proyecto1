@@ -10,7 +10,7 @@ import modelo.Proyecto;
 
 public class ArchivoUtil {
 
-    public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
+	public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
 
 		XMLDecoder decodificadorXML;
 		Object objetoXML;
@@ -30,5 +30,5 @@ public class ArchivoUtil {
 		codificadorXML.writeObject(proyecto);
 		codificadorXML.close();
 	}
-    
+
 }

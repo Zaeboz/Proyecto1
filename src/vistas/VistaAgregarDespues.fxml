@@ -22,7 +22,7 @@
       <RadioButton fx:id="radioButtonSiEs" layoutX="199.0" layoutY="203.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="42.0" text="Sí." />
       <RadioButton fx:id="radioButtonNoEs" layoutX="241.0" layoutY="203.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="48.0" text="No." />
       <TextField fx:id="textFiledNombreActividadAnterior" layoutX="163.0" layoutY="123.0" prefHeight="38.0" prefWidth="167.0" promptText="Nombre de la actividad" />
-      <Label layoutX="89.0" layoutY="14.0" text="Agregar actividad despues &#10;de una actividad en especifica" textAlignment="CENTER">
+      <Label layoutX="85.0" layoutY="14.0" text="Agregar una actividad despues &#10;de una actividad en especifica" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>

@@ -24,10 +24,178 @@ public class Actividad implements Cloneable, Serializable{
     private SimpleDoubleProperty tiempoMaximo = new SimpleDoubleProperty(0);
     private SimpleDoubleProperty tiempoMinimo = new SimpleDoubleProperty(0);
 
+    public Actividad() {
+    }
+
+    public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigoProceso) {
+        this.nombre.set(nombre);
+        this.descripcion.set(descripcion);
+        this.esObligatoria.set(esObligatorio);
+        this.codigoProceso.set(codigoProceso);
+    }
+
+    /**
+     * Metodo que crea una tarea al final de la cola de tareas
+     *
+     * @param tarea
+     * @throws TareasNoObligatoriasException
+     */
+    public void crearTareaAlFinal(Tarea tarea) throws TareasNoObligatoriasException {
+        Tarea miTareaAuxiliar = colaDeTareas.obtenerUltimoElemento();
+        if(miTareaAuxiliar == null)
+        {
+            colaDeTareas.encolar(tarea);
+        }else if (tarea.isEsOpcional() && miTareaAuxiliar.isEsOpcional()) {
+            throw new TareasNoObligatoriasException("La siguiente tarea debe ser opcional");
+        } else {
+            colaDeTareas.encolar(tarea);
+        }
+    }
+
+    /**
+     * Metodo para modificar el ID de actividad de las tareas. Esto sdebe de ejecutar
+     * ya que al intercambiar las tareas de 2 actividades tambien se debe de modificar
+     * el nombre ID de actividad de las tareas
+     */
+    public void modificarIDColaTarea(){
+        Cola<Tarea> colaAux = new Cola<>();
+        Tarea tareaAux = new Tarea();
+        int size = colaDeTareas.getTamanio();
+
+        for(int i = size; i > 0; i--){
+            tareaAux = colaDeTareas.desencolar();
+            tareaAux.setNombreActividad(nombre.getValue());
+            colaAux.encolar(tareaAux);
+        }
+        colaDeTareas = colaAux;
+    }
+
+    /**
+     * Metodo que crea una tarea en una posicion
+     * @param tarea
+     * @param posicion
+     * @return
+     */
+    public void crearTareaEnPosicion(Tarea tarea, int posicion) {
+        Cola<Tarea> nuevaCola = new Cola<>();
+        if(colaDeTareas.validarPosicion(posicion)){
+            int size = getColaDeTareas().getTamanio();
+            for(int i = 0; i <= size; i++){
+                if(posicion-1==i) nuevaCola.encolar(tarea);
+                else nuevaCola.encolar(getColaDeTareas().desencolar());
+            }
+            colaDeTareas = nuevaCola;
+        }else{
+            //Poner vantana emergente
+        }
+    }
+
+    /**
+     * Metodo para modificar el ID de la actividad a la que pertenece la tarea.
+     * Este metodo solo se ejecuta cuando se modifica o se edita una actividad
+     * @param nombreActividad Nuevo nombre de la actividad o ID
+     */
+    public void modificarNombreActicidadTareas(String nombreActividad)  {
+        Cola<Tarea> tareasClone = new Cola<>();
+        int size = colaDeTareas.getTamanio();
+
+        if(size!=0){
+            for(int i = 0; i < size; i++){
+                Tarea tareaAux = colaDeTareas.desencolar();
+                tareaAux.setNombreActividad(nombreActividad);
+                tareasClone.encolar(tareaAux);
+            }
+
+            for(int i = 0; i < size; i++){
+                colaDeTareas.encolar(tareasClone.desencolar());
+            }
+        }
+    }
+
+    /**
+     * Metodo para eliminar una tarea de la cola de tareas
+     * @param tarea Tarea a eliminar
+     * @throws CloneNotSupportedException
+     */
+    public void eliminarTarea(Tarea tarea) throws CloneNotSupportedException {
+        int sizeCola = colaDeTareas.getTamanio();
+
+        Cola<Tarea> colaTareasFinal = new Cola<>();
+        Cola<Tarea> colaTareasCopia = (Cola<Tarea>) colaDeTareas.clone();
+
+        for(int i  = 0; i < sizeCola; i++){
+            Tarea tarea1 = colaTareasCopia.desencolar();
+            if(tarea!=tarea1) colaTareasFinal.encolar(tarea1);
+        }
+
+        colaDeTareas = colaTareasFinal;
+    }
+
+    /**
+     * Metodo para buscar una tarea dentro de la cola de tareas
+     * @param nombreTarea Nombre de la tarea a buscar
+     * @return La tarea encontrada de lo contrario retorna null
+     * @throws CloneNotSupportedException
+     */
+    public Tarea buscarTarea(String nombreTarea) throws CloneNotSupportedException {
+        Cola<Tarea> colaTereas = (Cola<Tarea>) colaDeTareas.clone();
+        int size = colaTereas.getTamanio();
+        for (int i = 0; i < size; i++){
+            Tarea tareaAux = colaTereas.desencolar();
+            if(nombreTarea.equals(tareaAux.getNombre())){
+                return tareaAux;
+            }
+        }
+        return null;
+    }
+
+    public double calcularDuracionActividad() throws CloneNotSupportedException {
+        Cola<Tarea> colaTareasAuxClonada=new Cola<Tarea>();
+        colaTareasAuxClonada= (Cola<Tarea>) this.getColaDeTareas().clone();
+        Tarea tareaAux=new Tarea();
+        double tiempoDuracion=0;
+        for (int k=0;k<colaTareasAuxClonada.getTamano();k++)
+        {
+            tareaAux=colaTareasAuxClonada.desencolar();
+
+            tiempoDuracion=tiempoDuracion+tareaAux.getTiempoDuracion();
+        }
+
+        return tiempoDuracion;
+    }
+
+    public Object clone( ) throws CloneNotSupportedException{
+        return super.clone();
+    }
+    @Override
+    public String toString(){
+        return ("Nombre: "+nombre.getValue()+", Codigo del proceso: "+codigoProceso.getValue()+
+                ", Descripcion: "+descripcion.getValue()+", ¿Es obligatoria?:  "+esObligatoria.getValue());
+    }
+
+    public String getNombre() {
+        return this.nombre.get();
+    }
+
+    public double getTiempoMaximo() {
+        return tiempoMaximo.get();
+    }
+
+    public double getTiempoMinimo() {
+        return tiempoMinimo.get();
+    }
+
+    public void setTiempoMinimo(double tiempoMinimo) {
+        this.tiempoMinimo.set(tiempoMinimo);
+    }
+
+    public void setCodigoProceso(int codigoProceso) {
+        this.codigoProceso.set(codigoProceso);
+    }
+
     public void setTiempoMaximo(double tiempoMaximo) {
         this.tiempoMaximo.set(tiempoMaximo);
     }
-
 
     public void setNombre(String nombre) {
         this.nombre.set(nombre);
@@ -59,105 +227,5 @@ public class Actividad implements Cloneable, Serializable{
 
     public int getCodigoProceso() {
         return codigoProceso.get();
-    }
-
-    public Actividad(String nombre, String descripcion, boolean esObligatorio, int codigoProceso) {
-        this.nombre.set(nombre);
-        this.descripcion.set(descripcion);
-        this.esObligatoria.set(esObligatorio);
-        this.codigoProceso.set(codigoProceso);
-    }
-    
-    public Actividad() {
-    }
-
-    /**
-     * Metodo que crea una tarea al final de la cola de tareas
-     *
-     * @param tarea
-     * @throws TareasNoObligatoriasException
-     */
-    public void crearTareaAlFinal(Tarea tarea) throws TareasNoObligatoriasException {
-        Tarea miTareaAuxiliar = colaDeTareas.obtenerUltimoElemento();
-        if(miTareaAuxiliar == null)
-        {
-            colaDeTareas.encolar(tarea);
-        }else if (tarea.isEsOpcional() && miTareaAuxiliar.isEsOpcional()) {
-            throw new TareasNoObligatoriasException("La siguiente tarea debe ser opcional");
-        } else {
-            colaDeTareas.encolar(tarea);
-        }
-    }
-
-    public void modificarIDColaTarea(){
-        Cola<Tarea> colaAux = new Cola<>();
-        Tarea tareaAux = new Tarea();
-        int size = colaDeTareas.getTamanio();
-        for(int i = size; i > 0; i--){
-            tareaAux = colaDeTareas.desencolar();
-            tareaAux.setNombreActividad(nombre.getValue());
-            colaAux.encolar(tareaAux);
-        }
-        colaDeTareas = colaAux;
-    }
-
-    /**
-     * Metodo que crea una tarea en una posicion
-     * @param tarea
-     * @param posicion
-     * @return
-     */
-    public Cola<Tarea> crearTareaEnPosicion(Tarea tarea, int posicion) {
-        Cola<Tarea> nuevaCola = new Cola<>();
-        int size = getColaDeTareas().getTamanio();
-        for(int i = 0; i <= size; i++){
-            if(posicion-1==i) nuevaCola.encolar(tarea);
-            else nuevaCola.encolar(getColaDeTareas().desencolar());
-        }
-        return nuevaCola;
-    }
-
-    public double calcularDuracionActividad() throws CloneNotSupportedException {
-        Cola<Tarea> colaTareasAuxClonada=new Cola<Tarea>();
-        colaTareasAuxClonada= (Cola<Tarea>) this.getColaDeTareas().clone();
-        Tarea tareaAux=new Tarea();
-        double tiempoDuracion=0;
-        for (int k=0;k<colaTareasAuxClonada.getTamano();k++)
-        {
-            tareaAux=colaTareasAuxClonada.desencolar();
-
-            tiempoDuracion=tiempoDuracion+tareaAux.getTiempoDuracion();
-        }
-
-        return tiempoDuracion;
-    }
-    public Object clone( ) throws CloneNotSupportedException{
-        return super.clone();
-    }
-
-    public String getNombre() {
-        return this.nombre.get();
-    }
-
-    public double getTiempoMaximo() {
-        return tiempoMaximo.get();
-    }
-
-    public double getTiempoMinimo() {
-        return tiempoMinimo.get();
-    }
-
-    public void setTiempoMinimo(double tiempoMinimo) {
-        this.tiempoMinimo.set(tiempoMinimo);
-    }
-
-    public void setCodigoProceso(int codigoProceso) {
-        this.codigoProceso.set(codigoProceso);
-    }
-
-    @Override
-    public String toString(){
-        return ("Nombre: "+nombre.getValue()+", Codigo del proceso: "+codigoProceso.getValue()+
-                ", Descripcion: "+descripcion.getValue()+", ¿Es obligatoria?:  "+esObligatoria.getValue());
     }
 }

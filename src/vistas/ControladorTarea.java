@@ -29,7 +29,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ControladorTarea implements Initializable {
@@ -51,7 +50,7 @@ public class ControladorTarea implements Initializable {
     @FXML TableColumn<Tarea, String> nombreTareaColumna = new TableColumn<>("nombre");
     @FXML TableColumn<Tarea, String> descripcionTareaColumna = new TableColumn<>("descripcion");
     @FXML TableColumn<Tarea, Double> tiempoDuracion = new TableColumn<>("tiempoDuracion");
-    @FXML TableColumn<Tarea, Boolean> obligatoriaColumna = new TableColumn<>("obligatoria");
+    @FXML TableColumn<Tarea, Boolean> esOpcionalColumna = new TableColumn<>("esOpcional");
     ObservableList<Tarea> colaTareas = FXCollections.observableArrayList();
     private String nombreStage;
     private int posicionEnTabla;
@@ -338,7 +337,7 @@ public class ControladorTarea implements Initializable {
         nombreTareaColumna.setCellValueFactory(new PropertyValueFactory<Tarea, String>("nombre"));
         descripcionTareaColumna.setCellValueFactory(new PropertyValueFactory<Tarea, String>("descripcion"));
         tiempoDuracion.setCellValueFactory(new PropertyValueFactory<Tarea, Double>("TiempoDuracion"));
-        obligatoriaColumna.setCellValueFactory(new PropertyValueFactory<Tarea, Boolean>("obligatoria"));
+        esOpcionalColumna.setCellValueFactory(new PropertyValueFactory<Tarea, Boolean>("esOpcional"));
         tablaTareas.setItems(colaTareas);
     }
 

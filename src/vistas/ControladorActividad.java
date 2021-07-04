@@ -93,9 +93,9 @@ public class ControladorActividad implements Initializable, Serializable {
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-		ControladorCrearActividadFinal aux = (ControladorCrearActividadFinal) loader.getController();
-		aux.conectarControlador(this);
-		stage.show();
+        ControladorCrearActividadFinal aux = (ControladorCrearActividadFinal) loader.getController();
+        aux.conectarControlador(this);
+        stage.show();
     }
 
     /**
@@ -112,9 +112,9 @@ public class ControladorActividad implements Initializable, Serializable {
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-		ControladorCrearActividadFinal aux = (ControladorCrearActividadFinal) loader.getController();
-		aux.conectarControlador(this);
-		stage.show();
+        ControladorCrearActividadFinal aux = (ControladorCrearActividadFinal) loader.getController();
+        aux.conectarControlador(this);
+        stage.show();
     }
 
     /**
@@ -132,9 +132,9 @@ public class ControladorActividad implements Initializable, Serializable {
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-		ControladorCrearActividadDespues aux = (ControladorCrearActividadDespues) loader.getController();
-		aux.conectarControlador(this);
-		stage.show();
+        ControladorCrearActividadDespues aux = (ControladorCrearActividadDespues) loader.getController();
+        aux.conectarControlador(this);
+        stage.show();
     }
 
     @FXML
@@ -146,9 +146,9 @@ public class ControladorActividad implements Initializable, Serializable {
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-		ControladorIntercambiarActividad aux = (ControladorIntercambiarActividad) loader.getController();
-		aux.conectarControlador(this);
-		stage.show();
+        ControladorIntercambiarActividad aux = (ControladorIntercambiarActividad) loader.getController();
+        aux.conectarControlador(this);
+        stage.show();
     }
 
     @FXML
@@ -173,9 +173,9 @@ public class ControladorActividad implements Initializable, Serializable {
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-		ControladorEditarActividad aux = (ControladorEditarActividad) loader.getController();
-		aux.conectarControlador(this);
-		stage.show();
+        ControladorEditarActividad aux = (ControladorEditarActividad) loader.getController();
+        aux.conectarControlador(this);
+        stage.show();
     }
 
     //Metodos
@@ -185,29 +185,29 @@ public class ControladorActividad implements Initializable, Serializable {
      * @param actividadAnterior
      */
     public void crear(Actividad actividadAux, String actividadAnterior){
-     
+
         switch (nombreStage){
 
             case "VistaAgregarDespuesUltima":
                 stage.close();
                 Main.proyecto.crearActividadDespuesUltima(actividadAux);
                 cargarTablaActividades();
-            break;
+                break;
 
             case "VistaAgregarFinal":
                 stage.close();
                 Main.proyecto.crearActividadFinal(actividadAux);
                 cargarTablaActividades();
-            break;
+                break;
 
             case "VistaAgregarDespues":
                 stage.close();
                 Main.proyecto.crearActividadDespues(actividadAux, actividadAnterior);
                 cargarTablaActividades();
-            break;
+                break;
 
             default: System.out.println("Nombre stage esta vacio");
-            break;
+                break;
         }
     }
 
@@ -217,28 +217,42 @@ public class ControladorActividad implements Initializable, Serializable {
         Actividad actividad2 = new Actividad();
         switch(nombreStage){
             case "IntercabiarTareas":
-                actividad1 = Main.proyecto.buscarActividad(nombreActividad1);
-                actividad2 = Main.proyecto.buscarActividad(nombreActividad2);
+                actividad1 = Main.proyecto.buscarActividadEnProcesos(nombreActividad1);
+                actividad2 = Main.proyecto.buscarActividadEnProcesos(nombreActividad2);
                 Main.proyecto.intercambiarActividadesTareas(actividad1, actividad2);
                 cargarTablaActividades();
                 break;
 
             case "IntercabiarActividad":
-                 actividad1 = Main.proyecto.buscarActividad(nombreActividad1);
-                 actividad2 = Main.proyecto.buscarActividad(nombreActividad2);
-                 Main.proyecto.intercambiarActividades(actividad1, actividad2);
-                 cargarTablaActividades();
-                 break;
+                actividad1 = Main.proyecto.buscarActividadEnProcesos(nombreActividad1);
+                actividad2 = Main.proyecto.buscarActividadEnProcesos(nombreActividad2);
+                Main.proyecto.intercambiarActividades(actividad1, actividad2);
+                cargarTablaActividades();
+                break;
         }
     }
 
     @FXML
-    public void buscarActividad(ActionEvent event) {
-        String nombre = textFiledBuscar.getText();
-        Actividad actividadAux = Main.proyecto.buscarActividad(nombre);
-        ListaSimple<Actividad> listaAuxActividad = Main.proyecto.buscarActividadesProceso(nombre);
+    public void lanzarVistaBuscarActividad(ActionEvent event) throws IOException, CloneNotSupportedException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaVerActividadDetalle.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        ControladorBuscarActividad aux = (ControladorBuscarActividad) loader.getController();
+        aux.conectarControlador(this);
+        Actividad actividadAMostrar = buscarActividad();
+        ListaSimple<Proceso> listaProcesos = Main.proyecto.buscarProcesosEnActividades(textFiledBuscar.getText());
+        aux.inicilizarTablaActividad(actividadAMostrar, listaProcesos);
+        stage.show();
 
-        //Falta lanzar la venta emergente para mostrar la actividad encontrada
+    }
+
+    public Actividad buscarActividad(){
+        String nombre = textFiledBuscar.getText();
+        Actividad actividadAux = Main.proyecto.buscarActividadEnProcesos(nombre);
+        return actividadAux;
     }
 
     @FXML
@@ -257,7 +271,7 @@ public class ControladorActividad implements Initializable, Serializable {
         }
         final ObservableList<Actividad> tablaActividadSel = tablaDeActividades.getSelectionModel().getSelectedItems();
         cargarTablaActividades();
-		tablaActividadSel.addListener(selectorTablaActividades);
+        tablaActividadSel.addListener(selectorTablaActividades);
     }
 
     private void cargarTablaActividades() {
@@ -284,34 +298,34 @@ public class ControladorActividad implements Initializable, Serializable {
     }
 
     public Actividad getTablaActividadSeleccionada() {
-		if (tablaDeActividades != null) {
-			List <Actividad> tabla = tablaDeActividades.getSelectionModel().getSelectedItems();
-			if (tabla.size() == 1) {
-				final Actividad competicionSeleccionada = tabla.get(0);
-				return competicionSeleccionada;
-			}
-		}
-		return null;
-	}
+        if (tablaDeActividades != null) {
+            List <Actividad> tabla = tablaDeActividades.getSelectionModel().getSelectedItems();
+            if (tabla.size() == 1) {
+                final Actividad competicionSeleccionada = tabla.get(0);
+                return competicionSeleccionada;
+            }
+        }
+        return null;
+    }
 
 
     private void ponerActividadSeleccionada() {
-		final Actividad actividad = getTablaActividadSeleccionada();
+        final Actividad actividad = getTablaActividadSeleccionada();
 
-		posicionEnTabla = listaActividades.indexOf(actividad);
-		if (actividad != null) {
+        posicionEnTabla = listaActividades.indexOf(actividad);
+        if (actividad != null) {
             //Algo falta
-		}
-	}
+        }
+    }
 
     private final ListChangeListener<Actividad> selectorTablaActividades = new ListChangeListener<Actividad>()
-	{
-		@Override
-		public void onChanged(ListChangeListener.Change<? extends Actividad> c) 
-		{
-			ponerActividadSeleccionada();
-		}
-	};
+    {
+        @Override
+        public void onChanged(ListChangeListener.Change<? extends Actividad> c)
+        {
+            ponerActividadSeleccionada();
+        }
+    };
 
     public void setNombreStage(String nombreStage){
         this.nombreStage = nombreStage;
@@ -325,19 +339,6 @@ public class ControladorActividad implements Initializable, Serializable {
         stage.close();
         Actividad actividadAux = getTablaActividadSeleccionada();
         Main.proyecto.editarActividad(actividadAux, nombreActividad, esObligatoria, descripcion);
-        int posicionActividadSelc = 0;
-        for (int i = 0; i < listaActividades.size(); i++) {
-            if (listaActividades.get(i) == actividadAux) {
-                posicionActividadSelc = i;
-            }
-        }
-
-        actividadAux.setNombre(nombreActividad);
-        actividadAux.setDescripcion(descripcion);
-        actividadAux.setEsObligatoria(esObligatoria);
-
-        listaActividades.set(posicionActividadSelc, actividadAux);
+        cargarTablaActividades();
     }
-    
-    
 }
