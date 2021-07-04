@@ -11,19 +11,14 @@ import modelo.Tarea;
 import javax.swing.*;
 
 public class ControladorVistaInsertarPosicion {
-    @FXML
-    Button botonCrear;
+    @FXML Button botonCrear;
 
-    @FXML
-    RadioButton radioButtonObligatoria;
+    @FXML RadioButton radioButtonObligatoria;
 
-    @FXML
-    TextField txtNombreActividad;
-    @FXML
-    TextField txtNombre;
+    @FXML TextField txtNombreActividad;
+    @FXML TextField txtNombre;
     @FXML TextField txtDescripcion;
-    @FXML TextField txtTiempoMaximo;
-    @FXML TextField txtTiempoMinimo;
+    @FXML TextField txtTiempoDuracion;
     @FXML TextField txtPosicion;
 
     private ControladorTarea controladorTarea;
@@ -37,18 +32,17 @@ public class ControladorVistaInsertarPosicion {
         String nombreActividad = txtNombreActividad.getText();
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
-        String tiempoMaximo = txtTiempoMaximo.getText();
-        String tiempoMinimo  = txtTiempoMinimo.getText();
+        String tiempoDuracion = txtTiempoDuracion.getText();
         String posicion = txtPosicion.getText();
 
-        if(nombre.isEmpty() || nombreActividad.isEmpty() || tiempoMinimo.isEmpty() || tiempoMaximo.isEmpty() || posicion.isEmpty())
+        if(nombre.isEmpty() || nombreActividad.isEmpty()  || tiempoDuracion.isEmpty() || posicion.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Por favor ingrese los datos");
         }else
         {
             try
             {
-                Tarea tarea = new Tarea(nombreActividad, nombre, descripcion, obligatoria, Double.parseDouble(tiempoMinimo), Double.parseDouble(tiempoMaximo));
+                Tarea tarea = new Tarea(nombreActividad, nombre, descripcion, obligatoria, Double.parseDouble(tiempoDuracion));
                 controladorTarea.crear(tarea, Integer.parseInt(posicion));
             }catch(NumberFormatException e)
             {

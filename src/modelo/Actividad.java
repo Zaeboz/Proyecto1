@@ -82,7 +82,7 @@ public class Actividad implements Cloneable, Serializable{
         if(miTareaAuxiliar == null)
         {
             colaDeTareas.encolar(tarea);
-        }else if (tarea.isObligatoria() && miTareaAuxiliar.isObligatoria()) {
+        }else if (tarea.isEsOpcional() && miTareaAuxiliar.isEsOpcional()) {
             throw new TareasNoObligatoriasException("La siguiente tarea debe ser opcional");
         } else {
             colaDeTareas.encolar(tarea);
@@ -115,6 +115,24 @@ public class Actividad implements Cloneable, Serializable{
             else nuevaCola.encolar(getColaDeTareas().desencolar());
         }
         return nuevaCola;
+    }
+
+    public double calcularDuracionActividad() throws CloneNotSupportedException {
+        Cola<Tarea> colaTareasAuxClonada=new Cola<Tarea>();
+        colaTareasAuxClonada= (Cola<Tarea>) this.getColaDeTareas().clone();
+        Tarea tareaAux=new Tarea();
+        double tiempoDuracion=0;
+        for (int k=0;k<colaTareasAuxClonada.getTamano();k++)
+        {
+            tareaAux=colaTareasAuxClonada.desencolar();
+
+            tiempoDuracion=tiempoDuracion+tareaAux.getTiempoDuracion();
+        }
+
+        return tiempoDuracion;
+    }
+    public Object clone( ) throws CloneNotSupportedException{
+        return super.clone();
     }
 
     public String getNombre() {

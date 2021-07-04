@@ -7,54 +7,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorVistaInsertarPosicion">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorVistaInsertarPosicion">
    <children>
-      <Label layoutX="149.0" layoutY="33.0" text="Nombre">
+      <Label layoutX="180.0" layoutY="36.0" text="Nombre">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="130.0" layoutY="116.0" text="Descripcion">
+      <Label layoutX="145.0" layoutY="119.0" text="Descripcion">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="112.0" layoutY="222.0" text="Tiempo Maximo">
+      <Label layoutX="97.0" layoutY="177.0" text="Tiempo Duracion">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="112.0" layoutY="174.0" text="Tiempo Minimo">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Label layoutX="112.0" layoutY="300.0" text="¿Es obligatoria?">
+      <Label layoutX="128.0" layoutY="280.0" text="¿Es opcional?">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
       <TextField fx:id="txtNombre" layoutX="287.0" layoutY="37.0" promptText="Ingrese el nombre" />
       <TextField fx:id="txtDescripcion" layoutX="287.0" layoutY="120.0" promptText="Ingrese Descripcion" />
-      <TextField fx:id="txtTiempoMaximo" layoutX="287.0" layoutY="226.0" promptText="Ingrese tiempo max" />
-      <TextField fx:id="txtTiempoMinimo" layoutX="287.0" layoutY="178.0" promptText="Ingrese tiempo min" />
+      <TextField fx:id="txtTiempoDuracion" layoutX="287.0" layoutY="178.0" promptText="Tiempo duracion" />
       <Button fx:id="botonCrear" layoutX="486.0" layoutY="342.0" mnemonicParsing="false" onAction="#crear" text="Guardar">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <RadioButton fx:id="radioButtonObligatoria" layoutX="292.0" layoutY="308.0" mnemonicParsing="false" text="Si" />
-      <Label layoutX="72.0" layoutY="77.0" text="Nombre Actividad:">
+      <RadioButton fx:id="radioButtonObligatoria" layoutX="285.0" layoutY="285.0" mnemonicParsing="false" text="Si" />
+      <Label layoutX="84.0" layoutY="79.0" text="Nombre Actividad">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
       <TextField fx:id="txtNombreActividad" layoutX="287.0" layoutY="80.0" promptText="Ingrese el nombre" />
-      <Label layoutX="178.0" layoutY="269.0" text="Posicion:">
+      <Label layoutX="172.0" layoutY="228.0" text="Posicion">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPosicion" layoutX="287.0" layoutY="272.0" promptText="Ingrese la posicion" />
+      <TextField fx:id="txtPosicion" layoutX="287.0" layoutY="229.0" promptText="Ingrese la posicion" />
    </children>
 </AnchorPane>

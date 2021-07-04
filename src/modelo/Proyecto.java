@@ -165,10 +165,22 @@ public class Proyecto implements Serializable {
         procesoAux.getPilaActividadAux();
     }
 
-    public ListaDoble<Actividad> buscarActividadesProceso(String nombre)  {
-        Proceso procesoEncontrado = buscarProcesosPorNombre(nombre);
-        ListaDoble<Actividad> listaProcesosAux = procesoEncontrado.getListaActividades();
-        return listaProcesosAux;
+    public ListaSimple<Actividad> buscarActividadesProceso(String nombre)  {
+        Proceso procesoAux = new Proceso();
+        ListaSimple<Actividad> listaActividadesEncontradas = new ListaSimple<>();
+
+        for(int i = 0; i < listaProcesos.getTamanio(); i++){
+            procesoAux = listaProcesos.obtenerValorNodo(i);
+            ListaDoble<Actividad> listaAuxActividades = procesoAux.getListaActividades();
+            for(int a = 0; a < listaAuxActividades.getTamanio(); a++){
+                Actividad actividadAux = listaAuxActividades.obtenerValorNodo(a);
+                if(actividadAux.getNombre().equals(nombre)){
+                    listaActividadesEncontradas.agregarfinal(actividadAux);
+                }
+            }
+        }
+
+        return listaActividadesEncontradas;
     }
 
     public Actividad buscarActividad(String nombre) {

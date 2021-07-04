@@ -18,11 +18,10 @@ public class ControladorInsertarFinal {
     RadioButton radioButtonObligatoria;
 
     @FXML TextField txtNombreActividad;
-    @FXML
-    TextField txtNombre;
+    @FXML TextField txtNombre;
     @FXML TextField txtDescripcion;
-    @FXML TextField txtTiempoMaximo;
-    @FXML TextField txtTiempoMinimo;
+    @FXML TextField txtTiempoDuracion;
+
 
     private ControladorTarea controladorTarea;
 
@@ -35,18 +34,18 @@ public class ControladorInsertarFinal {
         String nombreActividad = txtNombreActividad.getText();
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
-        String tiempoMaximo = txtTiempoMaximo.getText();
-        String tiempoMinimo  = txtTiempoMinimo.getText();
+        String tiempoDuracion = txtTiempoDuracion.getText();
 
-        if(nombre.isEmpty() || nombreActividad.isEmpty() || tiempoMinimo.isEmpty() || tiempoMaximo.isEmpty())
+
+        if(nombre.isEmpty() || nombreActividad.isEmpty() || tiempoDuracion.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Por favor ingrese los datos");
         }else
         {
             try
             {
-                Tarea tarea = new Tarea(nombreActividad, nombre, descripcion, obligatoria, Double.parseDouble(tiempoMinimo), Double.parseDouble(tiempoMaximo));
-                controladorTarea.crear(tarea);
+                Tarea tarea = new Tarea(nombreActividad, nombre, descripcion, obligatoria, Double.parseDouble(tiempoDuracion));
+                controladorTarea.crear(tarea, 0);
             }catch(NumberFormatException e)
             {
                 JOptionPane.showMessageDialog(null, "Por favor ingrese el tiempo en minutos y solo numeros");

@@ -192,14 +192,12 @@ public class ControladorActividad implements Initializable, Serializable {
                 stage.close();
                 Main.proyecto.crearActividadDespuesUltima(actividadAux);
                 cargarTablaActividades();
-
             break;
 
             case "VistaAgregarFinal":
                 stage.close();
                 Main.proyecto.crearActividadFinal(actividadAux);
                 cargarTablaActividades();
-                
             break;
 
             case "VistaAgregarDespues":
@@ -211,11 +209,6 @@ public class ControladorActividad implements Initializable, Serializable {
             default: System.out.println("Nombre stage esta vacio");
             break;
         }
-    }
-
-    @FXML
-    public void mostrarTareas(ActionEvent event){
-        
     }
 
     public void intercambiarActividades(String nombreActividad1, String nombreActividad2) {
@@ -243,7 +236,8 @@ public class ControladorActividad implements Initializable, Serializable {
     public void buscarActividad(ActionEvent event) {
         String nombre = textFiledBuscar.getText();
         Actividad actividadAux = Main.proyecto.buscarActividad(nombre);
-        
+        ListaSimple<Actividad> listaAuxActividad = Main.proyecto.buscarActividadesProceso(nombre);
+
         //Falta lanzar la venta emergente para mostrar la actividad encontrada
     }
 
@@ -252,19 +246,6 @@ public class ControladorActividad implements Initializable, Serializable {
         Actividad actividadSeleccionada = getTablaActividadSeleccionada();
         listaActividades.remove(actividadSeleccionada);
         Main.proyecto.eliminarActividad(actividadSeleccionada);
-    }
-
-    @FXML
-    public void actualizar(ActionEvent event){
-        stage.close();
-        Actividad actividadSeleccionada = getTablaActividadSeleccionada();
-        String nombre = actividadSeleccionada.getNombre();
-        String descripcion = actividadSeleccionada.getDescripcion();
-        int idProceso = actividadSeleccionada.getCodigoProceso();
-        Boolean esObligatoria = actividadSeleccionada.getEsObligatoria();
-
-        actividadSeleccionada = Main.proyecto.actualizarActividad(nombre, descripcion, idProceso, esObligatoria);
-        listaActividades.remove(actividadSeleccionada);
     }
 
     @Override

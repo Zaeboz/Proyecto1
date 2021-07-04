@@ -52,7 +52,7 @@ public class ControladorProceso implements Initializable, Serializable{
     @FXML TableColumn<Proceso, Double> columnaTiempoMaximo = new TableColumn<>("TMaximo");
     ObservableList<Proceso> listaProcesos = FXCollections.observableArrayList();
 
-    @FXML private TextField textFieldBuscar;
+    @FXML private TextField textFieldBuscar = new TextField();
     @FXML private TextField textFieldNombreProceso = new TextField();
 
     ControladorPrincipal controladorPrincipal;

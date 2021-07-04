@@ -50,8 +50,7 @@ public class ControladorTarea implements Initializable {
     @FXML TableColumn<Tarea, String> nombreActividadColumna = new TableColumn<>("nombreActividad");
     @FXML TableColumn<Tarea, String> nombreTareaColumna = new TableColumn<>("nombre");
     @FXML TableColumn<Tarea, String> descripcionTareaColumna = new TableColumn<>("descripcion");
-    @FXML TableColumn<Tarea, Double> tiempoMinColumna = new TableColumn<>("tiempoMinimo");
-    @FXML TableColumn<Tarea, Double> tiempoMaxColumna = new TableColumn<>("tiempoMaximo");
+    @FXML TableColumn<Tarea, Double> tiempoDuracion = new TableColumn<>("tiempoDuracion");
     @FXML TableColumn<Tarea, Boolean> obligatoriaColumna = new TableColumn<>("obligatoria");
     ObservableList<Tarea> colaTareas = FXCollections.observableArrayList();
     private String nombreStage;
@@ -241,6 +240,9 @@ public class ControladorTarea implements Initializable {
 
     @FXML
     public void editar(ActionEvent event) throws CloneNotSupportedException {
+        /**
+         * incompleto
+         */
         Tarea tareaSeleccionada = getTablaTareaSeleccionada();
         colaTareas.remove(tareaSeleccionada);
         Main.proyecto.eliminarTarea(tareaSeleccionada);
@@ -284,6 +286,7 @@ public class ControladorTarea implements Initializable {
     }
 
     private void cargarTablaTareas() {
+        colaTareas.clear();
         ListaSimple<Proceso> listaProcesos = Persistencia.cargarRecursoProyectoXML().getListaProcesos();
         int tamanio = listaProcesos.getTamanio();
         int sizeCola;
@@ -302,35 +305,25 @@ public class ControladorTarea implements Initializable {
         }
     }
 
-    /**
-     * Metodo para crear una actividad. Pueden haber varios casos de creacion.
-     * @param tarea
-     */
-    public void crear(Tarea tarea) throws TareasNoObligatoriasException, CloneNotSupportedException {
-        switch (nombreStage){
-
-            case "VistaInsertarFinal":
-                try
-                {
-                    Main.proyecto.crearTareaFinal(tarea);
-                    colaTareas.add(tarea);
-                }catch(TareasNoObligatoriasException e)
-                {
-                   // throw new TareasNoObligatoriasException(e.getMessage());
-                }
-                Main.save();
-                break;
-            default: System.out.println("Nombre stage esta vacio");
-                break;
-        }
-    }
-
     public void crear(Tarea tarea, int posicion)
     {
         switch (nombreStage){
             case "VistaInsertarPosicion":
                 Main.proyecto.crearTareaPosicion(tarea, posicion);
                 colaTareas.add(tarea);
+                Main.save();
+                cargarTablaTareas();
+                break;
+            case "VistaInsertarFinal":
+                try {
+                    Main.proyecto.crearTareaFinal(tarea);
+                } catch (CloneNotSupportedException e) {
+                    e.printStackTrace();
+                } catch (TareasNoObligatoriasException e) {
+                    e.printStackTrace();
+                }
+                colaTareas.add(tarea);
+
                 Main.save();
                 break;
             default: System.out.println("Nombre stage esta vacio");
@@ -342,8 +335,7 @@ public class ControladorTarea implements Initializable {
         nombreActividadColumna.setCellValueFactory(new PropertyValueFactory<Tarea, String>("nombreActividad"));
         nombreTareaColumna.setCellValueFactory(new PropertyValueFactory<Tarea, String>("nombre"));
         descripcionTareaColumna.setCellValueFactory(new PropertyValueFactory<Tarea, String>("descripcion"));
-        tiempoMinColumna.setCellValueFactory(new PropertyValueFactory<Tarea, Double>("tiempoMinimo"));
-        tiempoMaxColumna.setCellValueFactory(new PropertyValueFactory<Tarea, Double>("tiempoMaximo"));
+        tiempoDuracion.setCellValueFactory(new PropertyValueFactory<Tarea, Double>("TiempoDuracion"));
         obligatoriaColumna.setCellValueFactory(new PropertyValueFactory<Tarea, Boolean>("obligatoria"));
         tablaTareas.setItems(colaTareas);
     }

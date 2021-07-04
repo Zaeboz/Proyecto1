@@ -9,25 +9,29 @@ public class Tarea implements Cloneable, Serializable{
     private String nombre = "";
     private String nombreActividad = "";
     private String descripcion = "";
-    private boolean obligatoria = false;
-    private double tiempoMinimo = 0;
-    private double tiempoMaximo = 0;
+    private boolean esOpcional = false;
+    private double tiempoDuracion = 0;
+
 
     public Tarea()
     {
 
     }
 
-    public Tarea(String nombreActividad, String nombre, String descripcion, boolean obligatoria, double tiempoMinimo, double tiempoMaximo) {
+    public Object clone( ) throws CloneNotSupportedException{
+        return super.clone();
+    }
+
+
+    public Tarea(String nombreActividad, String nombre, String descripcion, boolean esOpcional, double tiempoDuracion) {
         this.nombre = nombre;
         this.nombreActividad = nombreActividad;
         this.descripcion = descripcion;
-        this.obligatoria = obligatoria;
-        this.tiempoMaximo = tiempoMaximo;
-        this.tiempoMinimo = tiempoMinimo;
+        this.esOpcional = esOpcional;
+        this.tiempoDuracion=tiempoDuracion;
     }
 
-	public String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -43,28 +47,12 @@ public class Tarea implements Cloneable, Serializable{
         this.descripcion = descripcion;
     }
 
-    public boolean isObligatoria() {
-        return obligatoria;
+    public boolean isEsOpcional() {
+        return esOpcional;
     }
 
-    public void setObligatoria(boolean obligatoria) {
-        this.obligatoria = obligatoria;
-    }
-
-    public double getTiempoMinimo() {
-        return tiempoMinimo;
-    }
-
-    public void setTiempoMinimo(double tiempoMinimo) {
-        this.tiempoMinimo = tiempoMinimo;
-    }
-
-    public double getTiempoMaximo() {
-        return tiempoMaximo;
-    }
-
-    public void setTiempoMaximo(double tiempoMaximo) {
-        this.tiempoMaximo = tiempoMaximo;
+    public void setEsOpcional(boolean esOpcional) {
+        this.esOpcional = esOpcional;
     }
 
     public String getNombreActividad() {
@@ -73,5 +61,12 @@ public class Tarea implements Cloneable, Serializable{
 
     public void setNombreActividad(String nombreActividad) {
         this.nombreActividad = nombreActividad;
+    }
+    public double getTiempoDuracion() {
+        return tiempoDuracion;
+    }
+
+    public void setTiempoDuracion(double tiempoDuracion) {
+        this.tiempoDuracion = tiempoDuracion;
     }
 }
