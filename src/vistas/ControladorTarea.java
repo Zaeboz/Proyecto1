@@ -151,6 +151,7 @@ public class ControladorTarea implements Initializable {
         return true;
     }
 
+    //Este metodo debe de estar en actividad
     void buscarTareaActividadInicio(String nombre) {
 
         if(comprobar(nombre)) {
@@ -173,9 +174,9 @@ public class ControladorTarea implements Initializable {
                 }
             }
         }
-
     }
 
+    //Este metodo debe de estar en actividad
     void buscarTareaActividadActual(String nombre) {
 
         Tarea tarea = getTablaTareaSeleccionada();
@@ -213,6 +214,7 @@ public class ControladorTarea implements Initializable {
 
     }
 
+    //Este metodo debe de estar en actividad
     void buscarTareaActividadNombre(String nombre, String nombreActividad) {
 
         if(comprobar(nombre)) {
