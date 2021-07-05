@@ -9,17 +9,21 @@ import listas.Cola;
 import listas.ListaDoble;
 import listas.Pila;
 
-public class Proceso implements Serializable{
+public class Proceso implements Serializable, Cloneable{
 
     private static final long serialVersionUID = 1L;
 
     private SimpleStringProperty nombreProceso = new SimpleStringProperty("0");
     private SimpleIntegerProperty idProceso = new SimpleIntegerProperty(0);
-    private SimpleDoubleProperty tiempoMaximo = new SimpleDoubleProperty(0);
-    private SimpleDoubleProperty tiempoMinimo = new SimpleDoubleProperty(0);
+    private double tiempoMaximo =0;
+    private double tiempoMinimo = 0;
     private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
     private Pila<Actividad> pilaActividadAux = new Pila<>();
     private Actividad actividadUltimoAgregado = new Actividad();
+
+    public Object clone( ) throws CloneNotSupportedException{
+        return super.clone();
+    }
 
     //Constructores
     public Proceso(){
@@ -34,8 +38,8 @@ public class Proceso implements Serializable{
     public Proceso(String nombreProceso,int idProceso,Double tiempoMaximo,Double tiempoMinimo) {
         this.nombreProceso = new SimpleStringProperty (nombreProceso);
         this.idProceso = new SimpleIntegerProperty (idProceso);
-        this.tiempoMaximo= new SimpleDoubleProperty(tiempoMaximo);
-        this.tiempoMinimo=new SimpleDoubleProperty(tiempoMinimo);
+        this.tiempoMaximo= (tiempoMaximo);
+        this.tiempoMinimo= (tiempoMinimo);
     }
 
     /**
@@ -214,6 +218,39 @@ public class Proceso implements Serializable{
         }
     }
 
+    /**
+     *
+     * @throws CloneNotSupportedException
+     */
+    public void calcularDuracionProceso() throws CloneNotSupportedException {
+        ListaDoble<Actividad> listaActividadAux = new ListaDoble<Actividad>();
+
+        listaActividadAux = (ListaDoble<Actividad>) this.getListaActividades().clone();
+
+        Actividad actividadAux = new Actividad();
+
+        double timpoMinimo = 0.0;
+        double tiempoMaximo = 0.0;
+
+
+        for (int i = 0; i < listaActividadAux.getTamanio(); i++) {
+
+            actividadAux = listaActividadAux.obtenerValorNodo(i);
+            actividadAux.calcularDuracionActividad();
+
+            if (actividadAux.getEsObligatoria())
+            {
+                tiempoMinimo = tiempoMinimo+actividadAux.getTiempoMinimo();
+            }else{
+                tiempoMaximo=tiempoMaximo+actividadAux.getTiempoMaximo();
+            }
+
+        }
+
+        this.tiempoMinimo = tiempoMinimo;
+        this.tiempoMaximo = tiempoMaximo;
+    }
+
     //Getters and setters
     public ListaDoble<Actividad> getListaActividades() {
         return listaActividades;
@@ -231,13 +268,6 @@ public class Proceso implements Serializable{
 		this.idProceso = idProceso;
 	}
 
-	public void setTiempoMaximo(SimpleDoubleProperty tiempoMaximo) {
-		this.tiempoMaximo = tiempoMaximo;
-	}
-
-	public void setTiempoMinimo(SimpleDoubleProperty tiempoMinimo) {
-		this.tiempoMinimo = tiempoMinimo;
-	}
 
     public String getNombreProceso() {
         return nombreProceso.get();
@@ -264,30 +294,6 @@ public class Proceso implements Serializable{
         this.idProceso.set(idProceso);
     }
 
-    public double getTiempoMaximo() {
-        return tiempoMaximo.get();
-    }
-
-    public SimpleDoubleProperty tiempoMaximoProperty() {
-        return tiempoMaximo;
-    }
-
-    public void setTiempoMaximo(double tiempoMaximo) {
-        this.tiempoMaximo.set(tiempoMaximo);
-    }
-
-    public double getTiempoMinimo() {
-        return tiempoMinimo.get();
-    }
-
-    public SimpleDoubleProperty tiempoMinimoProperty() {
-        return tiempoMinimo;
-    }
-
-    public void setTiempoMinimo(double tiempoMinimo) {
-        this.tiempoMinimo.set(tiempoMinimo);
-    }
-
     public Pila<Actividad> getPilaActividadAux() {
         return pilaActividadAux;
     }
@@ -302,6 +308,23 @@ public class Proceso implements Serializable{
 
     public void setActividadUltimoAgregado(Actividad actividadUltimoAgregado) {
         this.actividadUltimoAgregado = actividadUltimoAgregado;
+    }
+
+
+    public double getTiempoMaximo() {
+        return tiempoMaximo;
+    }
+
+    public void setTiempoMaximo(double tiempoMaximo) {
+        this.tiempoMaximo = tiempoMaximo;
+    }
+
+    public double getTiempoMinimo() {
+        return tiempoMinimo;
+    }
+
+    public void setTiempoMinimo(double tiempoMinimo) {
+        this.tiempoMinimo = tiempoMinimo;
     }
 
 }

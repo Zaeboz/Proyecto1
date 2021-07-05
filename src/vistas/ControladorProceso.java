@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import listas.ListaDoble;
+import listas.ListaSimple;
 import modelo.Actividad;
 import modelo.Proceso;
 import persistencia.Persistencia;
@@ -173,6 +174,11 @@ public class ControladorProceso implements Initializable, Serializable{
         columnaTiempoMinimo.setCellValueFactory(new PropertyValueFactory<Proceso, Double>("tiempoMinimo"));
         columnaTiempoMaximo.setCellValueFactory(new PropertyValueFactory<Proceso, Double>("tiempoMaximo"));
         tablaProcesos.setItems(listaProcesos);
+        try {
+            obtenerDuracionProceso();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void cargarTablaProcesos() {
@@ -220,5 +226,18 @@ public class ControladorProceso implements Initializable, Serializable{
         procesoAMostrar.setIdProceso(ideProceso);
 
         listaProcesos.set(posicionProcesoSelc, procesoAMostrar);
+    }
+
+    public void obtenerDuracionProceso( ) throws CloneNotSupportedException {
+
+        ListaSimple<Proceso> listaProcesosAux=new ListaSimple<>();
+        listaProcesosAux=Main.proyecto.getListaProcesos();
+        Proceso procesoAux=new Proceso();
+        for (int i=0;i<listaProcesosAux.getTamanio();i++)
+        {
+            procesoAux=listaProcesosAux.obtenerValorNodo(i);
+            procesoAux.calcularDuracionProceso();
+        }
+        Persistencia.guardarRecursoProyectoXML(Main.proyecto);
     }
 }

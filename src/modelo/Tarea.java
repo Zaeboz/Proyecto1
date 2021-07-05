@@ -1,7 +1,6 @@
 package modelo;
 
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
@@ -14,7 +13,9 @@ public class Tarea implements Cloneable, Serializable{
     private SimpleStringProperty nombreActividad = new SimpleStringProperty();
     private SimpleStringProperty descripcion = new SimpleStringProperty();
     private SimpleBooleanProperty esOpcional = new SimpleBooleanProperty();
-    private SimpleDoubleProperty tiempoDuracion = new SimpleDoubleProperty(0);
+    private double tiempoDuracion = 0;
+
+
 
     public Tarea()
     {
@@ -26,12 +27,10 @@ public class Tarea implements Cloneable, Serializable{
         this.nombreActividad.set(nombreActividad);
         this.descripcion.set(descripcion);
         this.esOpcional.set(esOpcional);
-        this.tiempoDuracion.set(tiempoDuracion);
+        this.tiempoDuracion = tiempoDuracion;
     }
 
-    public Object clone( ) throws CloneNotSupportedException{
-        return super.clone();
-    }
+
 
 
     public String getNombre() {
@@ -67,10 +66,10 @@ public class Tarea implements Cloneable, Serializable{
     }
 
     public double getTiempoDuracion() {
-        return tiempoDuracion.get();
+        return tiempoDuracion;
     }
 
     public void setTiempoDuracion(double tiempoDuracion) {
-        this.tiempoDuracion.set(tiempoDuracion);
+        this.tiempoDuracion = tiempoDuracion;
     }
 }

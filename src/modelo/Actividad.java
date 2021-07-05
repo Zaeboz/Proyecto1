@@ -21,8 +21,20 @@ public class Actividad implements Cloneable, Serializable{
     private SimpleBooleanProperty esObligatoria = new SimpleBooleanProperty();
     private Cola<Tarea> colaDeTareas = new Cola<Tarea>();
 
-    private SimpleDoubleProperty tiempoMaximo = new SimpleDoubleProperty(0);
-    private SimpleDoubleProperty tiempoMinimo = new SimpleDoubleProperty(0);
+    public double getTiempoMaximo() {
+        return tiempoMaximo;
+    }
+
+    public void setTiempoMaximo(double tiempoMaximo) {
+        this.tiempoMaximo = tiempoMaximo;
+    }
+
+    public double getTiempoMinimo() {
+        return tiempoMinimo;
+    }
+
+    private double tiempoMaximo = 0;
+    private double tiempoMinimo = 0;
 
     public Actividad() {
     }
@@ -32,6 +44,32 @@ public class Actividad implements Cloneable, Serializable{
         this.descripcion.set(descripcion);
         this.esObligatoria.set(esObligatorio);
         this.codigoProceso.set(codigoProceso);
+    }
+
+
+
+    public void calcularDuracionActividad() throws CloneNotSupportedException {
+        Cola<Tarea> colaTareasAuxClonada=new Cola<Tarea>();
+        colaTareasAuxClonada= (Cola<Tarea>) this.getColaDeTareas().clone();
+        Tarea tareaAux=new Tarea();
+        double tiempoMinimo=0;
+        double tiempoMaximo=0;
+
+        for (int k=0;k<colaTareasAuxClonada.getTamano();k++)
+        {
+            tareaAux=colaTareasAuxClonada.desencolar();
+            if(tareaAux.isEsOpcional())
+            {
+                tiempoMinimo=tiempoMinimo+tareaAux.getTiempoDuracion();
+
+            }else{
+                tiempoMaximo=tiempoMaximo+tareaAux.getTiempoDuracion();
+            }
+        }
+
+        this.setTiempoMinimo(tiempoMinimo);
+        this.setTiempoMaximo(tiempoMaximo);
+
     }
 
     /**
@@ -171,21 +209,6 @@ public class Actividad implements Cloneable, Serializable{
         colaDeTareas = colaTareasFinal;
     }
 
-    public double calcularDuracionActividad() throws CloneNotSupportedException {
-        Cola<Tarea> colaTareasAuxClonada=new Cola<Tarea>();
-        colaTareasAuxClonada= (Cola<Tarea>) this.getColaDeTareas().clone();
-        Tarea tareaAux=new Tarea();
-        double tiempoDuracion=0;
-        for (int k=0;k<colaTareasAuxClonada.getTamano();k++)
-        {
-            tareaAux=colaTareasAuxClonada.desencolar();
-
-            tiempoDuracion=tiempoDuracion+tareaAux.getTiempoDuracion();
-        }
-
-        return tiempoDuracion;
-    }
-
     public Object clone( ) throws CloneNotSupportedException{
         return super.clone();
     }
@@ -199,24 +222,12 @@ public class Actividad implements Cloneable, Serializable{
         return this.nombre.get();
     }
 
-    public double getTiempoMaximo() {
-        return tiempoMaximo.get();
-    }
-
-    public double getTiempoMinimo() {
-        return tiempoMinimo.get();
-    }
-
     public void setTiempoMinimo(double tiempoMinimo) {
-        this.tiempoMinimo.set(tiempoMinimo);
+        this.tiempoMinimo=(tiempoMinimo);
     }
 
     public void setCodigoProceso(int codigoProceso) {
         this.codigoProceso.set(codigoProceso);
-    }
-
-    public void setTiempoMaximo(double tiempoMaximo) {
-        this.tiempoMaximo.set(tiempoMaximo);
     }
 
     public void setNombre(String nombre) {

@@ -13,7 +13,7 @@ import java.util.Iterator;
  *
  * **/
 
-public class ListaDoble<T> implements Iterable<T>, Serializable {
+public class ListaDoble<T> implements Iterable<T>, Serializable, Cloneable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +24,10 @@ public class ListaDoble<T> implements Iterable<T>, Serializable {
 
 	public ListaDoble() {
 		
+	}
+
+	public Object clone( ) throws CloneNotSupportedException{
+		return super.clone();
 	}
 
 	//Metodos basicos

@@ -306,6 +306,12 @@ public class Proyecto implements Serializable {
         return activdadAux.buscarTarea(nombreTarea);
     }
 
+    /**
+     *
+     * @param tareaNueva
+     * @param nombreTareaAnterior
+     * @throws CloneNotSupportedException
+     */
     public void editarTarea(Tarea tareaNueva, String nombreTareaAnterior) throws CloneNotSupportedException {
 
         for(int i = 0; i < listaProcesos.getTamanio(); i++){
