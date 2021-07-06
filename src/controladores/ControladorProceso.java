@@ -100,8 +100,8 @@ public class ControladorProceso implements Initializable, Serializable{
 
     @FXML public void eliminarProceso(){
         Proceso procesoSelecionado = getTablaProcesoSeleccionado();
-        listaProcesos.remove(procesoSelecionado);
         Main.proyecto.eliminarProceso(procesoSelecionado);
+        cargarTablaProcesos();
     }
 
     @FXML private void lanzarVistaCrearProceso(ActionEvent event) throws IOException {
@@ -142,7 +142,7 @@ public class ControladorProceso implements Initializable, Serializable{
     }
 
     /**
-     * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
+     * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaProcesos"
      *
      */
     public Proceso getTablaProcesoSeleccionado() {
@@ -154,14 +154,6 @@ public class ControladorProceso implements Initializable, Serializable{
             }
         }
         return null;
-    }
-
-    public void crearProceso(String nombreProceso){
-        stage.close();
-        Proceso nuevoProceso = new Proceso(nombreProceso,numeroProceso);
-        listaProcesos.add(nuevoProceso);
-        Main.proyecto.crearProceso(nuevoProceso);
-        numeroProceso++;
     }
 
     private void inicializarTabla()throws FileNotFoundException, IOException{
@@ -178,6 +170,7 @@ public class ControladorProceso implements Initializable, Serializable{
     }
 
     private void cargarTablaProcesos() {
+        listaProcesos.clear();
         int tamanio = Persistencia.cargarRecursoProyectoXML().getListaProcesos().getTamanio();
         for (int i = 0; i < tamanio; i++) {
             Proceso nuevoProceso = Persistencia.cargarRecursoProyectoXML().getListaProcesos().obtenerValorNodo(i);
@@ -211,17 +204,8 @@ public class ControladorProceso implements Initializable, Serializable{
         stage.close();
         Proceso procesoAMostrar = getTablaProcesoSeleccionado();
         Main.proyecto.editarProceso(procesoAMostrar,nombreProceso,ideProceso);
-        int posicionProcesoSelc = 0;
-        for (int i = 0; i < listaProcesos.size(); i++) {
-            if (listaProcesos.get(i) == procesoAMostrar) {
-                posicionProcesoSelc = i;
-            }
-        }
 
-        procesoAMostrar.setNombreProceso(nombreProceso);
-        procesoAMostrar.setIdProceso(ideProceso);
-
-        listaProcesos.set(posicionProcesoSelc, procesoAMostrar);
+        cargarTablaProcesos();
     }
 
     public void obtenerDuracionProceso( ) throws CloneNotSupportedException {

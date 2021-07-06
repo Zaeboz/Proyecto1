@@ -13,7 +13,7 @@ public class Proyecto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public ListaSimple<Proceso> listaProcesos = new ListaSimple<>();
-    int idProceso = 1;
+    int idProceso = 0;
 
     public Proyecto() {
 
@@ -27,8 +27,12 @@ public class Proyecto implements Serializable {
      * @param procesoNuevo El proceso a crear
      */
     public void crearProceso(Proceso procesoNuevo) {
+
+        for(int i = 0; i < listaProcesos.getTamanio(); i++){
+            idProceso = listaProcesos.obtenerValorNodo(i).getIdProceso()+1;
+        }
+        procesoNuevo.setIdProceso(idProceso);
         listaProcesos.agregarfinal(procesoNuevo);
-        idProceso++;
         Persistencia.guardarRecursoProyectoXML(Main.proyecto);
     }
 

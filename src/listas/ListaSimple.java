@@ -55,12 +55,12 @@ public class ListaSimple<T> implements Iterable<T>, Serializable {
 		Nodo<T> nodo = new Nodo<>(valorNodo);
 
 		if( estaVacia() ) {
-			nodoPrimero = nodoUltimo = nodo;
+			nodoPrimero = nodo;
+			nodoUltimo = nodo;
 		}else {
 			nodoUltimo.setSiguienteNodo(nodo);
 			nodoUltimo = nodo;
 		}
-
 		tamanio++;
 	}
 
@@ -159,7 +159,7 @@ public class ListaSimple<T> implements Iterable<T>, Serializable {
 			}
 
 			if(siguiente==null) {
-//				nodoUltimo = previo;
+				nodoUltimo = previo;
 			}else {
 				nodo.setSiguienteNodo(null);
 			}
