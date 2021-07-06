@@ -229,9 +229,11 @@ public class Proceso implements Serializable, Cloneable{
 
         Actividad actividadAux = new Actividad();
 
-        double timpoMinimo = 0.0;
+        double tiempoMinimo = 0.0;
         double tiempoMaximo = 0.0;
 
+        this.tiempoMinimo = tiempoMinimo;
+        this.tiempoMaximo = tiempoMaximo;
 
         for (int i = 0; i < listaActividadAux.getTamanio(); i++) {
 
@@ -241,9 +243,8 @@ public class Proceso implements Serializable, Cloneable{
             if (actividadAux.getEsObligatoria())
             {
                 tiempoMinimo = tiempoMinimo+actividadAux.getTiempoMinimo();
-            }else{
-                tiempoMaximo=tiempoMaximo+actividadAux.getTiempoMaximo();
             }
+            tiempoMaximo=tiempoMaximo+actividadAux.getTiempoMaximo();
 
         }
 

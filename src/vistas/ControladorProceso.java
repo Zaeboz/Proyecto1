@@ -231,11 +231,11 @@ public class ControladorProceso implements Initializable, Serializable{
     public void obtenerDuracionProceso( ) throws CloneNotSupportedException {
 
         ListaSimple<Proceso> listaProcesosAux=new ListaSimple<>();
-        listaProcesosAux=Main.proyecto.getListaProcesos();
-        Proceso procesoAux=new Proceso();
+        listaProcesosAux = Main.proyecto.getListaProcesos();
+        Proceso procesoAux = new Proceso();
         for (int i=0;i<listaProcesosAux.getTamanio();i++)
         {
-            procesoAux=listaProcesosAux.obtenerValorNodo(i);
+            procesoAux = listaProcesosAux.obtenerValorNodo(i);
             procesoAux.calcularDuracionProceso();
         }
         Persistencia.guardarRecursoProyectoXML(Main.proyecto);

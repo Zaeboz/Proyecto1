@@ -333,8 +333,7 @@ public class ControladorTarea implements Initializable {
                 } catch (TareasNoObligatoriasException e) {
                     e.printStackTrace();
                 }
-                colaTareas.add(tarea);
-
+                cargarTablaTareas();
                 Main.save();
                 break;
             default: System.out.println("Nombre stage esta vacio");

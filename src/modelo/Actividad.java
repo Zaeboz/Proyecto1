@@ -54,22 +54,22 @@ public class Actividad implements Cloneable, Serializable{
         Tarea tareaAux=new Tarea();
         double tiempoMinimo=0;
         double tiempoMaximo=0;
+        int sizeCola = colaTareasAuxClonada.getTamano();
 
-        for (int k=0;k<colaTareasAuxClonada.getTamano();k++)
+        for (int k=0;k<sizeCola;k++)
         {
             tareaAux=colaTareasAuxClonada.desencolar();
-            if(tareaAux.isEsOpcional())
+            if(!tareaAux.isEsOpcional())
             {
                 tiempoMinimo=tiempoMinimo+tareaAux.getTiempoDuracion();
 
-            }else{
-                tiempoMaximo=tiempoMaximo+tareaAux.getTiempoDuracion();
             }
+            tiempoMaximo=tiempoMaximo+tareaAux.getTiempoDuracion();
+
         }
 
         this.setTiempoMinimo(tiempoMinimo);
         this.setTiempoMaximo(tiempoMaximo);
-
     }
 
     /**

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorCrearActividadFinal">
@@ -18,8 +19,11 @@
       <Label layoutX="18.0" layoutY="145.0" text="¿Es obligatoria?:" />
       <TextField fx:id="textFiledIDProceso" layoutX="152.0" layoutY="79.0" prefHeight="25.0" prefWidth="167.0" promptText="Código de proceso" />
       <TextField fx:id="textFiledDescripcion" layoutX="152.0" layoutY="110.0" prefHeight="25.0" prefWidth="167.0" promptText="Descripción de la actividad" />
-      <RadioButton fx:id="radioButtonSiEs" layoutX="188.0" layoutY="145.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="42.0" text="Sí." />
-      <RadioButton fx:id="radioButtonNoEs" layoutX="230.0" layoutY="145.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="48.0" text="No." />
+      <RadioButton fx:id="radioButtonSiEs" layoutX="188.0" layoutY="145.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="42.0" text="Sí.">
+         <toggleGroup>
+            <ToggleGroup fx:id="grupo1" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="radioButtonNoEs" layoutX="230.0" layoutY="145.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="48.0" text="No." toggleGroup="$grupo1" />
       <Label layoutX="104.0" layoutY="6.0" text="Crear actividad al final" />
       <Separator layoutY="31.0" prefHeight="2.0" prefWidth="327.0" />
    </children>

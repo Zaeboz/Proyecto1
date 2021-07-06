@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -37,7 +38,10 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <RadioButton fx:id="radioButtonObligatoria" layoutX="285.0" layoutY="285.0" mnemonicParsing="false" text="Si" />
+      <RadioButton fx:id="radioButtonObligatoria" layoutX="285.0" layoutY="285.0" mnemonicParsing="false" text="Si">
+         <toggleGroup>
+            <ToggleGroup fx:id="grupo1" />
+         </toggleGroup></RadioButton>
       <Label layoutX="84.0" layoutY="79.0" text="Nombre Actividad">
          <font>
             <Font size="22.0" />
@@ -51,5 +55,6 @@
       </Label>
       <TextField fx:id="txtPosicion" layoutX="287.0" layoutY="229.0" promptText="Ingrese la posicion" />
       <Label layoutX="190.0" layoutY="11.0" text="Insertar una tarea una poscion especifica" />
+      <RadioButton fx:id="radioButtonObligatoria1" layoutX="350.0" layoutY="285.0" mnemonicParsing="false" text="No" toggleGroup="$grupo1" />
    </children>
 </AnchorPane>

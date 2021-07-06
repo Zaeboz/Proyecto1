@@ -41,6 +41,9 @@ public class ControladorBuscarActividad implements Serializable {
         descripcionColumn.setCellValueFactory(new PropertyValueFactory<Tarea, String>("descripcion"));
         esOpcionalColumn.setCellValueFactory(new PropertyValueFactory<Tarea, Boolean>("esOpcional"));
 
+        tiempoMaximoLabel.setText(actividadMostrar.getTiempoMaximo()+"");
+        tiempoMinimoLabel.setText(actividadMostrar.getTiempoMinimo()+"");
+
         Cola<Tarea> colaTareasMostrar = (Cola<Tarea>) actividadMostrar.getColaDeTareas().clone();
         int sizeCola = colaTareasMostrar.getTamanio();
         Cola<Tarea> colaAux = new Cola<>();
