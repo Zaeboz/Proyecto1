@@ -33,15 +33,11 @@ import java.util.ResourceBundle;
 
 public class ControladorTarea implements Initializable {
 
-    @FXML MenuButton botonActividades;
     @FXML MenuItem InsertarFinal;
     @FXML MenuItem InsertarEnPos;
 
     @FXML  AnchorPane anchorPaneProcesos;
-    @FXML  TextField textFiledBuscar;
     @FXML  Button botonBuscarTareas;
-    @FXML  MenuItem botonInsertarFinal;
-    @FXML  MenuItem botonInsertarEnPos;
     @FXML  Button botonEliminarTarea;
     @FXML  Button botonEditarTarea;
 

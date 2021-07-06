@@ -1,14 +1,13 @@
 package modelo;
 
-import java.io.Serializable;
-
 import application.Main;
 import exeptions.TareasNoObligatoriasException;
-import listas.Cola;
 import listas.ListaDoble;
 import listas.ListaSimple;
 import persistencia.Persistencia;
-//Hay que poner todos los metodos de crear aca
+
+import java.io.Serializable;
+
 public class Proyecto implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,13 +1,12 @@
 package modelo;
 
-import java.io.Serializable;
-
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import listas.Cola;
 import listas.ListaDoble;
 import listas.Pila;
+
+import java.io.Serializable;
 
 public class Proceso implements Serializable, Cloneable{
 

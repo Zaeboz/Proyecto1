@@ -41,7 +41,6 @@ public class ControladorProceso implements Initializable, Serializable{
     @FXML Button botonLanzarCrearProceso;
     @FXML Button botonEditarProceso;
     @FXML Button botonEliminarProceso;
-    @FXML Button botonBuscarProceso;
     @FXML Button botonConsultarActividades;
 
     @FXML TableView<Proceso> tablaProcesos = new TableView<>();
@@ -51,10 +50,8 @@ public class ControladorProceso implements Initializable, Serializable{
     @FXML TableColumn<Proceso, Double> columnaTiempoMaximo = new TableColumn<>("TMaximo");
     ObservableList<Proceso> listaProcesos = FXCollections.observableArrayList();
 
-    @FXML private TextField textFieldBuscar = new TextField();
     @FXML private TextField textFieldNombreProceso = new TextField();
 
-    ControladorPrincipal controladorPrincipal;
     private int posicionProcesoEnTabla = 0;
     int numeroProceso = 1;
 

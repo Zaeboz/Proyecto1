@@ -1,12 +1,5 @@
 package controladores;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Serializable;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-
 import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -17,13 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -33,6 +20,13 @@ import listas.ListaSimple;
 import modelo.Actividad;
 import modelo.Proceso;
 import persistencia.Persistencia;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class ControladorActividad implements Initializable, Serializable {
 
@@ -45,15 +39,9 @@ public class ControladorActividad implements Initializable, Serializable {
     @FXML MenuItem intercambiarActividades;
     @FXML MenuItem intercambiarTareas;
 
-    @FXML Button botonCrearActividad;
     @FXML Button botonBuscarActividades;
     @FXML Button botonEditarActividad;
     @FXML Button botonEliminarActividad;
-    @FXML Button botonConsultarTareas;
-    @FXML Button botonCancelar;
-
-    @FXML RadioButton radioButtonSiEs;
-    @FXML RadioButton radioButtonNoEs;
 
     @FXML TableView<Actividad> tablaDeActividades = new TableView<>();
     @FXML TableColumn<Actividad, String> nombreColumn = new TableColumn<>("nombre");
@@ -63,14 +51,8 @@ public class ControladorActividad implements Initializable, Serializable {
     ObservableList<Actividad> listaActividades = FXCollections.observableArrayList();
 
     @FXML TextField textFiledBuscar;
-    @FXML TextField textFiledNombre;
-    @FXML TextField textFiledIDProceso;
-    @FXML TextField textFiledDescripcion;
-    @FXML TextField textFiledNombrePos;
-    @FXML TextField textFiledNombreActividadAnterior;
 
     @FXML AnchorPane anchorPane = new AnchorPane();
-    @FXML AnchorPane anchorPaneCrear = new AnchorPane();
     private String nombreStage;
     public Stage stage;
     private int posicionEnTabla;

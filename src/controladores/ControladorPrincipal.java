@@ -23,7 +23,6 @@ public class ControladorPrincipal implements Initializable, Serializable{
 	@FXML BorderPane mainPane;
 
 	Main principal = Main.getInstance();
-	ControladorActividad controladorActividad = new ControladorActividad();
 
 	@FXML private void cerrarPrograma(ActionEvent event){
 		principal.getPrimaryStage().close();

@@ -3,7 +3,6 @@ package modelo;
 
 import exeptions.TareasNoObligatoriasException;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import listas.Cola;

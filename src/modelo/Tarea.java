@@ -15,10 +15,7 @@ public class Tarea implements Cloneable, Serializable{
     private SimpleBooleanProperty esOpcional = new SimpleBooleanProperty();
     private double tiempoDuracion = 0;
 
-
-
-    public Tarea()
-    {
+    public Tarea() {
 
     }
 
@@ -29,9 +26,6 @@ public class Tarea implements Cloneable, Serializable{
         this.esOpcional.set(esOpcional);
         this.tiempoDuracion = tiempoDuracion;
     }
-
-
-
 
     public String getNombre() {
         return nombre.get();

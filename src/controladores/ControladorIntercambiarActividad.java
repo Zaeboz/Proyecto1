@@ -13,12 +13,10 @@ public class ControladorIntercambiarActividad implements Serializable{
 
     private ControladorActividad controladorActividad;
 
-    @FXML Button botonCancelar;
     @FXML Button bitonIntercambiar;
 
     @FXML TextField textFieldNombreActivida1;
     @FXML TextField textFieldNombreActivida2;
-    @FXML TextField textFieldNombreVentana;
 
     @FXML public void intercambiarActividades(ActionEvent event){
         String nombreActividad1 = textFieldNombreActivida1.getText();
