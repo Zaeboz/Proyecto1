@@ -8,12 +8,18 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
+
 public class ControladorCrearProceso {
     @FXML private TextField textFieldNombreProceso = new TextField();
     @FXML Button botonCrearProceso;
     @FXML Button botonCancelar;
 
     private ControladorProceso controladorProceso;
+
+    @FXML public void cancelarCreacion(ActionEvent event){
+        controladorProceso.getStage().close();
+    }
 
     @FXML public void crearProceso(ActionEvent event)
     {

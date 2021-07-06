@@ -341,4 +341,8 @@ public class ControladorActividad implements Initializable, Serializable {
         Main.proyecto.editarActividad(actividadAux, nombreActividad, esObligatoria, descripcion);
         cargarTablaActividades();
     }
+
+    public Stage getStage() {
+        return stage;
+    }
 }

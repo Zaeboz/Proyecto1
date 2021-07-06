@@ -20,10 +20,15 @@ public class ControladorPrincipal implements Initializable, Serializable{
 	@FXML Button tareas;
 	@FXML Button procesos;
 	@FXML Button actividades;
+	@FXML Button buttonCerrar;
 	@FXML BorderPane mainPane;
 
 	Main principal = Main.getInstance();
 	ControladorActividad controladorActividad = new ControladorActividad();
+
+	@FXML private void cerrarPrograma(ActionEvent event){
+		principal.getPrimaryStage().close();
+	}
 	
 	@FXML private void cargarVistaProcesos(ActionEvent event) throws IOException {
 		principal.cargarVistaProcesos(mainPane);

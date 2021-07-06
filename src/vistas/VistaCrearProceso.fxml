@@ -9,7 +9,7 @@
    <children>
       <Label layoutX="43.0" layoutY="51.0" text="Nombre" />
       <Button fx:id="botonCrearProceso" layoutX="81.0" layoutY="105.0" mnemonicParsing="false" onAction="#crearProceso" prefWidth="67.0" text="Crear" />
-      <Button fx:id="botonCancelar" layoutX="179.0" layoutY="105.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="botonCancelar" layoutX="179.0" layoutY="105.0" mnemonicParsing="false" onAction="#cancelarCreacion" text="Cancelar" />
       <TextField fx:id="textFieldNombreProceso" layoutX="122.0" layoutY="47.0" />
       <Label layoutX="105.0" layoutY="14.0" text="Creacion del proceso" />
    </children>

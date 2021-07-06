@@ -25,6 +25,10 @@ public class ControladorCrearActividadFinal implements Serializable{
 
     private ControladorActividad controladorActividad;
 
+    @FXML public void cancelar(ActionEvent event){
+        controladorActividad.getStage().close();
+    }
+
     @FXML public void crear(ActionEvent event){
         Boolean esObligatoria;
 

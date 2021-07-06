@@ -59,6 +59,7 @@ public class ControladorProceso implements Initializable, Serializable{
     ControladorPrincipal controladorPrincipal;
     private int posicionProcesoEnTabla = 0;
     int numeroProceso = 1;
+
     public Stage stage;
 
     @FXML public void editarProceso(ActionEvent event){
@@ -239,5 +240,9 @@ public class ControladorProceso implements Initializable, Serializable{
             procesoAux.calcularDuracionProceso();
         }
         Persistencia.guardarRecursoProyectoXML(Main.proyecto);
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 }

@@ -13,7 +13,7 @@
       <Button fx:id="botonCrearActividad" layoutX="98.0" layoutY="244.0" mnemonicParsing="false" onAction="#crear" prefWidth="67.0" text="Crear" />
       <Label layoutX="18.0" layoutY="65.0" text="Nombre:" />
       <TextField fx:id="textFiledNombre" layoutX="163.0" layoutY="61.0" prefHeight="25.0" prefWidth="167.0" promptText="Nombre de la actividad" />
-      <Button fx:id="botonCancelar" layoutX="189.0" layoutY="244.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="botonCancelar" layoutX="189.0" layoutY="244.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
       <Label layoutX="18.0" layoutY="96.0" text="Codigo del proceso:" />
       <Label layoutX="18.0" layoutY="123.0" prefHeight="38.0" prefWidth="132.0" text="Nombre de la actividad&#10;para agregarla despues" />
       <Label layoutX="18.0" layoutY="172.0" text="Descripcion:" />
