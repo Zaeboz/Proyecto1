@@ -99,7 +99,7 @@ public class ControladorTarea implements Initializable {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        ControladorInsertarFinal aux = (ControladorInsertarFinal) loader.getController();
+        ControladorCrearTareaFinal aux = (ControladorCrearTareaFinal) loader.getController();
         aux.conectarControlador(this);
         stage.show();
     }
@@ -118,7 +118,7 @@ public class ControladorTarea implements Initializable {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        ControladorVistaInsertarPosicion aux = (ControladorVistaInsertarPosicion) loader.getController();
+        ControladorCrearTareaPosicion aux = (ControladorCrearTareaPosicion) loader.getController();
         aux.conectarControlador(this);
         stage.show();
     }

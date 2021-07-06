@@ -10,16 +10,18 @@ import modelo.Tarea;
 
 import javax.swing.*;
 
-public class ControladorVistaInsertarPosicion {
-    @FXML Button botonCrear;
+public class ControladorCrearTareaFinal {
+    @FXML
+    Button botonCrear;
 
-    @FXML RadioButton radioButtonObligatoria;
+    @FXML
+    RadioButton radioButtonObligatoria;
 
     @FXML TextField txtNombreActividad;
     @FXML TextField txtNombre;
     @FXML TextField txtDescripcion;
     @FXML TextField txtTiempoDuracion;
-    @FXML TextField txtPosicion;
+
 
     private ControladorTarea controladorTarea;
 
@@ -33,9 +35,9 @@ public class ControladorVistaInsertarPosicion {
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
         String tiempoDuracion = txtTiempoDuracion.getText();
-        String posicion = txtPosicion.getText();
 
-        if(nombre.isEmpty() || nombreActividad.isEmpty()  || tiempoDuracion.isEmpty() || posicion.isEmpty())
+
+        if(nombre.isEmpty() || nombreActividad.isEmpty() || tiempoDuracion.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Por favor ingrese los datos");
         }else
@@ -43,10 +45,10 @@ public class ControladorVistaInsertarPosicion {
             try
             {
                 Tarea tarea = new Tarea(nombreActividad, nombre, descripcion, obligatoria, Double.parseDouble(tiempoDuracion));
-                controladorTarea.crear(tarea, Integer.parseInt(posicion));
+                controladorTarea.crear(tarea, 0);
             }catch(NumberFormatException e)
             {
-                JOptionPane.showMessageDialog(null, "Por favor ingrese el tiempo en minutos y la posicion solo numeros");
+                JOptionPane.showMessageDialog(null, "Por favor ingrese el tiempo en minutos y solo numeros");
             }catch(Exception e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
