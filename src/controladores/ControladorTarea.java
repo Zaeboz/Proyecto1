@@ -48,8 +48,10 @@ public class ControladorTarea implements Initializable {
     @FXML TableColumn<Tarea, Double> tiempoDuracion = new TableColumn<>("tiempoDuracion");
     @FXML TableColumn<Tarea, Boolean> esOpcionalColumna = new TableColumn<>("esOpcional");
     ObservableList<Tarea> colaTareas = FXCollections.observableArrayList();
+
     private String nombreStage;
     private int posicionEnTabla;
+    private Stage stage;
 
     public ControladorTarea() {
     }
@@ -92,7 +94,7 @@ public class ControladorTarea implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         ControladorCrearTareaFinal aux = (ControladorCrearTareaFinal) loader.getController();
@@ -111,7 +113,7 @@ public class ControladorTarea implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         ControladorCrearTareaPosicion aux = (ControladorCrearTareaPosicion) loader.getController();
@@ -124,7 +126,7 @@ public class ControladorTarea implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         ControladorEditarTarea aux = (ControladorEditarTarea) loader.getController();
@@ -249,7 +251,7 @@ public class ControladorTarea implements Initializable {
     }
 
     public void editarTarea(Tarea tareaNueva) throws CloneNotSupportedException {
-
+        stage.close();
         Tarea tareaSeleccionada = getTablaTareaSeleccionada();
         Main.proyecto.editarTarea(tareaNueva, tareaSeleccionada.getNombre());
         llenarTabla();
@@ -314,6 +316,7 @@ public class ControladorTarea implements Initializable {
 
     public void crear(Tarea tarea, int posicion)
     {
+        stage.close();
         switch (nombreStage){
             case "VistaInsertarPosicion":
                 Main.proyecto.crearTareaPosicion(tarea, posicion);

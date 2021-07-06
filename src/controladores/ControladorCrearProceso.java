@@ -19,9 +19,7 @@ public class ControladorCrearProceso {
         controladorProceso.getStage().close();
     }
 
-    @FXML public void crearProceso(ActionEvent event)
-    {
-        System.out.println("Creo proceso");
+    @FXML public void crearProceso(ActionEvent event) {
 
         String nombreProceso = textFieldNombreProceso.getText();
 

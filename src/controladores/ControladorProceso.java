@@ -192,7 +192,7 @@ public class ControladorProceso implements Initializable, Serializable{
     }
 
     public void agregarDato(String nombreProceso){
-
+        stage.close();
         Proceso nuevoProceso = new Proceso(nombreProceso,numeroProceso);
 
         listaProcesos.add(nuevoProceso);
