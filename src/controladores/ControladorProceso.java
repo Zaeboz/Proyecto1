@@ -64,7 +64,7 @@ public class ControladorProceso implements Initializable, Serializable{
 
         try {
             // Cargo la vista
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaEditarProceso.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaEditarProceso.fxml"));
 
             // Cargo la ventana
             Parent root = loader.load();
@@ -88,7 +88,7 @@ public class ControladorProceso implements Initializable, Serializable{
     }
 
     @FXML public void consultarActividades(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaActividadesProceso.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaActividadesProceso.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage = new Stage();
@@ -108,7 +108,7 @@ public class ControladorProceso implements Initializable, Serializable{
     }
 
     @FXML private void lanzarVistaCrearProceso(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaCrearProceso.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaCrearProceso.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage = new Stage();

@@ -93,7 +93,7 @@ public class ControladorTarea implements Initializable {
     @FXML
     public void cargarInsertarFinal(ActionEvent event) throws IOException{
         nombreStage = "VistaInsertarFinal";
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreStage+".fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -112,7 +112,7 @@ public class ControladorTarea implements Initializable {
     @FXML
     public void cargarInsertarPosicion(ActionEvent event) throws IOException{
         nombreStage = "VistaInsertarPosicion";
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreStage+".fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -125,7 +125,7 @@ public class ControladorTarea implements Initializable {
 
     @FXML public void cargarVistaEditarTarea(ActionEvent event) throws IOException {
         nombreStage = "VistaEditarTarea";
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreStage+".fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();

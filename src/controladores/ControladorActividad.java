@@ -86,7 +86,7 @@ public class ControladorActividad implements Initializable, Serializable {
      */
     @FXML
     public void cargarCrearDespuesUltima(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaAgregarFinal.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaAgregarFinal.fxml"));
         nombreStage = "VistaAgregarDespuesUltima";
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -105,7 +105,7 @@ public class ControladorActividad implements Initializable, Serializable {
      */
     @FXML
     public void cargarCrearFinal(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaAgregarFinal.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaAgregarFinal.fxml"));
         nombreStage = "VistaAgregarFinal";
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -125,7 +125,7 @@ public class ControladorActividad implements Initializable, Serializable {
      */
     @FXML
     public void cargarCrearDespues(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaAgregarDespues.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaAgregarDespues.fxml"));
         nombreStage = "VistaAgregarDespues";
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -139,7 +139,7 @@ public class ControladorActividad implements Initializable, Serializable {
 
     @FXML
     public void lanzarVistaIntercmbiar(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInterCambiarActividad.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaInterCambiarActividad.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         nombreStage = "IntercabiarActividad";
@@ -153,7 +153,7 @@ public class ControladorActividad implements Initializable, Serializable {
 
     @FXML
     public void lanzarVistaIntercmbiarTareas(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaInterCambiarActividad.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaInterCambiarActividad.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         nombreStage = "IntercabiarTareas";
@@ -167,7 +167,7 @@ public class ControladorActividad implements Initializable, Serializable {
 
     @FXML
     public void lanzarEditarActividad(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaEditarActividad.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaEditarActividad.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage = new Stage();
@@ -234,7 +234,7 @@ public class ControladorActividad implements Initializable, Serializable {
 
     @FXML
     public void lanzarVistaBuscarActividad(ActionEvent event) throws IOException, CloneNotSupportedException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaVerActividadDetalle.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/VistaVerActividadDetalle.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage = new Stage();
