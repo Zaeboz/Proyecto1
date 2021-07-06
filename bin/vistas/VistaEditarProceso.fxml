@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="208.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorEditarProceso">
+<AnchorPane prefHeight="208.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorEditarProceso">
    <children>
       <Label layoutX="23.0" layoutY="61.0" prefHeight="17.0" prefWidth="111.0" text="Nombre" />
       <TextField fx:id="textNombreProceso" layoutX="157.0" layoutY="66.0" />

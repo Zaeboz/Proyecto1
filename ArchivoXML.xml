@@ -5,38 +5,488 @@
    <int>5</int>
   </void>
  </object>
+<void class="listas.Nodo" id="Nodo0">
+ <void property="valorNodo">
+  <object class="modelo.Actividad" id="Actividad0">
+   <void property="codigoProceso">
+    <int>1</int>
+   </void>
+   <void property="colaDeTareas">
+    <void property="nodoPrimero">
+     <object class="listas.Nodo">
+      <void property="siguienteNodo">
+       <object class="listas.Nodo">
+        <void property="siguienteNodo">
+         <object class="listas.Nodo" id="Nodo1">
+          <void property="valorNodo">
+           <object class="modelo.Tarea">
+            <void property="descripcion">
+             <string>Se recoge la basura que se ha ido acumulando mientras se barre</string>
+            </void>
+            <void property="nombre">
+             <string>Recoger basura</string>
+            </void>
+            <void property="nombreActividad">
+             <string>Barrer la casa</string>
+            </void>
+            <void property="tiempoDuracion">
+             <double>6.0</double>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="valorNodo">
+         <object class="modelo.Tarea">
+          <void property="descripcion">
+           <string>Se pasa la esoba debajo de las camas para poder recoger la mugre acumulada</string>
+          </void>
+          <void property="nombre">
+           <string>Pasar la escoba debajo de las camas</string>
+          </void>
+          <void property="nombreActividad">
+           <string>Barrer la casa</string>
+          </void>
+          <void property="tiempoDuracion">
+           <double>10.0</double>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void property="valorNodo">
+       <object class="modelo.Tarea">
+        <void property="descripcion">
+         <string>Se limpia la esciba y el recogedor para poder empezar a barrer</string>
+        </void>
+        <void property="esOpcional">
+         <boolean>true</boolean>
+        </void>
+        <void property="nombre">
+         <string>Limpiar la escoba y el recogedor</string>
+        </void>
+        <void property="nombreActividad">
+         <string>Barrer la casa</string>
+        </void>
+        <void property="tiempoDuracion">
+         <double>5.0</double>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="nodoUltimo">
+     <object idref="Nodo1"/>
+    </void>
+    <void property="tamanio">
+     <int>3</int>
+    </void>
+   </void>
+   <void property="descripcion">
+    <string>Se barre toda la casa</string>
+   </void>
+   <void property="esObligatoria">
+    <boolean>true</boolean>
+   </void>
+   <void property="nombre">
+    <string>Barrer la casa</string>
+   </void>
+   <void property="tiempoMaximo">
+    <double>21.0</double>
+   </void>
+   <void property="tiempoMinimo">
+    <double>16.0</double>
+   </void>
+  </object>
+ </void>
+</void>
 <void class="modelo.Tarea" id="Tarea0">
  <void property="nombre">
-  <string>Sacar los perros</string>
+  <string>Recoger la ropa sucia</string>
  </void>
  <void property="nombreActividad">
   <string>Organizar el desorden</string>
  </void>
  <void property="tiempoDuracion">
-  <double>2.0</double>
+  <double>6.0</double>
  </void>
  <void property="descripcion">
-  <string>Se sacan los perros para el corredor para que no hagan mas desorden</string>
+  <string>Se recoge la ropa sucia que hay en todos los cuartos</string>
  </void>
 </void>
+<void class="modelo.Proceso" id="Proceso0">
+ <void id="Actividad1" property="actividadUltimoAgregado">
+  <void property="codigoProceso">
+   <int>1</int>
+  </void>
+  <void property="colaDeTareas">
+   <void property="nodoPrimero">
+    <object class="listas.Nodo">
+     <void property="siguienteNodo">
+      <object class="listas.Nodo">
+       <void property="siguienteNodo">
+        <object class="listas.Nodo" id="Nodo2">
+         <void property="valorNodo">
+          <object class="modelo.Tarea">
+           <void property="descripcion">
+            <string>Se sacan los perros para el corredor para que no hagan mas desorden</string>
+           </void>
+           <void property="nombre">
+            <string>Sacar los perros</string>
+           </void>
+           <void property="nombreActividad">
+            <string>Organizar el desorden</string>
+           </void>
+           <void property="tiempoDuracion">
+            <double>2.0</double>
+           </void>
+          </object>
+         </void>
+        </object>
+       </void>
+       <void property="valorNodo">
+        <object idref="Tarea0"/>
+       </void>
+      </object>
+     </void>
+     <void property="valorNodo">
+      <object class="modelo.Tarea">
+       <void property="descripcion">
+        <string>Se ubican los mueblos en su lugar correspondiente</string>
+       </void>
+       <void property="nombre">
+        <string>Ubicar los muebles</string>
+       </void>
+       <void property="nombreActividad">
+        <string>Organizar el desorden</string>
+       </void>
+       <void property="tiempoDuracion">
+        <double>10.0</double>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void property="nodoUltimo">
+    <object idref="Nodo2"/>
+   </void>
+   <void property="tamanio">
+    <int>3</int>
+   </void>
+  </void>
+  <void property="descripcion">
+   <string>Se ubica las cosas en donde deben de estar y se acomodan los muebles</string>
+  </void>
+  <void property="esObligatoria">
+   <boolean>true</boolean>
+  </void>
+  <void property="nombre">
+   <string>Organizar el desorden</string>
+  </void>
+  <void property="tiempoMaximo">
+   <double>18.0</double>
+  </void>
+  <void property="tiempoMinimo">
+   <double>18.0</double>
+  </void>
+ </void>
+ <void property="idProceso">
+  <int>1</int>
+ </void>
+ <void property="listaActividades">
+  <void property="nodoPrimero">
+   <object class="listas.NodoDoble" id="NodoDoble0">
+    <void property="siguienteNodo">
+     <object class="listas.NodoDoble" id="NodoDoble1">
+      <void property="anteriorNodo">
+       <object idref="NodoDoble0"/>
+      </void>
+      <void property="siguienteNodo">
+       <object class="listas.NodoDoble" id="NodoDoble2">
+        <void property="anteriorNodo">
+         <object idref="NodoDoble1"/>
+        </void>
+        <void property="siguienteNodo">
+         <object class="listas.NodoDoble" id="NodoDoble3">
+          <void property="anteriorNodo">
+           <object idref="NodoDoble2"/>
+          </void>
+          <void property="valorNodo">
+           <object idref="Actividad0"/>
+          </void>
+         </object>
+        </void>
+        <void property="valorNodo">
+         <object class="modelo.Actividad" id="Actividad2">
+          <void property="codigoProceso">
+           <int>1</int>
+          </void>
+          <void property="colaDeTareas">
+           <void property="nodoPrimero">
+            <object class="listas.Nodo">
+             <void property="siguienteNodo">
+              <object class="listas.Nodo">
+               <void property="siguienteNodo">
+                <object class="listas.Nodo" id="Nodo3">
+                 <void property="valorNodo">
+                  <object class="modelo.Tarea">
+                   <void property="descripcion">
+                    <string>Se trapea todo el piso de la casa </string>
+                   </void>
+                   <void property="nombre">
+                    <string>Trapear el piso</string>
+                   </void>
+                   <void property="nombreActividad">
+                    <string>Trapear la casa</string>
+                   </void>
+                   <void property="tiempoDuracion">
+                    <double>35.0</double>
+                   </void>
+                  </object>
+                 </void>
+                </object>
+               </void>
+               <void property="valorNodo">
+                <object class="modelo.Tarea">
+                 <void property="descripcion">
+                  <string>Se lava el trapeador antes, durante y despues de trapear la casa</string>
+                 </void>
+                 <void property="nombre">
+                  <string>Lavar el trapeador</string>
+                 </void>
+                 <void property="nombreActividad">
+                  <string>Trapear la casa</string>
+                 </void>
+                 <void property="tiempoDuracion">
+                  <double>5.0</double>
+                 </void>
+                </object>
+               </void>
+              </object>
+             </void>
+             <void property="valorNodo">
+              <object class="modelo.Tarea">
+               <void property="descripcion">
+                <string>Se llena un balde con agua para poder lavar el trapeador mientras se trapea</string>
+               </void>
+               <void property="nombre">
+                <string>Llenar balde con agua</string>
+               </void>
+               <void property="nombreActividad">
+                <string>Trapear la casa</string>
+               </void>
+               <void property="tiempoDuracion">
+                <double>4.0</double>
+               </void>
+              </object>
+             </void>
+            </object>
+           </void>
+           <void property="nodoUltimo">
+            <object idref="Nodo3"/>
+           </void>
+           <void property="tamanio">
+            <int>3</int>
+           </void>
+          </void>
+          <void property="descripcion">
+           <string>Se trapea toda la casa</string>
+          </void>
+          <void property="esObligatoria">
+           <boolean>true</boolean>
+          </void>
+          <void property="nombre">
+           <string>Trapear la casa</string>
+          </void>
+          <void property="tiempoMaximo">
+           <double>44.0</double>
+          </void>
+          <void property="tiempoMinimo">
+           <double>44.0</double>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void property="valorNodo">
+       <object class="modelo.Actividad" id="Actividad3">
+        <void property="codigoProceso">
+         <int>1</int>
+        </void>
+        <void property="colaDeTareas">
+         <void property="nodoPrimero">
+          <object class="listas.Nodo">
+           <void property="siguienteNodo">
+            <object class="listas.Nodo">
+             <void property="siguienteNodo">
+              <object class="listas.Nodo">
+               <void property="siguienteNodo">
+                <object class="listas.Nodo" id="Nodo4">
+                 <void property="valorNodo">
+                  <object class="modelo.Tarea">
+                   <void property="descripcion">
+                    <string>Se reubican los obejtos en su respectivo puesto</string>
+                   </void>
+                   <void property="nombre">
+                    <string>Reubicar objetos</string>
+                   </void>
+                   <void property="nombreActividad">
+                    <string>Desempolvar</string>
+                   </void>
+                   <void property="tiempoDuracion">
+                    <double>5.0</double>
+                   </void>
+                  </object>
+                 </void>
+                </object>
+               </void>
+               <void property="valorNodo">
+                <object class="modelo.Tarea">
+                 <void property="descripcion">
+                  <string>Se limpian los objetos</string>
+                 </void>
+                 <void property="nombre">
+                  <string>Limpiar objetos</string>
+                 </void>
+                 <void property="nombreActividad">
+                  <string>Desempolvar</string>
+                 </void>
+                 <void property="tiempoDuracion">
+                  <double>8.0</double>
+                 </void>
+                </object>
+               </void>
+              </object>
+             </void>
+             <void property="valorNodo">
+              <object class="modelo.Tarea">
+               <void property="descripcion">
+                <string>Se limpian los mesones y las repisas</string>
+               </void>
+               <void property="nombre">
+                <string>Limpiar mesones y repisas</string>
+               </void>
+               <void property="nombreActividad">
+                <string>Desempolvar</string>
+               </void>
+               <void property="tiempoDuracion">
+                <double>10.0</double>
+               </void>
+              </object>
+             </void>
+            </object>
+           </void>
+           <void property="valorNodo">
+            <object class="modelo.Tarea">
+             <void property="descripcion">
+              <string>Se mueven todos los objetos para dejar los mesones o estanterias libres</string>
+             </void>
+             <void property="nombre">
+              <string>Mover todo los objetos</string>
+             </void>
+             <void property="nombreActividad">
+              <string>Desempolvar</string>
+             </void>
+             <void property="tiempoDuracion">
+              <double>8.0</double>
+             </void>
+            </object>
+           </void>
+          </object>
+         </void>
+         <void property="nodoUltimo">
+          <object idref="Nodo4"/>
+         </void>
+         <void property="tamanio">
+          <int>4</int>
+         </void>
+        </void>
+        <void property="descripcion">
+         <string>Se desempolva toda la casa (como estanterias, licrerera, libreria, etc)</string>
+        </void>
+        <void property="nombre">
+         <string>Desempolvar</string>
+        </void>
+        <void property="tiempoMaximo">
+         <double>31.0</double>
+        </void>
+        <void property="tiempoMinimo">
+         <double>31.0</double>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="valorNodo">
+     <object idref="Actividad1"/>
+    </void>
+   </object>
+  </void>
+  <void property="nodoUltimo">
+   <object idref="NodoDoble3"/>
+  </void>
+  <void property="tamanio">
+   <int>4</int>
+  </void>
+ </void>
+ <void property="nombreProceso">
+  <string>Hacer oficio</string>
+ </void>
+ <void id="Pila0" property="pilaActividadAux">
+  <void property="tamano">
+   <int>4</int>
+  </void>
+  <void property="cima">
+   <object class="listas.Nodo">
+    <void property="siguienteNodo">
+     <object class="listas.Nodo">
+      <void property="siguienteNodo">
+       <object class="listas.Nodo">
+        <void property="siguienteNodo">
+         <object idref="Nodo0"/>
+        </void>
+        <void property="valorNodo">
+         <object idref="Actividad3"/>
+        </void>
+       </object>
+      </void>
+      <void property="valorNodo">
+       <object idref="Actividad2"/>
+      </void>
+     </object>
+    </void>
+    <void property="valorNodo">
+     <object idref="Actividad1"/>
+    </void>
+   </object>
+  </void>
+ </void>
+ <void property="tiempoMaximo">
+  <double>114.0</double>
+ </void>
+ <void property="tiempoMinimo">
+  <double>78.0</double>
+ </void>
+</void>
+<void idref="Pila0"/>
 <void class="modelo.Tarea" id="Tarea1">
  <void property="nombre">
-  <string>Pasar la escoba debajo de las camas</string>
+  <string>Pagar el pan</string>
  </void>
  <void property="nombreActividad">
-  <string>Barrer la casa</string>
+  <string>Comprar pan</string>
  </void>
  <void property="tiempoDuracion">
-  <double>10.0</double>
+  <double>1.0</double>
  </void>
  <void property="descripcion">
-  <string>Se pasa la esoba debajo de las camas para poder recoger la mugre acumulada</string>
+  <string>Se paga el pan previamente elegido</string>
  </void>
 </void>
-<void class="listas.Nodo" id="Nodo0">
+<void class="listas.Nodo" id="Nodo5">
  <void property="valorNodo">
-  <void class="modelo.Proceso" id="Proceso0">
-   <void id="Actividad0" property="actividadUltimoAgregado">
+  <object class="modelo.Proceso" id="Proceso1">
+   <void id="Actividad4" property="actividadUltimoAgregado">
     <void property="codigoProceso">
      <int>2</int>
     </void>
@@ -46,7 +496,7 @@
        <void property="siguienteNodo">
         <object class="listas.Nodo">
          <void property="siguienteNodo">
-          <object class="listas.Nodo" id="Nodo1">
+          <object class="listas.Nodo" id="Nodo6">
            <void property="valorNodo">
             <object class="modelo.Tarea">
              <void property="descripcion">
@@ -69,20 +519,7 @@
           </object>
          </void>
          <void property="valorNodo">
-          <object class="modelo.Tarea">
-           <void property="descripcion">
-            <string>Se paga el pan previamente elegido</string>
-           </void>
-           <void property="nombre">
-            <string>Pagar el pan</string>
-           </void>
-           <void property="nombreActividad">
-            <string>Comprar pan</string>
-           </void>
-           <void property="tiempoDuracion">
-            <double>1.0</double>
-           </void>
-          </object>
+          <object idref="Tarea1"/>
          </void>
         </object>
        </void>
@@ -105,7 +542,7 @@
       </object>
      </void>
      <void property="nodoUltimo">
-      <object idref="Nodo1"/>
+      <object idref="Nodo6"/>
      </void>
      <void property="tamanio">
       <int>3</int>
@@ -129,29 +566,29 @@
    </void>
    <void property="listaActividades">
     <void property="nodoPrimero">
-     <object class="listas.NodoDoble" id="NodoDoble0">
+     <object class="listas.NodoDoble" id="NodoDoble4">
       <void property="siguienteNodo">
-       <object class="listas.NodoDoble" id="NodoDoble1">
+       <object class="listas.NodoDoble" id="NodoDoble5">
         <void property="anteriorNodo">
-         <object idref="NodoDoble0"/>
+         <object idref="NodoDoble4"/>
         </void>
         <void property="siguienteNodo">
-         <object class="listas.NodoDoble" id="NodoDoble2">
+         <object class="listas.NodoDoble" id="NodoDoble6">
           <void property="anteriorNodo">
-           <object idref="NodoDoble1"/>
+           <object idref="NodoDoble5"/>
           </void>
           <void property="siguienteNodo">
-           <object class="listas.NodoDoble" id="NodoDoble3">
+           <object class="listas.NodoDoble" id="NodoDoble7">
             <void property="anteriorNodo">
-             <object idref="NodoDoble2"/>
+             <object idref="NodoDoble6"/>
             </void>
             <void property="valorNodo">
-             <object idref="Actividad0"/>
+             <object idref="Actividad4"/>
             </void>
            </object>
           </void>
           <void property="valorNodo">
-           <object class="modelo.Actividad" id="Actividad1">
+           <object class="modelo.Actividad" id="Actividad5">
             <void property="codigoProceso">
              <int>2</int>
             </void>
@@ -163,7 +600,7 @@
                  <void property="siguienteNodo">
                   <object class="listas.Nodo">
                    <void property="siguienteNodo">
-                    <object class="listas.Nodo" id="Nodo2">
+                    <object class="listas.Nodo" id="Nodo7">
                      <void property="valorNodo">
                       <object class="modelo.Tarea">
                        <void property="descripcion">
@@ -240,7 +677,7 @@
               </object>
              </void>
              <void property="nodoUltimo">
-              <object idref="Nodo2"/>
+              <object idref="Nodo7"/>
              </void>
              <void property="tamanio">
               <int>4</int>
@@ -266,7 +703,7 @@
          </object>
         </void>
         <void property="valorNodo">
-         <object class="modelo.Actividad" id="Actividad2">
+         <object class="modelo.Actividad" id="Actividad6">
           <void property="codigoProceso">
            <int>2</int>
           </void>
@@ -278,7 +715,7 @@
                <void property="siguienteNodo">
                 <object class="listas.Nodo">
                  <void property="siguienteNodo">
-                  <object class="listas.Nodo" id="Nodo3">
+                  <object class="listas.Nodo" id="Nodo8">
                    <void property="valorNodo">
                     <object class="modelo.Tarea">
                      <void property="descripcion">
@@ -355,7 +792,7 @@
             </object>
            </void>
            <void property="nodoUltimo">
-            <object idref="Nodo3"/>
+            <object idref="Nodo8"/>
            </void>
            <void property="tamanio">
             <int>4</int>
@@ -381,7 +818,7 @@
        </object>
       </void>
       <void property="valorNodo">
-       <object class="modelo.Actividad" id="Actividad3">
+       <object class="modelo.Actividad" id="Actividad7">
         <void property="codigoProceso">
          <int>2</int>
         </void>
@@ -391,7 +828,7 @@
            <void property="siguienteNodo">
             <object class="listas.Nodo">
              <void property="siguienteNodo">
-              <object class="listas.Nodo" id="Nodo4">
+              <object class="listas.Nodo" id="Nodo9">
                <void property="valorNodo">
                 <object class="modelo.Tarea">
                  <void property="descripcion">
@@ -447,7 +884,7 @@
           </object>
          </void>
          <void property="nodoUltimo">
-          <object idref="Nodo4"/>
+          <object idref="Nodo9"/>
          </void>
          <void property="tamanio">
           <int>3</int>
@@ -473,7 +910,7 @@
      </object>
     </void>
     <void property="nodoUltimo">
-     <object idref="NodoDoble3"/>
+     <object idref="NodoDoble7"/>
     </void>
     <void property="tamanio">
      <int>4</int>
@@ -484,7 +921,32 @@
    </void>
    <void property="pilaActividadAux">
     <void property="cima">
-     <object idref="Nodo0"/>
+     <object class="listas.Nodo">
+      <void property="siguienteNodo">
+       <object class="listas.Nodo">
+        <void property="siguienteNodo">
+         <object class="listas.Nodo">
+          <void property="siguienteNodo">
+           <object class="listas.Nodo">
+            <void property="valorNodo">
+             <object idref="Actividad7"/>
+            </void>
+           </object>
+          </void>
+          <void property="valorNodo">
+           <object idref="Actividad6"/>
+          </void>
+         </object>
+        </void>
+        <void property="valorNodo">
+         <object idref="Actividad5"/>
+        </void>
+       </object>
+      </void>
+      <void property="valorNodo">
+       <object idref="Actividad4"/>
+      </void>
+     </object>
     </void>
     <void property="tamano">
      <int>4</int>
@@ -496,478 +958,7 @@
    <void property="tiempoMinimo">
     <double>72.0</double>
    </void>
-  </void>
-  <object idref="Actividad0"/>
- </void>
- <void property="siguienteNodo">
-  <object class="listas.Nodo">
-   <void property="siguienteNodo">
-    <object class="listas.Nodo">
-     <void property="siguienteNodo">
-      <object class="listas.Nodo">
-       <void property="valorNodo">
-        <object idref="Actividad3"/>
-       </void>
-      </object>
-     </void>
-     <void property="valorNodo">
-      <object idref="Actividad2"/>
-     </void>
-    </object>
-   </void>
-   <void property="valorNodo">
-    <object idref="Actividad1"/>
-   </void>
   </object>
- </void>
-</void>
-<void class="modelo.Proceso" id="Proceso1">
- <void id="Actividad4" property="actividadUltimoAgregado">
-  <void property="colaDeTareas">
-   <void property="nodoPrimero">
-    <object class="listas.Nodo">
-     <void property="siguienteNodo">
-      <object class="listas.Nodo">
-       <void property="siguienteNodo">
-        <object class="listas.Nodo" id="Nodo5">
-         <void property="valorNodo">
-          <object idref="Tarea0"/>
-         </void>
-        </object>
-       </void>
-       <void property="valorNodo">
-        <object class="modelo.Tarea">
-         <void property="descripcion">
-          <string>Se recoge la ropa sucia que hay en todos los cuartos</string>
-         </void>
-         <void property="nombre">
-          <string>Recoger la ropa sucia</string>
-         </void>
-         <void property="nombreActividad">
-          <string>Organizar el desorden</string>
-         </void>
-         <void property="tiempoDuracion">
-          <double>6.0</double>
-         </void>
-        </object>
-       </void>
-      </object>
-     </void>
-     <void property="valorNodo">
-      <object class="modelo.Tarea">
-       <void property="descripcion">
-        <string>Se ubican los mueblos en su lugar correspondiente</string>
-       </void>
-       <void property="nombre">
-        <string>Ubicar los muebles</string>
-       </void>
-       <void property="nombreActividad">
-        <string>Organizar el desorden</string>
-       </void>
-       <void property="tiempoDuracion">
-        <double>10.0</double>
-       </void>
-      </object>
-     </void>
-    </object>
-   </void>
-   <void property="nodoUltimo">
-    <object idref="Nodo5"/>
-   </void>
-   <void property="tamanio">
-    <int>3</int>
-   </void>
-  </void>
-  <void property="descripcion">
-   <string>Se ubica las cosas en donde deben de estar y se acomodan los muebles</string>
-  </void>
-  <void property="esObligatoria">
-   <boolean>true</boolean>
-  </void>
-  <void property="nombre">
-   <string>Organizar el desorden</string>
-  </void>
-  <void property="tiempoMaximo">
-   <double>18.0</double>
-  </void>
-  <void property="tiempoMinimo">
-   <double>18.0</double>
-  </void>
-  <void property="codigoProceso">
-   <int>1</int>
-  </void>
- </void>
- <void property="idProceso">
-  <int>1</int>
- </void>
- <void property="listaActividades">
-  <void property="nodoPrimero">
-   <object class="listas.NodoDoble" id="NodoDoble4">
-    <void property="siguienteNodo">
-     <object class="listas.NodoDoble" id="NodoDoble5">
-      <void property="anteriorNodo">
-       <object idref="NodoDoble4"/>
-      </void>
-      <void property="siguienteNodo">
-       <object class="listas.NodoDoble" id="NodoDoble6">
-        <void property="anteriorNodo">
-         <object idref="NodoDoble5"/>
-        </void>
-        <void property="siguienteNodo">
-         <object class="listas.NodoDoble" id="NodoDoble7">
-          <void property="anteriorNodo">
-           <object idref="NodoDoble6"/>
-          </void>
-          <void property="valorNodo">
-           <object class="modelo.Actividad" id="Actividad5">
-            <void property="codigoProceso">
-             <int>1</int>
-            </void>
-            <void property="colaDeTareas">
-             <void property="nodoPrimero">
-              <object class="listas.Nodo">
-               <void property="siguienteNodo">
-                <object class="listas.Nodo">
-                 <void property="siguienteNodo">
-                  <object class="listas.Nodo" id="Nodo6">
-                   <void property="valorNodo">
-                    <object class="modelo.Tarea">
-                     <void property="descripcion">
-                      <string>Se recoge la basura que se ha ido acumulando mientras se barre</string>
-                     </void>
-                     <void property="nombre">
-                      <string>Recoger basura</string>
-                     </void>
-                     <void property="nombreActividad">
-                      <string>Barrer la casa</string>
-                     </void>
-                     <void property="tiempoDuracion">
-                      <double>6.0</double>
-                     </void>
-                    </object>
-                   </void>
-                  </object>
-                 </void>
-                 <void property="valorNodo">
-                  <object idref="Tarea1"/>
-                 </void>
-                </object>
-               </void>
-               <void property="valorNodo">
-                <object class="modelo.Tarea">
-                 <void property="descripcion">
-                  <string>Se limpia la esciba y el recogedor para poder empezar a barrer</string>
-                 </void>
-                 <void property="esOpcional">
-                  <boolean>true</boolean>
-                 </void>
-                 <void property="nombre">
-                  <string>Limpiar la escoba y el recogedor</string>
-                 </void>
-                 <void property="nombreActividad">
-                  <string>Barrer la casa</string>
-                 </void>
-                 <void property="tiempoDuracion">
-                  <double>5.0</double>
-                 </void>
-                </object>
-               </void>
-              </object>
-             </void>
-             <void property="nodoUltimo">
-              <object idref="Nodo6"/>
-             </void>
-             <void property="tamanio">
-              <int>3</int>
-             </void>
-            </void>
-            <void property="descripcion">
-             <string>Se barre toda la casa</string>
-            </void>
-            <void property="esObligatoria">
-             <boolean>true</boolean>
-            </void>
-            <void property="nombre">
-             <string>Barrer la casa</string>
-            </void>
-            <void property="tiempoMaximo">
-             <double>21.0</double>
-            </void>
-            <void property="tiempoMinimo">
-             <double>16.0</double>
-            </void>
-           </object>
-          </void>
-         </object>
-        </void>
-        <void property="valorNodo">
-         <object class="modelo.Actividad" id="Actividad6">
-          <void property="codigoProceso">
-           <int>1</int>
-          </void>
-          <void property="colaDeTareas">
-           <void property="nodoPrimero">
-            <object class="listas.Nodo">
-             <void property="siguienteNodo">
-              <object class="listas.Nodo">
-               <void property="siguienteNodo">
-                <object class="listas.Nodo" id="Nodo7">
-                 <void property="valorNodo">
-                  <object class="modelo.Tarea">
-                   <void property="descripcion">
-                    <string>Se trapea todo el piso de la casa </string>
-                   </void>
-                   <void property="nombre">
-                    <string>Trapear el piso</string>
-                   </void>
-                   <void property="nombreActividad">
-                    <string>Trapear la casa</string>
-                   </void>
-                   <void property="tiempoDuracion">
-                    <double>35.0</double>
-                   </void>
-                  </object>
-                 </void>
-                </object>
-               </void>
-               <void property="valorNodo">
-                <object class="modelo.Tarea">
-                 <void property="descripcion">
-                  <string>Se lava el trapeador antes, durante y despues de trapear la casa</string>
-                 </void>
-                 <void property="nombre">
-                  <string>Lavar el trapeador</string>
-                 </void>
-                 <void property="nombreActividad">
-                  <string>Trapear la casa</string>
-                 </void>
-                 <void property="tiempoDuracion">
-                  <double>5.0</double>
-                 </void>
-                </object>
-               </void>
-              </object>
-             </void>
-             <void property="valorNodo">
-              <object class="modelo.Tarea">
-               <void property="descripcion">
-                <string>Se llena un balde con agua para poder lavar el trapeador mientras se trapea</string>
-               </void>
-               <void property="nombre">
-                <string>Llenar balde con agua</string>
-               </void>
-               <void property="nombreActividad">
-                <string>Trapear la casa</string>
-               </void>
-               <void property="tiempoDuracion">
-                <double>4.0</double>
-               </void>
-              </object>
-             </void>
-            </object>
-           </void>
-           <void property="nodoUltimo">
-            <object idref="Nodo7"/>
-           </void>
-           <void property="tamanio">
-            <int>3</int>
-           </void>
-          </void>
-          <void property="descripcion">
-           <string>Se trapea toda la casa</string>
-          </void>
-          <void property="esObligatoria">
-           <boolean>true</boolean>
-          </void>
-          <void property="nombre">
-           <string>Trapear la casa</string>
-          </void>
-          <void property="tiempoMaximo">
-           <double>44.0</double>
-          </void>
-          <void property="tiempoMinimo">
-           <double>44.0</double>
-          </void>
-         </object>
-        </void>
-       </object>
-      </void>
-      <void property="valorNodo">
-       <object class="modelo.Actividad" id="Actividad7">
-        <void property="codigoProceso">
-         <int>1</int>
-        </void>
-        <void property="colaDeTareas">
-         <void property="nodoPrimero">
-          <object class="listas.Nodo">
-           <void property="siguienteNodo">
-            <object class="listas.Nodo">
-             <void property="siguienteNodo">
-              <object class="listas.Nodo">
-               <void property="siguienteNodo">
-                <object class="listas.Nodo" id="Nodo8">
-                 <void property="valorNodo">
-                  <object class="modelo.Tarea">
-                   <void property="descripcion">
-                    <string>Se reubican los obejtos en su respectivo puesto</string>
-                   </void>
-                   <void property="nombre">
-                    <string>Reubicar objetos</string>
-                   </void>
-                   <void property="nombreActividad">
-                    <string>Desempolvar</string>
-                   </void>
-                   <void property="tiempoDuracion">
-                    <double>5.0</double>
-                   </void>
-                  </object>
-                 </void>
-                </object>
-               </void>
-               <void property="valorNodo">
-                <object class="modelo.Tarea">
-                 <void property="descripcion">
-                  <string>Se limpian los objetos</string>
-                 </void>
-                 <void property="nombre">
-                  <string>Limpiar objetos</string>
-                 </void>
-                 <void property="nombreActividad">
-                  <string>Desempolvar</string>
-                 </void>
-                 <void property="tiempoDuracion">
-                  <double>8.0</double>
-                 </void>
-                </object>
-               </void>
-              </object>
-             </void>
-             <void property="valorNodo">
-              <object class="modelo.Tarea">
-               <void property="descripcion">
-                <string>Se limpian los mesones y las repisas</string>
-               </void>
-               <void property="nombre">
-                <string>Limpiar mesones y repisas</string>
-               </void>
-               <void property="nombreActividad">
-                <string>Desempolvar</string>
-               </void>
-               <void property="tiempoDuracion">
-                <double>10.0</double>
-               </void>
-              </object>
-             </void>
-            </object>
-           </void>
-           <void property="valorNodo">
-            <object class="modelo.Tarea">
-             <void property="descripcion">
-              <string>Se mueven todos los objetos para dejar los mesones o estanterias libres</string>
-             </void>
-             <void property="nombre">
-              <string>Mover todo los objetos</string>
-             </void>
-             <void property="nombreActividad">
-              <string>Desempolvar</string>
-             </void>
-             <void property="tiempoDuracion">
-              <double>8.0</double>
-             </void>
-            </object>
-           </void>
-          </object>
-         </void>
-         <void property="nodoUltimo">
-          <object idref="Nodo8"/>
-         </void>
-         <void property="tamanio">
-          <int>4</int>
-         </void>
-        </void>
-        <void property="descripcion">
-         <string>Se desempolva toda la casa (como estanterias, licrerera, libreria, etc)</string>
-        </void>
-        <void property="nombre">
-         <string>Desempolvar</string>
-        </void>
-        <void property="tiempoMaximo">
-         <double>31.0</double>
-        </void>
-        <void property="tiempoMinimo">
-         <double>31.0</double>
-        </void>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="valorNodo">
-     <object idref="Actividad4"/>
-    </void>
-   </object>
-  </void>
-  <void property="nodoUltimo">
-   <object idref="NodoDoble7"/>
-  </void>
-  <void property="tamanio">
-   <int>4</int>
-  </void>
- </void>
- <void property="nombreProceso">
-  <string>Hacer oficio</string>
- </void>
- <void property="pilaActividadAux">
-  <void property="cima">
-   <object class="listas.Nodo">
-    <void property="siguienteNodo">
-     <object class="listas.Nodo">
-      <void property="siguienteNodo">
-       <object class="listas.Nodo">
-        <void property="siguienteNodo">
-         <object class="listas.Nodo">
-          <void property="valorNodo">
-           <object idref="Actividad5"/>
-          </void>
-         </object>
-        </void>
-        <void property="valorNodo">
-         <object idref="Actividad7"/>
-        </void>
-       </object>
-      </void>
-      <void property="valorNodo">
-       <object idref="Actividad6"/>
-      </void>
-     </object>
-    </void>
-    <void property="valorNodo">
-     <object idref="Actividad4"/>
-    </void>
-   </object>
-  </void>
-  <void property="tamano">
-   <int>4</int>
-  </void>
- </void>
- <void property="tiempoMaximo">
-  <double>114.0</double>
- </void>
- <void property="tiempoMinimo">
-  <double>78.0</double>
- </void>
-</void>
-<void idref="Actividad4"/>
-<void class="listas.Nodo" id="Nodo9">
- <void property="valorNodo">
-  <object idref="Proceso0"/>
- </void>
-</void>
-<void class="listas.Nodo" id="Nodo10">
- <void property="valorNodo">
-  <object idref="Proceso1"/>
- </void>
- <void property="siguienteNodo">
-  <object idref="Nodo9"/>
  </void>
 </void>
 <void class="modelo.Proyecto" id="Field0" method="getField">
@@ -975,13 +966,20 @@
  <void id="ListaSimple0" method="get">
   <object idref="Proyecto0"/>
   <void property="nodoUltimo">
-   <object idref="Nodo9"/>
+   <object idref="Nodo5"/>
   </void>
   <void property="tamanio">
    <int>2</int>
   </void>
   <void property="nodoPrimero">
-   <object idref="Nodo10"/>
+   <object class="listas.Nodo">
+    <void property="siguienteNodo">
+     <object idref="Nodo5"/>
+    </void>
+    <void property="valorNodo">
+     <object idref="Proceso0"/>
+    </void>
+   </object>
   </void>
  </void>
 </void>

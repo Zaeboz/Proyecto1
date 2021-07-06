@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorBuscarActividad">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorBuscarActividad">
    <children>
       <Label fx:id="tablaTareasLabel" layoutX="15.0" layoutY="21.0" prefHeight="17.0" prefWidth="299.0" text="Lista de tareas de la actividad" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="21.0" />
       <Label layoutX="443.0" layoutY="70.0" prefHeight="17.0" prefWidth="113.0" text="Tiempo minimo" />

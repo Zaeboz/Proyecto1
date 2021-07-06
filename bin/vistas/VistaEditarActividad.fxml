@@ -7,7 +7,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="247.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.ControladorEditarActividad">
+<AnchorPane prefHeight="247.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ControladorEditarActividad">
    <children>
       <Label layoutX="33.0" layoutY="70.0" prefHeight="17.0" prefWidth="72.0" text="Nombre" />
       <TextField fx:id="textNombreActividad" layoutX="157.0" layoutY="66.0" />
