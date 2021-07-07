@@ -141,7 +141,6 @@ public class Proceso implements Serializable, Cloneable{
             actividadUltimoAgregado = null;
         }
         else actividadUltimoAgregado = pilaActividadAux.obtenerCima();
-
     }
 
     /**
@@ -169,7 +168,6 @@ public class Proceso implements Serializable, Cloneable{
             listaActividades.modificarNodo(pos1, actividad1);
             listaActividades.modificarNodo(pos2, actividad2);
         }
-        //Falta poner la venta emergenta para la actividad que no existe
     }
 
     /**
@@ -188,7 +186,6 @@ public class Proceso implements Serializable, Cloneable{
             listaActividades.modificarNodo(pos2, actividad1);
             listaActividades.modificarNodo(pos1, actividad2);
         }
-        //Falta poner la venta emergenta para la actividad que no existe
     }
 
     /**

@@ -292,7 +292,6 @@ public class Proyecto implements Serializable {
             listaProcesos.modificarNodo(listaProcesos.obtenerPosicionNodo(procesoAux), procesoAux);
             Persistencia.guardarRecursoProyectoXML(Main.proyecto);
         }
-        //falta poner venta por si la tarea no existe
     }
 
     /**

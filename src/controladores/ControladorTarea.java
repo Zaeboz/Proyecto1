@@ -165,12 +165,21 @@ public class ControladorTarea implements Initializable {
 
         try {
             Tarea tareaAux = Main.proyecto.buscarTareaInicio(nombre);
-            String a = tareaAux.toString();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setTitle("Informacion");
-            alert.setContentText(a);
-            alert.showAndWait();
+            if(tareaAux!=null){
+                String a = tareaAux.toString();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Informacion");
+                alert.setContentText(a);
+                alert.showAndWait();
+            }else{
+                String a = "La tarea no existe";
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("ERROS");
+                alert.setContentText(a);
+                alert.showAndWait();
+            }
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -218,37 +227,24 @@ public class ControladorTarea implements Initializable {
 
         try {
             Tarea tareaAux = Main.proyecto.burcarTareaActividad(nombreActividad, nombre);
-            String a = tareaAux.toString();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setTitle("Informacion");
-            alert.setContentText(a);
-            alert.showAndWait();
+            if(tareaAux!=null){
+                String a = tareaAux.toString();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Informacion");
+                alert.setContentText(a);
+                alert.showAndWait();
+            }else{
+                String a = "La tarea no existe";
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("ERROS");
+                alert.setContentText(a);
+                alert.showAndWait();
+            }
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
-
-        if(comprobar(nombre)) {
-            ListaSimple<Proceso> procesos = Main.proyecto.getListaProcesos();
-            ListaDoble<Actividad> actividades;
-            Cola<Tarea> tareas;
-            for(int p=0; p<procesos.getTamanio(); p++)
-            {
-                actividades = procesos.obtenerValorNodo(p).getListaActividades();
-                for(int a=0; a<actividades.getTamanio(); a++)
-                {
-                    if(actividades.obtenerValorNodo(a).getNombre().replace(" ", "").equalsIgnoreCase(nombreActividad.replace(" ", ""))) {
-                        tareas = actividades.obtenerValorNodo(a).getColaDeTareas();
-                        for (int t = 0; t < tareas.getTamano(); t++) {
-                            if (tareas.desencolar().getNombre().replace(" ", "").toLowerCase().contains(nombre.replace(" ", "").toLowerCase())) {
-                                colaTareas.add(tareas.desencolar());
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
     }
 
     public void editarTarea(Tarea tareaNueva) throws CloneNotSupportedException {
@@ -270,7 +266,6 @@ public class ControladorTarea implements Initializable {
 
         posicionEnTabla = colaTareas.indexOf(tarea);
         if (tarea != null) {
-            //Algo falta
         }
     }
 
