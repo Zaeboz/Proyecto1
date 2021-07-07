@@ -278,7 +278,7 @@ public class Proyecto implements Serializable {
      * @throws CloneNotSupportedException
      */
     public void eliminarTarea(Tarea tarea) throws CloneNotSupportedException {
-        Tarea tareaAux = burcarTarea(tarea.getNombreActividad(), tarea.getNombre());
+        Tarea tareaAux = burcarTareaActividad(tarea.getNombreActividad(), tarea.getNombre());
         if(tareaAux!=null){
             Actividad actividad = buscarActividadEnProcesos(tareaAux.getNombreActividad());
             //Se eliminar la tarea
@@ -297,16 +297,28 @@ public class Proyecto implements Serializable {
 
     /**
      * Metodo Metodo de comunicacion entre el proyecto y la actividad para poder buscar
-     * una tarea dentro de la cola de tareas
+     * una tarea dentro de la cola de tareas de una actividad en especifico
      * @param nombreActividad Nombre de la actividad en donde esta la tarea
      * @param nombreTarea Nombre de la tarea a buscar
      * @return La tarea encontrado si no la encuentra retorna null
      * @throws CloneNotSupportedException
      */
-    private Tarea burcarTarea(String nombreActividad, String nombreTarea) throws CloneNotSupportedException {
+    public Tarea burcarTareaActividad(String nombreActividad, String nombreTarea) throws CloneNotSupportedException {
         Actividad activdadAux = buscarActividadEnProcesos(nombreActividad);
 
         return activdadAux.buscarTarea(nombreTarea);
+    }
+
+    public Tarea buscarTareaInicio(String nombreTarea) throws CloneNotSupportedException {
+        Tarea tareaEncontrada = new Tarea();
+        for(int i = 0; i < listaProcesos.getTamanio(); i++){
+            Proceso procesoAux = listaProcesos.obtenerValorNodo(i);
+            tareaEncontrada = procesoAux.buscarTareaInicio(nombreTarea);
+            if(tareaEncontrada!=null){
+                return tareaEncontrada;
+            }
+        }
+        return null;
     }
 
     /**

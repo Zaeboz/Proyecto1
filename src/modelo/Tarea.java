@@ -66,4 +66,13 @@ public class Tarea implements Cloneable, Serializable{
     public void setTiempoDuracion(double tiempoDuracion) {
         this.tiempoDuracion = tiempoDuracion;
     }
+
+    @Override
+    public String toString() {
+        return  "Nombre: " + nombre.get() +
+                "\nNombre de la actividad: " + nombreActividad.get() +
+                "\nDescripcion: " + descripcion.get() +
+                "\n¿Es Opcional?: " + esOpcional.get() +
+                "\nTiempo de Duracion: " + tiempoDuracion;
+    }
 }

@@ -309,19 +309,19 @@ public class ControladorActividad implements Initializable, Serializable {
         }
     };
 
+    public void editarDatosActividad(String nombreActividad, Boolean esObligatoria, String descripcion) {
+        stage.close();
+        Actividad actividadAux = getTablaActividadSeleccionada();
+        Main.proyecto.editarActividad(actividadAux, nombreActividad, esObligatoria, descripcion);
+        cargarTablaActividades();
+    }
+
     public void setNombreStage(String nombreStage){
         this.nombreStage = nombreStage;
     }
 
     public String getNombreStage(){
         return nombreStage;
-    }
-
-    public void editarDatosActividad(String nombreActividad, Boolean esObligatoria, String descripcion) {
-        stage.close();
-        Actividad actividadAux = getTablaActividadSeleccionada();
-        Main.proyecto.editarActividad(actividadAux, nombreActividad, esObligatoria, descripcion);
-        cargarTablaActividades();
     }
 
     public Stage getStage() {

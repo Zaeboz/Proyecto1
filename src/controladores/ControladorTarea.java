@@ -136,16 +136,16 @@ public class ControladorTarea implements Initializable {
 
     @FXML void buscarTareas(ActionEvent event) throws IOException {
 
-//        nombreStage = "VistaBuscarTareaFormas";
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
-//        Parent root = loader.load();
-//        Scene scene = new Scene(root);
-//        stage = new Stage();
-//        stage.initModality(Modality.APPLICATION_MODAL);
-//        stage.setScene(scene);
-//        ControladorBuscarTareasFormas aux = (ControladorBuscarTareasFormas) loader.getController();
-//        aux.conectarControlador(this);
-//        stage.show();
+        nombreStage = "VistaBuscarTareasFormas";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        ControladorBuscarTareasFormas aux = (ControladorBuscarTareasFormas) loader.getController();
+        aux.conectarControlador(this);
+        stage.show();
 
     }
 
@@ -161,32 +161,21 @@ public class ControladorTarea implements Initializable {
         return true;
     }
 
-    //Este metodo debe de estar en actividad
     void buscarTareaActividadInicio(String nombre) {
 
-        if(comprobar(nombre)) {
-            ListaSimple<Proceso> procesos = Main.proyecto.getListaProcesos();
-            ListaDoble<Actividad> actividades;
-            Cola<Tarea> tareas;
-            for(int p=0; p<procesos.getTamanio(); p++)
-            {
-                actividades = procesos.obtenerValorNodo(p).getListaActividades();
-                for(int a=0; a<actividades.getTamanio(); a++)
-                {
-                    tareas = actividades.obtenerValorNodo(a).getColaDeTareas();
-                    for(int t=0; t<tareas.getTamano(); t++)
-                    {
-                        if(tareas.desencolar().getNombre().replace(" ", "").toLowerCase().contains(nombre.replace(" ", "").toLowerCase()))
-                        {
-                            colaTareas.add(tareas.desencolar());
-                        }
-                    }
-                }
-            }
+        try {
+            Tarea tareaAux = Main.proyecto.buscarTareaInicio(nombre);
+            String a = tareaAux.toString();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Informacion");
+            alert.setContentText(a);
+            alert.showAndWait();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
     }
 
-    //Este metodo debe de estar en actividad
     void buscarTareaActividadActual(String nombre) {
 
         Tarea tarea = getTablaTareaSeleccionada();
@@ -224,8 +213,20 @@ public class ControladorTarea implements Initializable {
 
     }
 
-    //Este metodo debe de estar en actividad
+
     void buscarTareaActividadNombre(String nombre, String nombreActividad) {
+
+        try {
+            Tarea tareaAux = Main.proyecto.burcarTareaActividad(nombreActividad, nombre);
+            String a = tareaAux.toString();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Informacion");
+            alert.setContentText(a);
+            alert.showAndWait();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
 
         if(comprobar(nombre)) {
             ListaSimple<Proceso> procesos = Main.proyecto.getListaProcesos();

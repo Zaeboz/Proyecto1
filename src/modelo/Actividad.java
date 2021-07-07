@@ -45,8 +45,6 @@ public class Actividad implements Cloneable, Serializable{
         this.codigoProceso.set(codigoProceso);
     }
 
-
-
     public void calcularDuracionActividad() throws CloneNotSupportedException {
         Cola<Tarea> colaTareasAuxClonada=new Cola<Tarea>();
         colaTareasAuxClonada= (Cola<Tarea>) this.getColaDeTareas().clone();
@@ -170,16 +168,19 @@ public class Actividad implements Cloneable, Serializable{
 
     /**
      * Metodo para buscar una tarea dentro de la cola de tareas
-     * @param nombreTarea Nombre de la tarea a buscar
+     * @param tareaAbuscar Nombre de la tarea a buscar
      * @return La tarea encontrada de lo contrario retorna null
      * @throws CloneNotSupportedException
      */
-    public Tarea buscarTarea(String nombreTarea) throws CloneNotSupportedException {
+    public Tarea buscarTarea(String tareaAbuscar) throws CloneNotSupportedException {
         Cola<Tarea> colaTereas = (Cola<Tarea>) colaDeTareas.clone();
+        tareaAbuscar = tareaAbuscar.replace(" ", "").toLowerCase();
         int size = colaTereas.getTamanio();
         for (int i = 0; i < size; i++){
             Tarea tareaAux = colaTereas.desencolar();
-            if(nombreTarea.equals(tareaAux.getNombre())){
+            String nombreTareaAux = tareaAux.getNombre();
+            nombreTareaAux = nombreTareaAux.replace(" ", "").toLowerCase();
+            if(tareaAbuscar.equals(nombreTareaAux)){
                 return tareaAux;
             }
         }
@@ -207,6 +208,7 @@ public class Actividad implements Cloneable, Serializable{
         }
         colaDeTareas = colaTareasFinal;
     }
+
 
     public Object clone( ) throws CloneNotSupportedException{
         return super.clone();

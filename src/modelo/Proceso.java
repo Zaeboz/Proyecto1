@@ -14,7 +14,7 @@ public class Proceso implements Serializable, Cloneable{
 
     private SimpleStringProperty nombreProceso = new SimpleStringProperty("0");
     private SimpleIntegerProperty idProceso = new SimpleIntegerProperty(0);
-    private double tiempoMaximo =0;
+    private double tiempoMaximo = 0;
     private double tiempoMinimo = 0;
     private ListaDoble<Actividad> listaActividades = new ListaDoble<>();
     private Pila<Actividad> pilaActividadAux = new Pila<>();
@@ -249,6 +249,18 @@ public class Proceso implements Serializable, Cloneable{
 
         this.tiempoMinimo = tiempoMinimo;
         this.tiempoMaximo = tiempoMaximo;
+    }
+
+    public Tarea buscarTareaInicio(String nombreTarea) throws CloneNotSupportedException {
+        Tarea tareaEncontrada = new Tarea();
+        for(int a = 0; a < listaActividades.getTamanio(); a++){
+            Actividad actividadAux = listaActividades.obtener(a);
+            tareaEncontrada = actividadAux.buscarTarea(nombreTarea);
+            if(tareaEncontrada!=null){
+                return tareaEncontrada;
+            }
+        }
+        return null;
     }
 
     //Getters and setters
