@@ -136,16 +136,16 @@ public class ControladorTarea implements Initializable {
 
     @FXML void buscarTareas(ActionEvent event) throws IOException {
 
-        nombreStage = "VistaBuscarTareaFormas";
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreStage+".fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        //ControladorBuscarTareasFormas aux = (ControladorBuscarTareasFormas) loader.getController();
-        //aux.conectarControlador(this);
-        stage.show();
+//        nombreStage = "VistaBuscarTareaFormas";
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/"+nombreStage+".fxml"));
+//        Parent root = loader.load();
+//        Scene scene = new Scene(root);
+//        stage = new Stage();
+//        stage.initModality(Modality.APPLICATION_MODAL);
+//        stage.setScene(scene);
+//        ControladorBuscarTareasFormas aux = (ControladorBuscarTareasFormas) loader.getController();
+//        aux.conectarControlador(this);
+//        stage.show();
 
     }
 
